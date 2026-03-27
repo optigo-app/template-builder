@@ -1,0 +1,112 @@
+{
+  "templateId": "About2",
+  "preview": "about2.png",
+  "name": "Elior Jewel Brand Story",
+  "components": [
+    {
+      "id": "main-heading",
+      "type": "heading",
+      "props": {
+        "content": "ABOUT US",
+        "level": "h1",
+        "fontSize": 32,
+        "color": "#111111",
+        "textAlign": "center"
+      }
+    },
+    {
+      "id": "sub-heading-1",
+      "type": "heading",
+      "props": {
+        "content": "Experience the brilliance with us",
+        "level": "h2",
+        "fontSize": 20,
+        "color": "#111111",
+        "textAlign": "left"
+      }
+    },
+    {
+      "id": "intro-text",
+      "type": "text",
+      "props": {
+        "content": "Welcome to Elior Jewel, where simplicity meets sophistication. We understand that diamonds are a reflection of your unique identity, so here we are to offer what you deserve. We curate pieces that incorporate the essence of understated elegance, celebrating the beauty in simplicity. Each design is a testament to our belief that LESS IS TRULY MORE, perfect for expressing love, commitment, and appreciation. Crafted in solid gold and ethically sourced Lab Grown Diamonds, Elior offers a beautiful balance between trend-led modern and timeless minimalistic designs  cvgfg",
+        "fontSize": 14,
+        "color": "#3e3d3d",
+        "textAlign": "left",
+        "lineHeight": 1.6
+      }
+    },
+    {
+      "id": "advantage-heading",
+      "type": "heading",
+      "props": {
+        "content": "Elior Advantage ",
+        "level": "h3",
+        "fontSize": 18,
+        "color": "#111111",
+        "textAlign": "left"
+      }
+    },
+    {
+      "id": "advantage-text",
+      "type": "text",
+      "props": {
+        "content": "We are direct to consumer brand and source the best diamonds from our parent firm Kay Vee Gems based in diamond capital Surat, which means you pay much lesser than other retailers for finest quality jewels, eliminating all the mediatory costs, to provide you the best and affordable jewelry. When you choose Elior, you ’re not just investing in a piece of jewelry for yourself or your loved ones, but are becoming a part of a movement towards sustainable and ethical future that values beauty as well as nature in equal measure.",
+        "fontSize": 14,
+        "color": "#333333",
+        "textAlign": "left",
+        "lineHeight": 1.6
+      }
+    },
+    {
+      "id": "vision-heading",
+      "type": "heading",
+      "props": {
+        "content": "Brand Vision",
+        "level": "h3",
+        "fontSize": 18,
+        "color": "#111111",
+        "textAlign": "left"
+      }
+    },
+    {
+      "id": "vision-text",
+      "type": "text",
+      "props": {
+        "content": "Our founder, Mr. Hemal Dholakia, is driven by one goal – to create luxury yet affordable jewelry for all. Elior aspires to make people feel empowered and precious; as you sparkle the brightest when YOU are YOU. We have finest conflict-free jewelry for every personality and occasion for you to choose from. The new generation of diamonds is here and we are all set to enter this futuristic world of conscious luxury.",
+        "fontSize": 14,
+        "color": "#333333",
+        "textAlign": "left",
+        "lineHeight": 1.6
+      }
+    },
+    {
+      "id": "promise-heading",
+      "type": "heading",
+      "props": {
+        "content": "Our Promise",
+        "level": "h3",
+        "fontSize": 18,
+        "color": "#111111",
+        "textAlign": "left"
+      }
+    },
+    {
+      "id": "promise-list",
+      "type": "text-list",
+      "props": {
+        "items": [
+          "Finest quality jewels",
+          "100% certified products",
+          "15 days easy returns",
+          "Lifetime exchange",
+          "Timeless designs — a diamond is forever",
+          "New promise item"
+        ],
+        "fontSize": 14,
+        "color": "#333333",
+        "lineHeight": 1.8
+      }
+    }
+  ]
+}

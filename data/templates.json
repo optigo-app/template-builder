@@ -1,0 +1,631 @@
+[
+  {
+    "category": "about-us",
+    "templates": [
+      {
+        "templateId": "About1",
+        "preview": "about1.png",
+        "name": "About Us Template 6",
+        "components": [
+          {
+            "id": "image-1",
+            "type": "image",
+            "props": {
+              "src": "",
+              "alt": "Wedding rings on fabric",
+              "width": "600px",
+              "height": "400px",
+              "borderRadius": 8
+            }
+          },
+          {
+            "id": "heading-1",
+            "type": "heading",
+            "props": {
+              "content": "ABOUT US",
+              "level": "h2",
+              "fontSize": 28,
+              "color": "#000",
+              "textAlign": "left"
+            }
+          },
+          {
+            "id": "heading-2",
+            "type": "heading",
+            "props": {
+              "content": "OUR DNA",
+              "level": "h3",
+              "fontSize": 22,
+              "color": "#000",
+              "textAlign": "left"
+            }
+          },
+          {
+            "id": "text-1",
+            "type": "text",
+            "props": {
+              "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac sollicitudin velit.",
+              "fontSize": 16,
+              "color": "#CCCCCC",
+              "textAlign": "left",
+              "lineHeight": 1.5
+            }
+          },
+          {
+            "id": "heading-3",
+            "type": "heading",
+            "props": {
+              "content": "PXPL VALUES",
+              "level": "h3",
+              "fontSize": 22,
+              "color": "#000",
+              "textAlign": "left"
+            }
+          },
+          {
+            "id": "text-2",
+            "type": "text",
+            "props": {
+              "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac sollicitudin velit.",
+              "fontSize": 16,
+              "color": "#CCCCCC",
+              "textAlign": "left",
+              "lineHeight": 1.5
+            }
+          },
+          {
+            "id": "list-1",
+            "type": "text-list",
+            "props": {
+              "items": [
+                {
+                  "title": "Authenticity",
+                  "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac sollicitudin velit."
+                },
+                {
+                  "title": "Simplicity",
+                  "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac sollicitudin velit."
+                },
+                {
+                  "title": "Drive",
+                  "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac sollicitudin velit."
+                },
+                {
+                  "title": "Adventure",
+                  "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac sollicitudin velit."
+                },
+                {
+                  "title": "Mindfulness",
+                  "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac sollicitudin velit."
+                },
+                {
+                  "title": "Appreciation",
+                  "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac sollicitudin velit."
+                }
+              ],
+              "fontSize": 16,
+              "color": "#CCCCCC",
+              "textAlign": "left",
+              "lineHeight": 1.5
+            }
+          }
+        ]
+      },
+      {
+        "templateId": "About2",
+        "preview": "about2.png",
+        "name": "Elior Jewel Brand Story",
+        "components": [
+          {
+            "id": "main-heading",
+            "type": "heading",
+            "props": {
+              "content": "ABOUT US",
+              "level": "h1",
+              "fontSize": 32,
+              "color": "#111111",
+              "textAlign": "center"
+            }
+          },
+          {
+            "id": "sub-heading-1",
+            "type": "heading",
+            "props": {
+              "content": "Experience the brilliance with us",
+              "level": "h2",
+              "fontSize": 20,
+              "color": "#111111",
+              "textAlign": "left"
+            }
+          },
+          {
+            "id": "intro-text",
+            "type": "text",
+            "props": {
+              "content": "Welcome to Elior Jewel, where simplicity meets sophistication. We understand that diamonds are a reflection of your unique identity, so here we are to offer what you deserve. We curate pieces that incorporate the essence of understated elegance, celebrating the beauty in simplicity. Each design is a testament to our belief that LESS IS TRULY MORE, perfect for expressing love, commitment, and appreciation. Crafted in solid gold and ethically sourced Lab Grown Diamonds, Elior offers a beautiful balance between trend-led modern and timeless minimalistic designs — all at an accessible price point.",
+              "fontSize": 14,
+              "color": "#333333",
+              "textAlign": "left",
+              "lineHeight": 1.6
+            }
+          },
+          {
+            "id": "advantage-heading",
+            "type": "heading",
+            "props": {
+              "content": "Elior Advantage",
+              "level": "h3",
+              "fontSize": 18,
+              "color": "#111111",
+              "textAlign": "left"
+            }
+          },
+          {
+            "id": "advantage-text",
+            "type": "text",
+            "props": {
+              "content": "We are direct to consumer brand and source the best diamonds from our parent firm Kay Vee Gems based in diamond capital Surat, which means you pay much lesser than other retailers for finest quality jewels, eliminating all the mediatory costs, to provide you the best and affordable jewelry. When you choose Elior, you ’re not just investing in a piece of jewelry for yourself or your loved ones, but are becoming a part of a movement towards sustainable and ethical future that values beauty as well as nature in equal measure.",
+              "fontSize": 14,
+              "color": "#333333",
+              "textAlign": "left",
+              "lineHeight": 1.6
+            }
+          },
+          {
+            "id": "vision-heading",
+            "type": "heading",
+            "props": {
+              "content": "Brand Vision",
+              "level": "h3",
+              "fontSize": 18,
+              "color": "#111111",
+              "textAlign": "left"
+            }
+          },
+          {
+            "id": "vision-text",
+            "type": "text",
+            "props": {
+              "content": "Our founder, Mr. Hemal Dholakia, is driven by one goal – to create luxury yet affordable jewelry for all. Elior aspires to make people feel empowered and precious; as you sparkle the brightest when YOU are YOU. We have finest conflict-free jewelry for every personality and occasion for you to choose from. The new generation of diamonds is here and we are all set to enter this futuristic world of conscious luxury.",
+              "fontSize": 14,
+              "color": "#333333",
+              "textAlign": "left",
+              "lineHeight": 1.6
+            }
+          },
+          {
+            "id": "promise-heading",
+            "type": "heading",
+            "props": {
+              "content": "Our Promise",
+              "level": "h3",
+              "fontSize": 18,
+              "color": "#111111",
+              "textAlign": "left"
+            }
+          },
+          {
+            "id": "promise-list",
+            "type": "text-list",
+            "props": {
+              "items": [
+                "Finest quality jewels",
+                "100% certified products",
+                "15 days easy returns",
+                "Lifetime exchange",
+                "Timeless designs — a diamond is forever",
+                "Ethical, economical, and effortless"
+              ],
+              "fontSize": 14,
+              "color": "#333333",
+              "lineHeight": 1.8
+            }
+          }
+        ]
+      },
+      {
+        "templateId": "About3",
+        "preview": "about3.png",
+        "name": "Diamond About Us Full Page",
+        "components": [
+          {
+            "id": "section-about-us",
+            "type": "heading",
+            "props": {
+              "heading": "ABOUT USDFGG",
+              "content": "Love in diamonds located amid The Diamond City of India, Surat is a hub of explicit design and rare shades of diamonds. For over 40 years, our family has become a part of various families and their beautiful stories. We are a diamond manufacturing and designing unit that strives to give a captivating combination of hue, saturation, and brilliance that cannot be duplicated. Our gems are a symbol of love and commitment. With sparkle, incredibly designed shapes with different shades of rare colors. The precision of our cuts and the elegant craftsmanship of our artisans is our mastered tool. The choice of the stone reflects the kind of personality, the color signifies the intensity of emotions and the cuts on it give the reflection of the overall facets of love.",
+              "src": "https://your-image-url.com/diamond-logo-icon.png",
+              "rowDirection": "row",
+              "fontSize": 14,
+              "color": "#4b5563",
+              "borderRadius": 0
+            }
+          },
+          {
+            "id": "section-vision",
+            "type": "content-section",
+            "props": {
+              "heading": "VISION",
+              "content": "Our vision lies in adding souls to the stones. Every jewel is a statement of raw and real stories rooted in deep sentiments. We believe that every stone narrates a story and our artisans give it a shape through gemstones and diamonds. Our jewelry is a beautiful creation of love and commitment and our artisans hallmark it with trust to adds \"forever\" to it.",
+              "src": "https://your-image-url.com/jewelry-model.png",
+              "rowDirection": "reverse",
+              "fontSize": 14,
+              "color": "#4b5563",
+              "borderRadius": 8
+            }
+          },
+          {
+            "id": "section-founder",
+            "type": "content-section",
+            "props": {
+              "heading": "RUSHIT PATEL (FOUNDER & MANAGING DIRECTOR)",
+              "content": "Meet the visionary behind Love in Diamonds, Mr. Rushit Patel. With over two decades of diverse business expertise, his true passion lies the world of diamonds. Hailing from the renowned diamond city of India and enriched by his experiences across African countries, he holds an unwavering fascination for the captivating allure of diamonds. Endowed with an impeccable eye for gems, Mr. Patel sees beyond mere stones, recognizing them as vessels of emotion that reflect the wearer's unique essence. From the elegance of classic cuts to the breathtaking brilliance of vibrant hues, he relentlessly pursues perfection in every facet. Fueled by boundless creativity and an unwavering commitment to excellence, Mr. Patel stands as a true luminary in the field. At Love in Diamonds, he ensures that each jewel is not just a creation, but a masterpiece crafted from the heart to resonate deeply with your soul.",
+              "src": "https://your-image-url.com/founder-portrait.png",
+              "rowDirection": "row",
+              "fontSize": 14,
+              "color": "#4b5563",
+              "borderRadius": 4
+            }
+          }
+        ]
+      },
+      {
+        "templateId": "About4",
+        "preview": "about4.png",
+        "name": "About Us Simple Sections",
+         
+          "components": [
+            {
+              "id": "main-heading-about",
+              "type": "heading",
+              "props": {
+                "heading": "ABOUT US",
+                "headingFontSize": 32,
+                "headingColor": "#111827"
+              }
+            },
+            {
+              "id": "tabs-section-about",
+              "type": "tabs-section",
+              "props": {
+                "about-image": {
+                  "src": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338",
+                  "borderRadius": 12,
+                  "alt": "Common About Us Image"
+                },
+                "tabs": [
+                  {
+                    "id": "tab-about",
+                    "tab-head": "ABOUT",
+                    "tab-content": {
+                      "heading": "Established in 2017",
+                      "content": "Our brand represents elegance and craftsmanship in fine jewelry. We specialize in designing timeless pieces that reflect beauty and sophistication.\n\nWe are constantly innovating to deliver high-quality jewelry that blends tradition with modern design, ensuring every creation tells a unique story.",
+                      "fontSize": 14,
+                      "headingFontSize": 18,
+                      "color": "#4b5563"
+                    }
+                  },
+                  {
+                    "id": "tab-mission",
+                    "tab-head": "OUR MISSION",
+                    "tab-content": {
+                      "heading": "Our Visionary Mission",
+                      "content": "To provide the world with ethically sourced, masterfully cut diamonds that symbolize the most precious moments in life. We strive for excellence in every facet of our business.",
+                      "fontSize": 14,
+                      "headingFontSize": 18,
+                      "color": "#4b5563"
+                    }
+                  },
+                  {
+                    "id": "tab-goal",
+                    "tab-head": "OUR GOAL",
+                    "tab-content": {
+                      "heading": "Looking Forward",
+                      "content": "Our goal is to become the global benchmark for luxury and trust in the diamond industry, fostering lifelong relationships with our clients through transparency and art.",
+                      "fontSize": 14,
+                      "headingFontSize": 18,
+                      "color": "#4b5563"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+     
+      }
+    ]
+  },
+  {
+    "category": "contact-us",
+    "templates": [
+      {
+        "templateId": "Contact1",
+        "preview": "contact1.png",
+        "name": "Contact Us Template 1",
+        "components": [
+          {
+            "id": "main-heading-contact",
+            "type": "heading",
+            "props": {
+              "heading": "Contact Us",
+              "content": "Have a comment, suggestion or queestion? Feel free to reach out to us and we’ll getback to you as soon as possibl",
+              "headingFontSize": 32,
+              "headingColor": "#111827"
+            }
+          },
+          
+          
+          {
+            "id": "contact-form-section",
+            "type": "form",
+            "props": {
+              "title": "SEND US A MESSAGE",
+              "buttonText": "SUBMIT",
+              "buttonColor": "#f3e5e5",
+              "buttonTextColor": "#000000",
+              "fields": [
+                {
+                  "id": "field-1",
+                  "label": "FULL NAME",
+                  "type": "text",
+                  "placeholder": ""
+                },
+                {
+                  "id": "field-2",
+                  "label": "EMAIL ADDRESS",
+                  "type": "email",
+                  "placeholder": ""
+                },
+                {
+                  "id": "field-3",
+                  "label": "PHONE NUMBER",
+                  "type": "tel",
+                  "placeholder": ""
+                },
+                {
+                  "id": "field-4",
+                  "label": "SUBJECT",
+                  "type": "text",
+                  "placeholder": ""
+                },
+                {
+                  "id": "field-5",
+                  "label": "MESSAGE",
+                  "type": "textarea",
+                  "placeholder": ""
+                }
+              ]
+            }
+          },
+          {
+            "id": "text-content-section",
+            "type": "content-group",
+            "props": {
+              "sections": [
+                {
+                  "heading": "Have questions?",
+                  "content": "General Inquiries\nCustomer Inquiries\nOrders & Returns\n\nIf you are looking for instant answers, check out our FAQ page for more information."
+                },
+                {
+                  "heading": "Orders & Returns",
+                  "content": "Check out our FAQ page or our Orders & Returns page\nCall us at 98108 76259\nEmail: contact@diamondtine.com"
+                },
+                {
+                  "heading": "Studio Address",
+                  "content": "E-4, South Extension II, New Delhi 110049"
+                },
+                {
+                  "heading": "Opening Hours",
+                  "content": "Monday - Friday 11am - 6pm\nSaturday 12pm - 6pm\n\nOur customer service team is available by phone from Monday-Friday 9:30am-6:30pm IST and Saturday 10am-6pm IST.\nOur office is located at 22W 48th St, STE#1111W, New York, NY 10036"
+                }
+              ],
+              "fontSize": 14,
+              "headingFontSize": 18,
+              "color": "#4b5563",
+              "textAlign": "left"
+            }
+          },
+          {
+            "id": "google-map-section",
+            "type": "map",
+            "props": {
+              "url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.225585012345!2d77.2208!3d28.5667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce240!2sDiamondtine!5e0!3m2!1sen!2sin!4v1234567890",
+              "width": "100%",
+              "height": "450px",
+              "borderRadius": 0,
+              "locationName": "Diamondtine, New Delhi"
+            }
+          }
+        ]
+      },
+      {
+        "templateId": "Contact2",
+        "preview": "contact2.png",
+        "name": "Contact Us with Hero Banner",
+        "components": [
+          {
+            "id": "contact-hero-banner",
+            "type": "banner",
+            "props": {
+              "backgroundImage": "https://example.com/contact-hero.jpg",
+              "height": "400px",
+              "overlayColor": "rgba(0,0,0,0.1)",
+              "style": {
+                "backgroundPosition": "center",
+                "backgroundSize": "cover"
+              }
+            }
+          },
+          {
+            "id": "main-heading-contact",
+            "type": "heading",
+            "props": {
+              "heading": "Contact Us",
+              "content": "Have a comment, suggestion or question? Feel free to reach out to us and we’ll get back to you as soon as possible.",
+              "headingFontSize": 32,
+              "headingColor": "#111827",
+              "contentFontSize": 16,
+              "contentColor": "#4b5563",
+              "textAlign": "center",
+              "margin": "40px 0"
+            }
+          },
+          {
+            "id": "contact-grid-container",
+            "type": "layout-grid",
+            "props": {
+              "columns": 2,
+              "gap": "60px",
+              "mobileColumns": 1,
+              "padding": "0 10%"
+            },
+            "children": [
+              {
+                "id": "contact-form-section",
+                "type": "form",
+                "props": {
+                  "formHeading": "Contact Form",
+                  "formDescription": "Our Customer service team is waiting to assist you. Please fill out all fields.",
+                  "buttonText": "SEND",
+                  "buttonColor": "#001f3f",
+                  "buttonTextColor": "#ffffff",
+                  "fields": [
+                    { "id": "f1", "label": "First Name", "type": "text", "width": "50%" },
+                    { "id": "f2", "label": "Last Name", "type": "text", "width": "50%" },
+                    { "id": "f3", "label": "Phone", "type": "tel", "width": "50%" },
+                    { "id": "f4", "label": "Email ID", "type": "email", "width": "50%" },
+                    { "id": "f5", "label": "Message", "type": "textarea", "width": "100%" }
+                  ]
+                }
+              },
+              {
+                "id": "contact-info-list",
+                "type": "content-group",
+                "props": {
+                  "sections": [
+                    {
+                      "heading": "Hours of Operation",
+                      "content": "INDIA - 9:00am to 6:30pm (IST)\n Mon-Sat (Excluding Holidays)"
+                    },
+                    {
+                      "heading": "Phone",
+                      "content": "INDIA - (0261) 610-5100"
+                    },
+                    {
+                      "heading": "General Inquiries",
+                      "content": "INDIA - info@elvee.in"
+                    } 
+                  ],
+                  "headingFontSize": 20,
+                  "contentFontSize": 14,
+                  "headingColor": "#111827",
+                  "contentColor": "#6b7280"
+                }
+              }
+            ]
+          },
+          {
+            "id": "google-map-section",
+            "type": "map",
+            "props": {
+              "url": "https://www.google.com/maps/embed?pb=...",
+              "width": "100%",
+              "height": "400px",
+              "margin": "50px 0 0 0"
+            }
+          }
+        ]
+      },
+      {
+        "templateId": "Contact3",
+        "preview": "Contact3.png",
+        "name": "Contact Us with Side Address and Map",
+        "components": [
+          {
+            "id": "main-heading-contact",
+            "type": "heading",
+            "props": {
+              "heading": "Contact Us",
+              "content": "Have a comment, suggestion or question? Feel free to reach out to us and we’ll get back to you as soon as possible.",
+              "headingFontSize": 42,
+              "headingColor": "#111827",
+              "contentFontSize": 18,
+              "contentColor": "#4b5563",
+              "textAlign": "center",
+              "margin": "60px 0"
+            }
+          },
+          {
+            "id": "contact-content-grid",
+            "type": "layout-grid",
+            "props": {
+              "columns": 2,
+              "gap": "40px",
+              "mobileColumns": 1,
+              "padding": "0 10%",
+              "alignItems": "start"
+            },
+            "children": [
+              {
+                "id": "contact-form-section",
+                "type": "form",
+                "props": {
+                  "buttonText": "SUBMIT",
+                  "buttonColor": "#000000",
+                  "buttonTextColor": "#ffffff",
+                  "fields": [
+                    { "id": "f1", "label": "FULL NAME", "type": "text", "width": "100%" },
+                    { "id": "f2", "label": "COMPANY NAME", "type": "text", "width": "100%" },
+                    { "id": "f3", "label": "EMAIL ADDRESS", "type": "email", "width": "100%" },
+                    { "id": "f4", "label": "PHONE NUMBER", "type": "tel", "width": "100%" },
+                    { "id": "f5", "label": "SUBJECT", "type": "text", "width": "100%" },
+                    { "id": "f6", "label": "MESSAGE", "type": "textarea", "width": "100%" }
+                  ],
+                  "style": {
+                    "backgroundColor": "#ffffff",
+                    "padding": "30px",
+                    "borderRadius": "8px",
+                    "boxShadow": "0 4px 12px rgba(0,0,0,0.05)"
+                  }
+                }
+              },
+              {
+                "id": "contact-info-address-map",
+                "type": "content-group",
+                "props": {
+                  "style": {
+                    "backgroundColor": "#ffffff",
+                    "padding": "30px",
+                    "borderRadius": "8px",
+                    "boxShadow": "0 4px 12px rgba(0,0,0,0.05)"
+                  },
+                  "sections": [
+                    {
+                      "heading": "Main Office Address",
+                      "content": "1st Floor, Patwa Building, Varachha Main Rd, opp. Tapi Baug Soc, Bhatni Wadi, Mira Nagar Society, Varachha, Surat, Gujarat 395006",
+                      "headingColor": "#003366",
+                      "underline": true
+                    } 
+                  ],
+                  "mapSection": {
+                    "id": "embedded-google-map",
+                    "type": "map",
+                    "props": {
+                      "url": "https://www.google.com/maps/embed?pb=!1m18...",
+                      "width": "100%",
+                      "height": "300px",
+                      "borderRadius": "4px",
+                      "margin": "20px 0 0 0"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+        
+      
+    ]
+  }
+]

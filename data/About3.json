@@ -1,0 +1,64 @@
+{
+  "templateId": "About3",
+  "preview": "about3.png",
+  "name": "Diamond About Us Full Page",
+  "components": [
+    {
+      "id": "section-about-us",
+      "type": "heading",
+      "props": {
+        "heading": "ABOUT USDFGG",
+        "content": "Love in diamonds located amid The Diamond City of India, Surat is a hub of explicit design and rare shades of diamonds. For over 40 years, our family has become a part of various families and their beautiful stories. We are a diamond manufacturing and designing unit that strives to give a captivating combination of hue, saturation, and brilliance that cannot be duplicated. Our gems are a symbol of love and commitment. With sparkle, incredibly designed shapes with different shades of rare colors. The precision of our cuts and the elegant craftsmanship of our artisans is our mastered tool. The choice of the stone reflects the kind of personality, the color signifies the intensity of emotions and the cuts on it give the reflection of the overall facets of love.",
+        "src": "https://your-image-url.com/diamond-logo-icon.png",
+        "rowDirection": "row",
+        "fontSize": 14,
+        "color": "#4b5563",
+        "borderRadius": 0
+      }
+    },
+    {
+      "id": "section-vision",
+      "type": "content-section",
+      "props": {
+        "heading": "VISION VV",
+        "content": "Our vision lies in adding  vv souls to the stones. Every jewel is a statement of raw and real stories rooted in deep sentiments. We believe that every stone narrates a story and our artisans give it a shape through gemstones and diamonds. Our jewelry is a beautiful creation of love and commitment and our artisans hallmark it with trust to adds \"forever\" to it.",
+        "src": "https://images.unsplash.com/photo-1541363111435-5c1b7d867904?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZHVtbXl8ZW58MHx8MHx8fDA%3D",
+        "rowDirection": "reverse",
+        "fontSize": 15,
+        "color": "#4b5563",
+        "borderRadius": 8,
+        "headingFontSize": 32,
+        "headingColor": "#0b0a0a"
+      }
+    },
+    {
+      "id": "section-founder",
+      "type": "content-section",
+      "props": {
+        "heading": "RUSHIT PATEL (FOUNDER & MANAGING DIRECTOR)",
+        "content": "Meet the visionary behind Love in Diamonds, Mr. Rushit Patel. With over two decades of diverse business expertise, his true passion lies the world of diamonds. Hailing from the renowned diamond city of India and enriched by his experiences across African countries, he holds an unwavering fascination for the captivating allure of diamonds. Endowed with an impeccable eye for gems, Mr. Patel sees beyond mere stones, recognizing them as vessels of emotion that reflect the wearer's unique essence. From the elegance of classic cuts to the breathtaking brilliance of vibrant hues, he relentlessly pursues perfection in every facet. Fueled by boundless creativity and an unwavering commitment to excellence, Mr. Patel stands as a true luminary in the field. At Love in Diamonds, he ensures that each jewel is not just a creation, but a masterpiece crafted from the heart to resonate deeply with your soul.",
+        "src": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1274&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "rowDirection": "row",
+        "fontSize": 14,
+        "color": "#4b5563",
+        "borderRadius": 16
+      }
+    },
+    {
+      "id": "section-1774597487691",
+      "type": "content-section",
+      "props": {
+        "heading": "NEW SECTION TITLE",
+        "content": "Enter your content here.",
+        "src": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=2070&auto=format&fit=crop",
+        "rowDirection": "reverse",
+        "fontSize": 14,
+        "headingFontSize": 24,
+        "color": "#4b5563",
+        "headingColor": "#111827",
+        "borderRadius": 8,
+        "imageWidth": "100%"
+      }
+    }
+  ]
+}

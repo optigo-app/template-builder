@@ -1,0 +1,123 @@
+{
+  "templateId": "Contact3",
+  "preview": "Contact3.png",
+  "name": "Contact Us with Side Address and Map",
+  "components": [
+    {
+      "id": "main-heading-contact",
+      "type": "heading",
+      "props": {
+        "heading": "Contact Us",
+        "content": "Have a comment, suggestion or question? Feel free to reach out to us and we’ll get back to you as soon as possible.",
+        "headingFontSize": 42,
+        "headingColor": "#111827",
+        "contentFontSize": 18,
+        "contentColor": "#4b5563",
+        "textAlign": "center",
+        "margin": "60px 0"
+      }
+    },
+    {
+      "id": "contact-content-grid",
+      "type": "layout-grid",
+      "props": {
+        "columns": 2,
+        "gap": "40px",
+        "mobileColumns": 1,
+        "padding": "0 10%",
+        "alignItems": "start"
+      },
+      "children": [
+        {
+          "id": "contact-form-section",
+          "type": "form",
+          "props": {
+            "buttonText": "SUBMIT",
+            "buttonColor": "#110d0d",
+            "buttonTextColor": "#ffffff",
+            "fields": [
+              {
+                "id": "f1",
+                "label": "FULL NAME",
+                "type": "text",
+                "width": "100%"
+              },
+              {
+                "id": "f2",
+                "label": "COMPANY NAME",
+                "type": "text",
+                "width": "100%"
+              },
+              {
+                "id": "f3",
+                "label": "EMAIL ADDRESS",
+                "type": "email",
+                "width": "100%"
+              },
+              {
+                "id": "f4",
+                "label": "PHONE NUMBER",
+                "type": "tel",
+                "width": "100%"
+              },
+              {
+                "id": "f5",
+                "label": "SUBJECT",
+                "type": "text",
+                "width": "100%"
+              },
+              {
+                "id": "f6",
+                "label": "MESSAGE",
+                "type": "textarea",
+                "width": "100%"
+              }
+            ],
+            "style": {
+              "backgroundColor": "#ffffff",
+              "padding": "30px",
+              "borderRadius": "8px",
+              "boxShadow": "0 4px 12px rgba(0,0,0,0.05)"
+            },
+            "headingColor": "#d1cccc"
+          }
+        },
+        {
+          "id": "contact-info-address-map",
+          "type": "content-group",
+          "props": {
+            "style": {
+              "backgroundColor": "#ffffff",
+              "padding": "30px",
+              "borderRadius": "8px",
+              "boxShadow": "0 4px 12px rgba(0,0,0,0.05)"
+            },
+            "sections": [
+              {
+                "heading": "Main Office Address",
+                "content": "1st Floor, Patwa Building, Varachha Main Rd, opp. Tapi Baug Soc, Bhatni Wadi, Mira Nagar Society, Varachha, Surat, Gujarat 395006\n\n+91 88669 37682 fbgfgh ghg\n\neliorjewel@gmail.com\n",
+                "headingColor": "#003366",
+                "underline": true
+              }
+            ],
+            "mapSection": {
+              "id": "embedded-google-map",
+              "type": "map",
+              "props": {
+                "url": "https://www.google.com/maps/embed?pb=!1m18...",
+                "width": "100%",
+                "height": "300px",
+                "borderRadius": "4px",
+                "margin": "20px 0 0 0"
+              }
+            },
+            "mapHeight": 402,
+            "infoHeadingColor": "#000000",
+            "infoContentColor": "#585555",
+            "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.225585012345!2d77.2208!3d28.5667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce240!2sDiamondtine!5e0!3m2!1sen!2sin!4v1234567890"
+          }
+        }
+      ]
+    }
+  ]
+}

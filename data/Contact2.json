@@ -1,0 +1,123 @@
+{
+  "templateId": "Contact2",
+  "preview": "contact2.png",
+  "name": "Contact Us with Hero Banner",
+  "components": [
+    {
+      "id": "contact-hero-banner",
+      "type": "banner",
+      "props": {
+        "backgroundImage": "http://elvee.web/WebSiteStaticImage/Banner/contactBanner1.png",
+        "height": "400px",
+        "overlayColor": "rgba(0,0,0,0.1)",
+        "style": {
+          "backgroundPosition": "center",
+          "backgroundSize": "cover"
+        }
+      }
+    },
+    {
+      "id": "main-heading-contact",
+      "type": "heading",
+      "props": {
+        "heading": "Contact Us",
+        "content": "Have a comment, suggestion or question? Feel free to reach out to us and we’ll get back to you as soon as possible.",
+        "headingFontSize": 32,
+        "headingColor": "#5173bd",
+        "contentFontSize": 16,
+        "contentColor": "#4b5563",
+        "textAlign": "center",
+        "margin": "40px 0"
+      }
+    },
+    {
+      "id": "contact-grid-container",
+      "type": "layout-grid",
+      "props": {
+        "columns": 2,
+        "gap": "60px",
+        "mobileColumns": 1,
+        "padding": "0 10%"
+      },
+      "children": [
+        {
+          "id": "contact-form-section",
+          "type": "form",
+          "props": {
+            "formHeading": "Contact Form",
+            "formDescription": "Our Customer service team is waiting to assist you. Please fill out all fields.",
+            "buttonText": "SEND",
+            "buttonColor": "#121416",
+            "buttonTextColor": "#ffffff",
+            "fields": [
+              {
+                "id": "f1",
+                "label": "First Name",
+                "type": "text",
+                "width": "50%"
+              },
+              {
+                "id": "f2",
+                "label": "Last Name",
+                "type": "text",
+                "width": "50%"
+              },
+              {
+                "id": "f3",
+                "label": "Phone",
+                "type": "tel",
+                "width": "50%"
+              },
+              {
+                "id": "f4",
+                "label": "Email ID",
+                "type": "email",
+                "width": "50%"
+              },
+              {
+                "id": "f5",
+                "label": "Message vbb",
+                "type": "textarea",
+                "width": "100%"
+              }
+            ]
+          }
+        },
+        {
+          "id": "contact-info-list",
+          "type": "content-group",
+          "props": {
+            "sections": [
+              {
+                "heading": "Hours of Operation",
+                "content": "INDIA - 9:00am to 6:30pm (IST)\n Mon-Sat (Excluding Holidays)"
+              },
+              {
+                "heading": "Phone",
+                "content": "INDIA - (0261) 610-5100"
+              },
+              {
+                "heading": "General Inquiries",
+                "content": "INDIA - info@elvee.in"
+              }
+            ],
+            "headingFontSize": 20,
+            "contentFontSize": 14,
+            "headingColor": "#111827",
+            "contentColor": "#6b7280"
+          }
+        }
+      ]
+    },
+    {
+      "id": "google-map-section",
+      "type": "map",
+      "props": {
+        "url": "https://www.google.com/maps/embed?pb=...",
+        "width": "100%",
+        "height": "400px",
+        "margin": "50px 0 0 0"
+      }
+    }
+  ]
+}

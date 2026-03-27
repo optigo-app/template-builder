@@ -1,0 +1,63 @@
+{
+  "templateId": "About4",
+  "preview": "about4.png",
+  "name": "About Us Simple Sections",
+  "components": [
+    {
+      "id": "main-heading-about",
+      "type": "heading",
+      "props": {
+        "heading": "ABOUT US CDF",
+        "headingFontSize": 32,
+        "headingColor": "#111827"
+      }
+    },
+    {
+      "id": "tabs-section-about",
+      "type": "tabs-section",
+      "props": {
+        "about-image": {
+          "src": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338",
+          "borderRadius": 12,
+          "alt": "Common About Us Image"
+        },
+        "tabs": [
+          {
+            "id": "tab-mission",
+            "tab-head": "OUR MISSION",
+            "tab-content": {
+              "heading": "Our Visionary Mission",
+              "content": "To provide the world with ethically sourced, masterfully cut diamonds that symbolize the most precious moments in life. We strive for excellence in every facet of our business.",
+              "fontSize": 13,
+              "headingFontSize": 28,
+              "color": "#757070"
+            }
+          },
+          {
+            "id": "tab-1774509804242",
+            "tab-head": "Our Goal",
+            "tab-content": {
+              "heading": "New Heading",
+              "content": "Our commitment is to provide our customers with the most creative, and highest value end-to-end products. Our strategy to realize this goal is simple: via customer-centric. The customer is always at the center of our business.",
+              "fontSize": 14,
+              "headingFontSize": 18,
+              "color": "#4b5563"
+            }
+          },
+          {
+            "id": "tab-1774606198903",
+            "tab-head": "NEW TAB",
+            "tab-content": {
+              "heading": "New Heading",
+              "content": "Enter your description here...",
+              "fontSize": 14,
+              "headingFontSize": 18,
+              "color": "#4b5563"
+            }
+          }
+        ],
+        "contentHeadingColor": "#050505"
+      }
+    }
+  ]
+}

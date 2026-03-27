@@ -1,0 +1,103 @@
+{
+  "templateId": "Contact1",
+  "preview": "contact1.png",
+  "name": "Contact Us Template 1",
+  "components": [
+    {
+      "id": "main-heading-contact",
+      "type": "heading",
+      "props": {
+        "heading": "Contact Us fbgbh",
+        "content": "Have a comment, suggestion or queestion? Feel free to reach out to us and we’ll getback to you as soon as possibl",
+        "headingFontSize": 32,
+        "headingColor": "#111827"
+      }
+    },
+    {
+      "id": "contact-form-section",
+      "type": "form",
+      "props": {
+        "title": "SEND US A MESSAGE",
+        "buttonText": "SUBMIT",
+        "buttonColor": "#f3e5e5",
+        "buttonTextColor": "#000000",
+        "fields": [
+          {
+            "id": "field-1",
+            "label": "FULL NAME",
+            "type": "text",
+            "placeholder": ""
+          },
+          {
+            "id": "field-2",
+            "label": "EMAIL ADDRESS",
+            "type": "email",
+            "placeholder": ""
+          },
+          {
+            "id": "field-3",
+            "label": "PHONE NUMBER",
+            "type": "tel",
+            "placeholder": ""
+          },
+          {
+            "id": "field-4",
+            "label": "SUBJECT",
+            "type": "text",
+            "placeholder": ""
+          },
+          {
+            "id": "field-5",
+            "label": "MESSAGE",
+            "type": "textarea",
+            "placeholder": ""
+          }
+        ],
+        "mapUrl": "cfvf",
+        "height": "500px"
+      }
+    },
+    {
+      "id": "text-content-section",
+      "type": "content-group",
+      "props": {
+        "sections": [
+          {
+            "heading": "Have questions?",
+            "content": "General Inquiries\nCustomer Inquiries\nOrders & Returns\n\nIf you are looking for instant answers, check out our FAQ page for more information."
+          },
+          {
+            "heading": "Orders & Returns",
+            "content": "Check out our FAQ page or our Orders & Returns page\nCall us at 98108 76259\nEmail: contact@diamondtine.com"
+          },
+          {
+            "heading": "Studio Address",
+            "content": "E-4, South Extension II, New Delhi 110049"
+          },
+          {
+            "heading": "Opening Hours",
+            "content": "Monday - Friday 11am - 6pm\nSaturday 12pm - 6pm\n\nOur customer service team is available by phone from Monday-Friday 9:30am-6:30pm IST and Saturday 10am-6pm IST.\nOur office is located at 22W 48th St, STE#1111W, New York, NY 10036"
+          }
+        ],
+        "fontSize": 16,
+        "headingFontSize": 18,
+        "color": "#4b5563",
+        "textAlign": "left",
+        "contentColor": "#585b5f",
+        "headingColor": "#181616"
+      }
+    },
+    {
+      "id": "google-map-section",
+      "type": "map",
+      "props": {
+        "url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.225585012345!2d77.2208!3d28.5667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce240!2sDiamondtine!5e0!3m2!1sen!2sin!4v1234567890",
+        "width": "100%",
+        "height": "510px",
+        "borderRadius": 0,
+        "locationName": "Diamondtine, New Delhi",
+        "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.225585012345!2d77.2208!3d28.5667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce240!2sDiamondtine!5e0!3m2!1sen!2sin!4v1234567890"
+      }
+    }
+  ]
+}

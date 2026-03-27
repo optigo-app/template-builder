@@ -1,0 +1,113 @@
+{
+  "templateId": "About1",
+  "preview": "about1.png",
+  "name": "About Us Template 6",
+  "components": [
+    {
+      "id": "image-1",
+      "type": "image",
+      "props": {
+        "src": "http://malakan.web/WebSiteStaticImage/images/static/about1.jpeg",
+        "alt": "Wedding rings on fabric",
+        "width": "600px",
+        "height": "400px",
+        "borderRadius": 8
+      }
+    },
+    {
+      "id": "heading-1",
+      "type": "heading",
+      "props": {
+        "content": "ABOUT US FBGFH",
+        "level": "h2",
+        "fontSize": 28,
+        "color": "#000",
+        "textAlign": "left"
+      }
+    },
+    {
+      "id": "heading-2",
+      "type": "heading",
+      "props": {
+        "content": "OUR DNA BNGBNHG VFBGFDBGH",
+        "level": "h3",
+        "fontSize": 22,
+        "color": "#000",
+        "textAlign": "left"
+      }
+    },
+    {
+      "id": "text-1",
+      "type": "text",
+      "props": {
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Curabitur ac sollicitudin velit.",
+        "fontSize": 16,
+        "color": "#CCCCCC",
+        "textAlign": "left",
+        "lineHeight": 1.5
+      }
+    },
+    {
+      "id": "heading-3",
+      "type": "heading",
+      "props": {
+        "content": "PXPL VALUES BGGH ",
+        "level": "h3",
+        "fontSize": 22,
+        "color": "#000",
+        "textAlign": "left"
+      }
+    },
+    {
+      "id": "text-2",
+      "type": "text",
+      "props": {
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Curabitur ac sollicitudin velit. ",
+        "fontSize": 16,
+        "color": "#CCCCCC",
+        "textAlign": "left",
+        "lineHeight": 1.5
+      }
+    },
+    {
+      "id": "list-1",
+      "type": "text-list",
+      "props": {
+        "items": [
+          {
+            "title": "Authenticity",
+            "content": "Lorem ipsum dolor sit amet, con gbg sectetur adipiscing elit. Curabitur ac sollicitudin velit. vcv vbfv"
+          },
+          {
+            "title": "Simplicity",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac sollicitudin velit."
+          },
+          {
+            "title": "Drive",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac sollicitudin velit. cv"
+          },
+          {
+            "title": "Adventure",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac sollicitudin velit. cvcvvvvvvvvvvvvvvv"
+          },
+          {
+            "title": "Mindfulness",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac sollicitudin velit."
+          },
+          {
+            "title": "Appreciation",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac sollicitudin velit."
+          },
+          {
+            "title": "New Feature",
+            "content": "Description of your new feature goes here."
+          }
+        ],
+        "fontSize": "20",
+        "color": "#131111",
+        "textAlign": "left",
+        "lineHeight": 1.5
+      }
+    }
+  ]
+}

@@ -776,6 +776,7 @@ const About1 = ({ data: initialData }) => {
   const activeComp = selectedId ? getComp(selectedId) : null;
 
    
+    
   const Toast = Swal.mixin({
     toast: true,
     position: 'top-end',
@@ -830,7 +831,7 @@ const About1 = ({ data: initialData }) => {
   return (
     <div className="flex min-h-screen bg-gray-100 font-sans" style={{ width: "81.5%" }} onClick={() => setSelectedId(null)}>
       {/* LEFT: MAIN EDITOR CANVAS */}
-      <DeviceMockup activeDevice={viewMode} onChange={setViewMode} style={{padding:"12px"}}>
+      <DeviceMockup activeDevice={viewMode} onChange={setViewMode} style={{padding:"12px"}} component={initialData?.templateId} data={data}>
         <div className="">
           <div className="bg-white shadow-2xl p-12   font-serif text-black rounded-xl" style={{ minHeight: "100%", padding: "20px" }}>
 

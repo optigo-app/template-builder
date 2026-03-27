@@ -43,6 +43,17 @@
               "headingFontSize": 18,
               "color": "#4b5563"
             }
+          },
+          {
+            "id": "tab-1774606198903",
+            "tab-head": "NEW TAB",
+            "tab-content": {
+              "heading": "New Heading",
+              "content": "Enter your description here...",
+              "fontSize": 14,
+              "headingFontSize": 18,
+              "color": "#4b5563"
+            }
           }
         ],
         "contentHeadingColor": "#050505"

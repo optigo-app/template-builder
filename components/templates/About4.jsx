@@ -147,7 +147,7 @@ import Swal from 'sweetalert2';
 const About4 = ({ data: initialData }) => {
   const [data, setData] = useState(initialData || { components: [] });
   const [selectedId, setSelectedId] = useState(null);
-  const [activeTabName, setActiveTabName] = useState('ABOUT');
+  const [activeTabId, setActiveTabId] = useState(initialData?.components?.find(c => c.type === 'tabs-section')?.props.tabs[0]?.id || null);
   const [viewMode, setViewMode] = useState('desktop');
 
   useEffect(() => {
@@ -184,10 +184,11 @@ const About4 = ({ data: initialData }) => {
 
     const updatedTabs = [...tabsComp.props.tabs, newTab];
     handleUpdate(tabsComp.id, "tabs", updatedTabs);
-    setActiveTabName("NEW TAB");
+
+    // Update state with ID
+    setActiveTabId(newTabId);
     setSelectedId(tabsComp.id);
   };
-
   const handleDeleteTab = (tabId, e) => {
     e.stopPropagation();
     const tabsComp = data.components.find(c => c.type === 'tabs-section');
@@ -195,7 +196,9 @@ const About4 = ({ data: initialData }) => {
 
     const updatedTabs = tabsComp.props.tabs.filter(t => t.id !== tabId);
     handleUpdate(tabsComp.id, "tabs", updatedTabs);
-    setActiveTabName(updatedTabs[0]["tab-head"]);
+
+    // Set active to the first remaining tab's ID
+    setActiveTabId(updatedTabs[0].id);
   };
 
   const handleTabUpdate = (tabId, field, value) => {
@@ -264,8 +267,8 @@ const About4 = ({ data: initialData }) => {
 
   const activeComp = selectedId ? getComp(selectedId) : null;
   const tabsSection = data?.components?.find(c => c.type === 'tabs-section') || { props: { tabs: [] } };
-  const activeTab = tabsSection.props.tabs.find(t => t["tab-head"] === activeTabName) || tabsSection.props.tabs[0];
-
+  // Find tab by ID instead of Name
+  const activeTab = tabsSection.props.tabs.find(t => t.id === activeTabId) || tabsSection.props.tabs[0];
   // --- Editable Component ---
   const Editable = ({ id, field, isTab = false, tabId = null, className, tag: Tag = "div", style = {} }) => {
     return (
@@ -277,7 +280,7 @@ const About4 = ({ data: initialData }) => {
         onBlur={(e) => isTab ? handleTabUpdate(tabId, field, e.target.innerText) : handleUpdate(id, field, e.target.innerText)}
         onClick={(e) => { e.stopPropagation(); setSelectedId(id); }}
       >
-        {isTab ? (field === 'tab-head' ? activeTab["tab-head"] : activeTab["tab-content"][field]) : getComp(id).props[field]}
+        {isTab ? (field === 'tab-head' ? activeTab?.["tab-head"] : activeTab?.["tab-content"][field]) : getComp(id).props[field]}
       </Tag>
     );
   };
@@ -306,25 +309,29 @@ const About4 = ({ data: initialData }) => {
                     {tabsSection.props.tabs.map((tab) => (
                       <div key={tab.id} className="relative group/tab">
                         <button
-                          onClick={() => { setActiveTabName(tab["tab-head"]); setSelectedId(tabsSection.id); }}
-                          className={`py-2 px-6 text-xs font-bold tracking-widest transition-all border-b-2 whitespace-nowrap ${activeTabName === tab["tab-head"] ? 'border-gray-800 text-gray-900' : 'border-transparent text-gray-400'
+                          onClick={() => {
+                            setActiveTabId(tab.id); // Use ID here
+                            setSelectedId(tabsSection.id);
+                          }}
+                          className={`py-2 px-6 text-xs font-bold tracking-widest transition-all border-b-2 whitespace-nowrap ${activeTabId === tab.id ? 'border-gray-800 text-gray-900' : 'border-transparent text-gray-400'
                             }`}
                         >
                           {tab["tab-head"]}
                         </button>
-                        {/* Delete Tab Button */}
                         <button
                           onClick={(e) => handleDeleteTab(tab.id, e)}
                           className="absolute top-2 -right-1 bg-red-500 text-white rounded-full p-0.5 opacity-0 group-hover/tab:opacity-100 transition-opacity cursor-pointer"
                         >
+
                           <X size={10} />
+
                         </button>
                       </div>
                     ))}
                     {/* ADD NEW TAB BUTTON */}
                     <button
                       onClick={(e) => { e.stopPropagation(); handleAddTab(); }}
-                      className="ml-4 p-2 text-indigo-500 hover:bg-indigo-50 rounded-full transition-colors"
+                      className="ml-4 p-2 text-indigo-500 hover:bg-indigo-50 rounded-full transition-colors cursor-pointer"
                       title="Add New Tab"
                     >
                       <Plus size={18} />
@@ -333,25 +340,25 @@ const About4 = ({ data: initialData }) => {
 
                   <div className="min-h-[300px]" onClick={(e) => { e.stopPropagation(); setSelectedId(tabsSection.id); }}>
                     <Editable
-                      id={tabsSection.id}
-                      tabId={activeTab.id}
+                      id={tabsSection?.id}
+                      tabId={activeTab?.id}
                       isTab field="heading"
                       tag="h2"
                       className="font-bold mb-4"
                       style={{
-                        fontSize: `${activeTab["tab-content"].headingFontSize}px`,
+                        fontSize: `${activeTab?.["tab-content"].headingFontSize}px`,
                         color: tabsSection.props.contentHeadingColor || '#111' // Uses the new global heading color
                       }}
                     />
                     <Editable
-                      id={tabsSection.id}
-                      tabId={activeTab.id}
+                      id={tabsSection?.id}
+                      tabId={activeTab?.id}
                       isTab field="content"
                       tag="p"
                       className="leading-relaxed text-justify whitespace-pre-line"
                       style={{
-                        fontSize: `${activeTab["tab-content"].fontSize}px`,
-                        color: activeTab["tab-content"].color || '#4b5563' // Uses the specific tab text color
+                        fontSize: `${activeTab?.["tab-content"].fontSize}px`,
+                        color: activeTab?.["tab-content"].color || '#4b5563' // Uses the specific tab text color
                       }}
                     />
                   </div>
@@ -420,10 +427,10 @@ const About4 = ({ data: initialData }) => {
                     <input
                       type="text"
                       className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:border-indigo-500"
-                      value={activeTab["tab-head"]}
+                      value={activeTab?.["tab-head"] || ""}
                       onChange={(e) => {
                         handleTabUpdate(activeTab.id, "tab-head", e.target.value);
-                        setActiveTabName(e.target.value);
+
                       }}
                     />
                   </div>
@@ -441,7 +448,7 @@ const About4 = ({ data: initialData }) => {
                       <div className="flex justify-between items-center">
                         <span className="text-sm font-medium text-gray-700">Heading Style</span>
                         <span className="text-xs font-bold text-indigo-600">
-                          {activeComp?.type === 'heading' ? activeComp.props.headingFontSize : activeTab["tab-content"].headingFontSize}px
+                          {activeComp?.type === 'heading' ? activeComp.props.headingFontSize : activeTab?.["tab-content"].headingFontSize}px
                         </span>
                       </div>
 
@@ -450,7 +457,7 @@ const About4 = ({ data: initialData }) => {
                         type="range" min="12" max="80"
                         className="w-full h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer"
                         style={{ accentColor: "#615fff" }}
-                        value={activeComp?.type === 'heading' ? activeComp.props.headingFontSize : activeTab["tab-content"].headingFontSize}
+                        value={activeComp?.type === 'heading' ? activeComp.props.headingFontSize : activeTab?.["tab-content"].headingFontSize}
                         onChange={(e) => activeComp?.type === 'heading'
                           ? handleUpdate(activeComp.id, "headingFontSize", parseInt(e.target.value))
                           : handleTabUpdate(activeTab.id, "headingFontSize", parseInt(e.target.value))
@@ -499,7 +506,7 @@ const About4 = ({ data: initialData }) => {
                     <div className="pt-4 border-t border-gray-100 space-y-3">
                       <div className="flex justify-between items-center">
                         <span className="text-sm font-medium text-gray-700">Content Style</span>
-                        <span className="text-xs font-bold text-indigo-600">{activeTab["tab-content"].fontSize}px</span>
+                        <span className="text-xs font-bold text-indigo-600">{activeTab?.["tab-content"].fontSize}px</span>
                       </div>
 
                       {/* Content Font Size */}
@@ -507,7 +514,7 @@ const About4 = ({ data: initialData }) => {
                         type="range" min="10" max="24"
                         className="w-full h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer"
                         style={{ accentColor: "#615fff" }}
-                        value={activeTab["tab-content"].fontSize}
+                        value={activeTab?.["tab-content"].fontSize}
                         onChange={(e) => handleTabUpdate(activeTab.id, "fontSize", parseInt(e.target.value))}
                       />
 
@@ -523,8 +530,8 @@ const About4 = ({ data: initialData }) => {
                           <div className="relative w-8 h-8 shrink-0 rounded-md overflow-hidden border border-gray-200 shadow-inner">
                             <input
                               type="color"
-                              value={activeTab["tab-content"].color || "#4b5563"}
-                              onChange={(e) => handleTabUpdate(activeTab.id, "color", e.target.value)}
+                              value={activeTab?.["tab-content"].color || "#4b5563"}
+                              onChange={(e) => handleTabUpdate(activeTab?.id, "color", e.target.value)}
                               className="absolute inset-0 w-full h-full cursor-pointer scale-[2.5] bg-transparent"
                               style={{ border: 'none', appearance: 'none' }}
                             />
@@ -535,8 +542,8 @@ const About4 = ({ data: initialData }) => {
                             type="text"
                             maxLength={7}
                             placeholder="#4B5563"
-                            value={activeTab["tab-content"].color || ""}
-                            onChange={(e) => handleTabUpdate(activeTab.id, "color", e.target.value)}
+                            value={activeTab?.["tab-content"].color || ""}
+                            onChange={(e) => handleTabUpdate(activeTab?.id, "color", e.target.value)}
                             className="bg-transparent border-none text-[11px] font-mono w-full outline-none uppercase text-gray-700 placeholder:text-gray-400"
                           />
                         </div>

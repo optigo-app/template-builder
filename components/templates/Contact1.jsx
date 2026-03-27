@@ -282,8 +282,13 @@ const Contact1Dynamic = ({ data: initialData }) => {
                             {formSection && (
                                 <div className="w-full " style={{ width: viewMode === "desktop" ? "70%" : "100%", display: "flex", flexDirection: "column", alignItems: "center", margin: "90px 0px", borderRight: viewMode === "desktop" ? "1px solid gray" : "none" }}>
 
-                                    <form className="space-y-5" style={{ width: viewMode === "desktop" ? "70%" : "90%", margin: "0 auto" }}>
-                                        {formSection.props.fields.map((field) => (
+
+                                    <form className="space-y-5" style={{ width: viewMode === "desktop" ? "70%" : "90%", margin: "0 auto" }}
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            setSelectedId("contact-form-section");
+                                        }}>
+                                        {formSection?.props?.fields?.map((field) => (
                                             <div key={field.id} className="flex flex-col " style={{ marginBottom: "20px" }}>
                                                 <label className="text-[10px]   text-gray-400 mb-1 tracking-widest uppercase text-[14px]" style={{ fontSize: "12px" }}>
                                                     {field.label}
@@ -378,10 +383,11 @@ const Contact1Dynamic = ({ data: initialData }) => {
             {/* SIDEBAR SETTINGS */}
 
             <div
-                className="w-80 bg-white border-l border-gray-200 shadow-2xl fixed top-0 right-0 h-screen overflow-y-auto z-[60] flex flex-col"
-                style={{ width: "16%", right: "0px" }}
+                className="w-80 bg-white border-l border-gray-200 shadow-2xl fixed top-0 right-0 h-screen overflow-y-auto z-[60] flex flex-col "
+                style={{ width: "16%", right: "0px" ,scrollbarWidth:"0px"}}
                 onClick={(e) => e.stopPropagation()}
             >
+               
                 {/* Header Section */}
                 <div className="p-3 bg-white border-b border-gray-200 sticky top-0 z-10">
                     <div className="flex justify-between items-center">
@@ -395,6 +401,8 @@ const Contact1Dynamic = ({ data: initialData }) => {
                         </button>
                     </div>
                 </div>
+
+
 
                 <div className="p-6 space-y-8 flex-1">
                     {activeComp ? (
@@ -523,6 +531,100 @@ const Contact1Dynamic = ({ data: initialData }) => {
                                 </div>
                             )}
 
+                            {selectedId === "contact-form-section" && (
+                                <div className="space-y-6 animate-in slide-in-from-right-2 duration-300">
+                                    {/* Header with Add Button */}
+                                    <div className="flex items-center justify-between px-1">
+                                        <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">
+                                            Form Fields
+                                        </span>
+                                        <button
+                                            onClick={() => {
+                                                const newField = {
+                                                    id: `field-${Date.now()}`,
+                                                    type: "text",
+                                                    label: "New Label",
+                                                    placeholder: "Enter value...",
+                                                };
+                                                handleUpdate("contact-form-section", "fields", [...(formSection.props.fields || []), newField]);
+                                            }}
+                                            className="text-[10px] bg-indigo-50 text-indigo-600 px-2 py-1 rounded font-bold hover:bg-indigo-100 transition-colors"
+                                        >
+                                            + ADD FIELD
+                                        </button>
+                                    </div>
+
+                                    {/* Dynamic Fields List */}
+                                    <div className="space-y-4 mt-4">
+                                        {formSection.props.fields?.map((field, index) => (
+                                            <div key={field.id} className="p-3 bg-gray-50 border border-gray-200 rounded-xl space-y-3 relative group">
+                                                {/* Delete Field Button */}
+                                                <button
+                                                    onClick={() => {
+                                                        const filtered = formSection.props.fields.filter((_, i) => i !== index);
+                                                        handleUpdate("contact-form-section", "fields", filtered);
+                                                    }}
+                                                    className="absolute -top-2 -right-2 bg-white text-red-500 shadow-sm border border-red-100 rounded-full p-1 hover:bg-red-50 transition-all z-1"
+                                                >
+                                                    <Trash2 size={12} />
+                                                </button>
+
+                                                {/* 1. INPUT TYPE SELECTOR */}
+                                                <div className="flex flex-col gap-1">
+                                                    <span className="text-[9px] font-bold text-gray-500 uppercase ml-1">Input Type</span>
+                                                    <select
+                                                        value={field.type}
+                                                        onChange={(e) => {
+                                                            const newFields = [...formSection.props.fields];
+                                                            newFields[index].type = e.target.value;
+                                                            handleUpdate("contact-form-section", "fields", newFields);
+                                                        }}
+                                                        className="w-full bg-white border border-gray-200 rounded-md px-2 py-1.5 text-[11px] outline-none focus:border-indigo-400"
+                                                    >
+                                                        <option value="text">Short Text</option>
+                                                        <option value="email">Email Address</option>
+                                                        <option value="tel">Phone Number</option>
+                                                        <option value="textarea">Long Text (Area)</option>
+                                                        <option value="number">Number</option>
+                                                        <option value="date">Date Picker</option>
+                                                    </select>
+                                                </div>
+
+                                                {/* 2. LABEL SETTING */}
+                                                <div className="flex flex-col gap-1">
+                                                    <span className="text-[9px] font-bold text-gray-500 uppercase ml-1">Field Label</span>
+                                                    <input
+                                                        type="text"
+                                                        value={field.label}
+                                                        onChange={(e) => {
+                                                            const newFields = [...formSection.props.fields];
+                                                            newFields[index].label = e.target.value;
+                                                            handleUpdate("contact-form-section", "fields", newFields);
+                                                        }}
+                                                        className="w-full bg-white border border-gray-200 rounded-md px-2 py-1.5 text-[11px] outline-none"
+                                                    />
+                                                </div>
+
+                                                {/* 3. PLACEHOLDER SETTING */}
+                                                <div className="flex flex-col gap-1">
+                                                    <span className="text-[9px] font-bold text-gray-500 uppercase ml-1">Placeholder</span>
+                                                    <input
+                                                        type="text"
+                                                        value={field.placeholder}
+                                                        onChange={(e) => {
+                                                            const newFields = [...formSection.props.fields];
+                                                            newFields[index].placeholder = e.target.value;
+                                                            handleUpdate("contact-form-section", "fields", newFields);
+                                                        }}
+                                                        className="w-full bg-white border border-gray-200 rounded-md px-2 py-1.5 text-[11px] outline-none"
+                                                    />
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+
                             {/* Map Configuration Group */}
                             {selectedId === "google-map-section" && (
                                 <div className="space-y-6">
@@ -586,7 +688,7 @@ const Contact1Dynamic = ({ data: initialData }) => {
                 </div>
             </div>
 
-        </div>
+        </div >
     );
 };
 

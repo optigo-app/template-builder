@@ -556,7 +556,7 @@ const Contact3Dynamic = ({ data: initialData }) => {
                                 </div>
                             )}
 
-                            
+
 
                             {/* 2 & 3. Contact Info & Map Settings */}
                             {selectedId === "contact-info-address-map" && (
@@ -683,46 +683,128 @@ const Contact3Dynamic = ({ data: initialData }) => {
                             )}
 
                             {/* Form Button Settings */}
-                            {selectedId === "contact-form-section" && (
-                                <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 space-y-4">
-                                    <label className="text-[11px] font-black text-gray-400 uppercase tracking-widest block mb-3">Button Appearance</label>
-                                    <div>
-                                        <span className="text-sm font-medium text-gray-700 block mb-2">Button Text</span>
-                                        <input type="text" value={activeComp.props.buttonText}
-                                            onChange={(e) => handleUpdate(selectedId, "buttonText", e.target.value)}
-                                            className="w-full p-2 border border-gray-200 rounded-lg outline-none focus:border-indigo-500 text-sm" />
-                                    </div>
-                                    <div>
-                                        <span className="text-sm font-medium text-gray-700 block mb-2">Background Color</span>
-                                        <div className="flex flex-col gap-1.5 w-full">
-   
+                            {selectedId === "contact-form-section" && activeComp && (
+    <div className="space-y-6 animate-in slide-in-from-right-2 duration-300">
+        
+        {/* 1. FIELD MANAGEMENT SECTION */}
+        <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+            <div className="flex items-center justify-between mb-4">
+                <label className="text-[11px] font-black text-gray-400 uppercase tracking-widest">
+                    Form Fields
+                </label>
+                <button
+                    onClick={() => {
+                        const newField = {
+                            id: `field-${Date.now()}`,
+                            type: "text",
+                            label: "New Label",
+                            placeholder: "Enter value...",
+                        };
+                        const currentFields = activeComp.props.fields || [];
+                        handleUpdate(selectedId, "fields", [...currentFields, newField]);
+                    }}
+                    className="text-[10px] bg-indigo-50 text-indigo-600 px-2 py-1 rounded font-bold hover:bg-indigo-100 transition-colors"
+                >
+                    + ADD FIELD
+                </button>
+            </div>
 
-  <div className="grid grid-cols-[40px_1fr] items-stretch bg-gray-50 border border-gray-200 rounded-lg overflow-hidden shadow-sm focus-within:ring-1 focus-within:ring-indigo-100 focus-within:border-indigo-400 transition-all">
-    {/* Swatch Area */}
-    <div className="relative w-full h-9 border-r border-gray-200 group overflow-hidden">
-      <input
-        type="color"
-        value={activeComp.props.buttonColor || "#000000"}
-        onChange={(e) => handleUpdate(selectedId, "buttonColor", e.target.value)}
-        className="absolute inset-0 w-[200%] h-[200%] -translate-x-1/4 -translate-y-1/4 cursor-pointer"
-        style={{ background: 'none', border: 'none', appearance: 'none' }}
-      />
+            <div className="space-y-3">
+                {activeComp.props.fields?.map((field, index) => (
+                    <div key={field.id} className="p-3 bg-gray-50 border border-gray-200 rounded-xl space-y-3 relative group">
+                        {/* Delete Button */}
+                        <button
+                            onClick={() => {
+                                const filtered = activeComp.props.fields.filter((_, i) => i !== index);
+                                handleUpdate(selectedId, "fields", filtered);
+                            }}
+                            className="absolute -top-2 -right-2 bg-white text-red-500 shadow-sm border border-red-100 rounded-full p-1 hover:bg-red-50 transition-all opacity-0 group-hover:opacity-100 z-10"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M3 6h18m-2 0v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6m3 0V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path></svg>
+                        </button>
+
+                        {/* Label Input */}
+                        <div className="flex flex-col gap-1">
+                            <span className="text-[9px] font-bold text-gray-500 uppercase ml-1">Label</span>
+                            <input
+                                type="text"
+                                value={field.label}
+                                onChange={(e) => {
+                                    const newFields = [...activeComp.props.fields];
+                                    newFields[index].label = e.target.value;
+                                    handleUpdate(selectedId, "fields", newFields);
+                                }}
+                                className="w-full bg-white border border-gray-200 rounded-md px-2 py-1.5 text-[11px] outline-none focus:border-indigo-400"
+                            />
+                        </div>
+
+                        {/* Type Selector */}
+                        <div className="flex flex-col gap-1">
+                            <span className="text-[9px] font-bold text-gray-500 uppercase ml-1">Type</span>
+                            <select
+                                value={field.type}
+                                onChange={(e) => {
+                                    const newFields = [...activeComp.props.fields];
+                                    newFields[index].type = e.target.value;
+                                    handleUpdate(selectedId, "fields", newFields);
+                                }}
+                                className="w-full bg-white border border-gray-200 rounded-md px-2 py-1.5 text-[11px] outline-none cursor-pointer"
+                            >
+                                <option value="text">Text</option>
+                                <option value="email">Email</option>
+                                <option value="textarea">Message Area</option>
+                                <option value="tel">Phone</option>
+                            </select>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+
+        {/* 2. BUTTON APPEARANCE SECTION (Your existing code) */}
+        <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 space-y-4">
+            <label className="text-[11px] font-black text-gray-400 uppercase tracking-widest block mb-3">
+                Button Appearance
+            </label>
+            
+            {/* Button Text */}
+            <div>
+                <span className="text-sm font-medium text-gray-700 block mb-2">Button Text</span>
+                <input 
+                    type="text" 
+                    value={activeComp.props.buttonText || "Submit"}
+                    onChange={(e) => handleUpdate(selectedId, "buttonText", e.target.value)}
+                    className="w-full p-2 border border-gray-200 rounded-lg outline-none focus:border-indigo-500 text-sm" 
+                />
+            </div>
+
+            {/* Background Color */}
+            <div>
+                <span className="text-sm font-medium text-gray-700 block mb-2">Background Color</span>
+                <div className="grid grid-cols-[40px_1fr] items-stretch bg-gray-50 border border-gray-200 rounded-lg overflow-hidden shadow-sm focus-within:ring-1 focus-within:ring-indigo-100 focus-within:border-indigo-400 transition-all">
+                    <div className="relative w-full h-9 border-r border-gray-200 group overflow-hidden">
+                        <input
+                            type="color"
+                            value={activeComp.props.buttonColor || "#4f39f6"}
+                            onChange={(e) => handleUpdate(selectedId, "buttonColor", e.target.value)}
+                            className="absolute inset-0 w-[200%] h-[200%] -translate-x-1/4 -translate-y-1/4 cursor-pointer"
+                            style={{ background: 'none', border: 'none', appearance: 'none' }}
+                        />
+                    </div>
+                    <input
+                        type="text"
+                        maxLength={7}
+                        value={activeComp.props.buttonColor || "#4f39f6"}
+                        onChange={(e) => handleUpdate(selectedId, "buttonColor", e.target.value)}
+                        placeholder="#4f39f6"
+                        className="w-full bg-transparent px-3 py-1.5 text-[11px] font-mono outline-none uppercase text-gray-700"
+                    />
+                </div>
+            </div>
+        </div>
+
     </div>
-
-    {/* Text Input Area */}
-    <input
-      type="text"
-      maxLength={7}
-      value={activeComp.props.buttonColor || ""}
-      onChange={(e) => handleUpdate(selectedId, "buttonColor", e.target.value)}
-      placeholder="#000000"
-      className="w-full bg-transparent px-3 py-1.5 text-[11px] font-mono outline-none uppercase text-gray-700 placeholder:text-gray-300"
-    />
-  </div>
-</div>
-                                    </div>
-                                </div>
-                            )}
+)}
                         </div>
                     ) : (
                         /* Empty State */

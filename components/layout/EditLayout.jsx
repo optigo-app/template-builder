@@ -80,13 +80,13 @@ export default function EditLayout({ tempId }) {
         loadTemplateData();
     }, [tempId]);
 
-    if (loading) return <div className="p-20 text-center">Loading Template...</div>;
-    if (!currentData) return <div className="p-20 text-center">Template Not Found</div>;
+    // if (loading) return <div className="p-20 text-center">Loading Template...</div>;
+    // if (!currentData) return <div className="p-20 text-center">Template Not Found</div>;
 
     
 
     return (
-        <div className="flex">
+        <div className="flex no-scrollbar">
             <Sidebar
                 categories={templatesData}
                 selected={selected}

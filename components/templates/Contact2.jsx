@@ -359,7 +359,7 @@ const Contact2Dynamic = ({ data: initialData }) => {
                                 alignItems: viewMode === "desktop" ? "" : "flex-start",
                                 // padding: "60px 50px",
                                 padding: viewMode === "desktop" ? "60px 50px" : "35px 26px",
-                                gap: viewMode === "desktop" ? "20px" : "0px"  
+                                gap: viewMode === "desktop" ? "20px" : "0px"
                             }}
                         >
                             {infoSection.props.sections?.map((section, idx) => (
@@ -406,64 +406,64 @@ const Contact2Dynamic = ({ data: initialData }) => {
 
                                 </div>
                                 {formSection && (
-  <div 
-    className="transition-all cursor-pointer rounded-xl p-4" 
-    style={{ 
-      padding: viewMode === "desktop" ? "0 80px" : "0",
-      // Visual feedback so the user knows this whole block is selectable
-      outline: selectedId === "contact-form-section" ? "2px solid #6366f1" : "none",
-      backgroundColor: selectedId === "contact-form-section" ? "rgba(99, 102, 241, 0.05)" : "transparent"
-    }}
-    // THIS IS THE KEY: Clicking anywhere in the section selects the form
-    onClick={(e) => {
-      e.stopPropagation(); 
-      setSelectedId("contact-form-section");
-    }}
-  >
-    <div style={{ width: viewMode === "desktop" ? "42%" : "100%", margin: "0 auto", textAlign: "center", marginBottom: "40px" }}>
-        <Editable id="contact-form-section" field="formHeading" tag="h2" className="text-2xl font-bold mb-2 text-[#111827]" />
-        <Editable id="contact-form-section" field="formDescription" tag="p" className="text-sm text-gray-500" />
-    </div>
+                                    <div
+                                        className="transition-all cursor-pointer rounded-xl p-4"
+                                        style={{
+                                            padding: viewMode === "desktop" ? "0 80px" : "0",
+                                            // Visual feedback so the user knows this whole block is selectable
+                                            outline: selectedId === "contact-form-section" ? "2px solid #6366f1" : "none",
+                                            backgroundColor: selectedId === "contact-form-section" ? "rgba(99, 102, 241, 0.05)" : "transparent"
+                                        }}
+                                        // THIS IS THE KEY: Clicking anywhere in the section selects the form
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            setSelectedId("contact-form-section");
+                                        }}
+                                    >
+                                        <div style={{ width: viewMode === "desktop" ? "42%" : "100%", margin: "0 auto", textAlign: "center", marginBottom: "40px" }}>
+                                            <Editable id="contact-form-section" field="formHeading" tag="h2" className="text-2xl font-bold mb-2 text-[#111827]" />
+                                            <Editable id="contact-form-section" field="formDescription" tag="p" className="text-sm text-gray-500" />
+                                        </div>
 
-    <form className="flex-wrap -mx-2" style={{ display: "flex", flexWrap: "wrap" }}>
-        {formSection.props.fields.map((field) => (
-            <div
-                key={field.id}
-                className="px-2 mb-6"
-                style={{ width: viewMode === "desktop" ? field.width : "100%" }}
-            >
-                {field.type === "textarea" ? (
-                    <textarea
-                        className="w-full border py-2 outline-none border-gray-300 rounded p-2 pointer-events-none"
-                        placeholder={field.label}
-                    />
-                ) : (
-                    <input
-                        type={field.type}
-                        className="w-full border-b border-gray-300 py-2 outline-none pointer-events-none"
-                        placeholder={field.label}
-                    />
-                )}
-            </div>
-        ))}
+                                        <form className="flex-wrap -mx-2" style={{ display: "flex", flexWrap: "wrap" }}>
+                                            {formSection.props.fields.map((field) => (
+                                                <div
+                                                    key={field.id}
+                                                    className="px-2 mb-6"
+                                                    style={{ width: viewMode === "desktop" ? field.width : "100%" }}
+                                                >
+                                                    {field.type === "textarea" ? (
+                                                        <textarea
+                                                            className="w-full border py-2 outline-none border-gray-300 rounded p-2"
+                                                            placeholder={field.label}
+                                                        />
+                                                    ) : (
+                                                        <input
+                                                            type={field.type}
+                                                            className="w-full border-b border-gray-300 py-2 outline-none"
+                                                            placeholder={field.label}
+                                                        />
+                                                    )}
+                                                </div>
+                                            ))}
 
-        <div className="w-full px-2 pt-4 flex justify-center items-center">
-            <button
-                type="button" // Use type="button" in editor to prevent accidental refreshes
-                className="px-10 py-3 text-sm font-bold tracking-widest uppercase transition-all"
-                style={{
-                    backgroundColor: formSection.props.buttonColor,
-                    color: formSection.props.buttonTextColor,
-                    padding: "7px 40px",
-                    marginBottom: "40px"
-                }}
-            >
-                {formSection.props.buttonText}
-            </button>
-        </div>
-    </form>
-  </div>
-)}
+                                            <div className="w-full px-2 pt-4 flex justify-center items-center">
+                                                <button
+                                                    type="button" // Use type="button" in editor to prevent accidental refreshes
+                                                    className="px-10 py-3 text-sm font-bold tracking-widest uppercase transition-all"
+                                                    style={{
+                                                        backgroundColor: formSection.props.buttonColor,
+                                                        color: formSection.props.buttonTextColor,
+                                                        padding: "7px 40px",
+                                                        marginBottom: "40px"
+                                                    }}
+                                                >
+                                                    {formSection.props.buttonText}
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                )}
 
                             </div>
 
@@ -548,38 +548,6 @@ const Contact2Dynamic = ({ data: initialData }) => {
                                 </div>
                             )}
 
-{selectedId === "contact-form-section" && (
-  <div className="space-y-6 animate-in fade-in">
-    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest block mb-2">
-      Form Field Placeholders
-    </label>
-    
-    <div className="space-y-4">
-      {activeComp.props.fields.map((field, index) => (
-        <div key={field.id} className="flex flex-col gap-1.5">
-          <span className="text-[10px] font-bold text-indigo-600 ml-1">
-            Field {index + 1} Label
-          </span>
-          <div className="flex bg-gray-50 border border-gray-200 rounded-lg overflow-hidden focus-within:border-indigo-400 transition-all">
-            <input
-              type="text"
-              value={field.label}
-              onChange={(e) => {
-                // Create a copy of the fields array
-                const newFields = [...activeComp.props.fields];
-                // Update the specific label
-                newFields[index].label = e.target.value;
-                // Save back to main state
-                handleUpdate("contact-form-section", "fields", newFields);
-              }}
-              className="w-full bg-transparent px-3 py-2 text-xs outline-none text-gray-700"
-            />
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-)}
 
                             {/* Text Styles (Headings & Lists) */}
                             {(selectedId === "main-heading-contact" || selectedId === "contact-info-list" || selectedId === "text-content-section") && (
@@ -691,27 +659,108 @@ const Contact2Dynamic = ({ data: initialData }) => {
                             )}
 
                             {/* Form Settings */}
-                            {selectedId === "contact-form-section" && (
-                                <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 space-y-4">
-                                    <label className="text-[11px] font-black text-gray-400 uppercase tracking-widest block mb-2">Form Action Button</label>
-                                    <div>
-                                        <span className="text-sm font-medium text-gray-700 block mb-2">Button Text</span>
-                                        <input
-                                            type="text"
-                                            className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:border-indigo-500"
-                                            value={activeComp.props.buttonText}
-                                            onChange={(e) => handleUpdate(selectedId, "buttonText", e.target.value)}
-                                        />
+                            {selectedId === "contact-form-section" && activeComp && (
+                                <div className="space-y-6 animate-in slide-in-from-right-2 duration-300">
+
+                                    {/* --- DYNAMIC FIELDS MANAGEMENT --- */}
+                                    <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                                        <div className="flex items-center justify-between mb-4">
+                                            <label className="text-[11px] font-black text-gray-400 uppercase tracking-widest">
+                                                Form Fields
+                                            </label>
+                                            <button
+                                                onClick={() => {
+                                                    const newField = {
+                                                        id: `field-${Date.now()}`,
+                                                        type: "text",
+                                                        label: "New Label",
+                                                        placeholder: "Enter value...",
+                                                    };
+                                                    const currentFields = activeComp.props.fields || [];
+                                                    handleUpdate(selectedId, "fields", [...currentFields, newField]);
+                                                }}
+                                                className="text-[10px] bg-indigo-50 text-indigo-600 px-2 py-1 rounded font-bold hover:bg-indigo-100 transition-colors cursor-pointer"
+                                            >
+                                                + ADD FIELD
+                                            </button>
+                                        </div>
+
+                                        <div className="space-y-3">
+                                            {activeComp.props.fields?.map((field, index) => (
+                                                <div key={field.id} className="p-3 bg-gray-50 border border-gray-200 rounded-xl space-y-3 relative group">
+                                                    {/* Delete Field Button */}
+                                                    <button
+                                                        onClick={() => {
+                                                            const filtered = activeComp.props.fields.filter((_, i) => i !== index);
+                                                            handleUpdate(selectedId, "fields", filtered);
+                                                        }}
+                                                        className="absolute -top-2 -right-2 bg-white cursor-pointer text-red-500 shadow-sm border border-red-100 rounded-full p-1 hover:bg-red-50 transition-all opacity-0 group-hover:opacity-100 z-10"
+                                                    >
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M3 6h18m-2 0v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6m3 0V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path></svg>
+                                                    </button>
+
+                                                    {/* Label Input */}
+                                                    <div className="flex flex-col gap-1">
+                                                        <span className="text-[9px] font-bold text-gray-500 uppercase ml-1">Label</span>
+                                                        <input
+                                                            type="text"
+                                                            value={field.label}
+                                                            onChange={(e) => {
+                                                                const newFields = [...activeComp.props.fields];
+                                                                newFields[index].label = e.target.value;
+                                                                handleUpdate(selectedId, "fields", newFields);
+                                                            }}
+                                                            className="w-full bg-white border border-gray-200 rounded-md px-2 py-1.5 text-[11px] outline-none focus:border-indigo-400"
+                                                        />
+                                                    </div>
+
+                                                    {/* Type Selection */}
+                                                    <div className="flex flex-col gap-1">
+                                                        <span className="text-[9px] font-bold text-gray-500 uppercase ml-1">Input Type</span>
+                                                        <select
+                                                            value={field.type}
+                                                            onChange={(e) => {
+                                                                const newFields = [...activeComp.props.fields];
+                                                                newFields[index].type = e.target.value;
+                                                                handleUpdate(selectedId, "fields", newFields);
+                                                            }}
+                                                            className="w-full bg-white border border-gray-200 rounded-md px-2 py-1.5 text-[11px] outline-none cursor-pointer"
+                                                        >
+                                                            <option value="text">Short Text</option>
+                                                            <option value="email">Email</option>
+                                                            <option value="tel">Phone</option>
+                                                            <option value="textarea">Message Area</option>
+                                                            <option value="number">Number</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
                                     </div>
-                                    <div>
-                                        <span className="text-sm font-medium text-gray-700 block mb-2">Button Color</span>
-                                        <input
-                                            type="color"
-                                            value={activeComp.props.buttonColor}
-                                            onChange={(e) => handleUpdate(selectedId, "buttonColor", e.target.value)}
-                                            className="w-full h-10 rounded-lg cursor-pointer border-2 border-gray-100"
-                                        />
+
+                                    {/* --- BUTTON SETTINGS (Your Existing Code) --- */}
+                                    <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 space-y-4">
+                                        <label className="text-[11px] font-black text-gray-400 uppercase tracking-widest block mb-2">Form Action Button</label>
+                                        <div>
+                                            <span className="text-sm font-medium text-gray-700 block mb-2">Button Text</span>
+                                            <input
+                                                type="text"
+                                                className="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:border-indigo-500"
+                                                value={activeComp.props.buttonText || "Submit"}
+                                                onChange={(e) => handleUpdate(selectedId, "buttonText", e.target.value)}
+                                            />
+                                        </div>
+                                        <div>
+                                            <span className="text-sm font-medium text-gray-700 block mb-2">Button Color</span>
+                                            <input
+                                                type="color"
+                                                value={activeComp.props.buttonColor || "#4f39f6"}
+                                                onChange={(e) => handleUpdate(selectedId, "buttonColor", e.target.value)}
+                                                className="w-full h-10 rounded-lg cursor-pointer border-2 border-gray-100"
+                                            />
+                                        </div>
                                     </div>
+
                                 </div>
                             )}
 

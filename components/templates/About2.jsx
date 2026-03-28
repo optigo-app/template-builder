@@ -134,9 +134,18 @@
 // export default About2;
 
 
+
+
+
+
+
+
+
 import React, { useState, useEffect } from 'react';
 import { Trash2, Plus } from 'lucide-react';
 import DeviceMockup from '../layout/DeviceMockup';
+import { MousePointer2 } from "lucide-react";
+import { X } from "lucide-react";
 import Swal from 'sweetalert2';
 import { Image as ImageIcon, Type, Settings2, Layout, Sliders, Trash, Maximize } from 'lucide-react';
 
@@ -144,6 +153,7 @@ const About2 = ({ data: initialData }) => {
   const [data, setData] = useState(initialData);
   const [selectedId, setSelectedId] = useState(null);
   const [viewMode, setViewMode] = useState('desktop');
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
 
   useEffect(() => {
     setData(initialData);
@@ -235,15 +245,9 @@ const About2 = ({ data: initialData }) => {
     );
   };
 
-  const activeComp = selectedId ? getComp(selectedId) : null;
-
-  return (
-    <div className="flex min-h-screen bg-gray-100 font-sans" style={{ width: "81.5%" }} onClick={() => setSelectedId(null)}>
-
-      {/* LEFT: MAIN EDITOR CANVAS */}
-      <DeviceMockup activeDevice={viewMode} onChange={setViewMode}>
-        <div className="bg-white shadow-2xl p-6 md:p-7 font-sans text-gray-800 transition-all duration-500">
-          <div className="max-w-5xl mx-auto">
+  const renderCanvasContent = ()=>(
+    <div className="bg-white shadow-2xl p-6 md:p-7 font-sans text-gray-800 transition-all duration-500">
+          <div className="  mx-auto">
 
             {/* Main Heading */}
             <Editable
@@ -303,7 +307,42 @@ const About2 = ({ data: initialData }) => {
             </section>
           </div>
         </div>
+  )
+
+  const activeComp = selectedId ? getComp(selectedId) : null;
+
+  return (
+    <div className="flex min-h-screen bg-gray-100 font-sans" style={{ width: "81.5%" }} onClick={() => setSelectedId(null)}>
+ <button
+         onClick={() => setIsPreviewOpen(true)}
+         style={{fontSize:"13px",backgroundColor: "#615fff"}}
+         className="fixed top-3 right-80 z-50  cursor-pointer    text-white px-6 py-2  shadow-2xl  rounded-lg transition-all flex items-center gap-2 font-bold"
+       >
+         <MousePointer2 size={13} /> Preview 
+       </button>
+      {/* LEFT: MAIN EDITOR CANVAS */}
+      <DeviceMockup activeDevice={viewMode} onChange={setViewMode}>
+        {renderCanvasContent()}
       </DeviceMockup>
+
+      {isPreviewOpen && (
+              <div className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm flex flex-col items-center justify-start overflow-y-auto p-10">
+                {/* Close Button */}
+                <button
+                  onClick={() => setIsPreviewOpen(false)}
+                  className="absolute top-6 right-10 text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all"
+                >
+                  <X size={32} />
+                </button>
+      
+                <div className="w-full  mt-10 mb-20">
+                  <div className="  p-12 font-serif text-black rounded-xl pointer-events-none">
+                    {/* We use pointer-events-none so they can't edit while previewing */}
+                    {renderCanvasContent()}
+                  </div>
+                </div>
+              </div>
+            )}
 
       {/* RIGHT: SETTINGS SIDEBAR */}
       <div
@@ -319,7 +358,7 @@ const About2 = ({ data: initialData }) => {
               className="  text-white px-5 py-2 rounded-lg text-sm font-semibold   hover:shadow-md hover:bg-blue-500 cursor-pointer transition-all active:scale-95"
               style={{ backgroundColor: "#615fff", padding: "8px 18px", fontSize: "14px" }}
             >
-              Save Changes
+             Publish
             </button>
           </div>
         </div>
@@ -454,5 +493,6 @@ const About2 = ({ data: initialData }) => {
 
 export default About2;
 
+ 
 
  

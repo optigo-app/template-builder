@@ -162,7 +162,7 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
-import { Settings2, Plus, Trash2, X } from 'lucide-react';
+import { Settings2, Plus, Trash2, X,MousePointer2 } from 'lucide-react';
 import DeviceMockup from '../layout/DeviceMockup';
 import Swal from 'sweetalert2';
 
@@ -170,6 +170,7 @@ const Contact2Dynamic = ({ data: initialData }) => {
     const [data, setData] = useState(initialData || { components: [] });
     const [selectedId, setSelectedId] = useState(null);
     const [viewMode, setViewMode] = useState('desktop');
+    const [isPreviewOpen, setIsPreviewOpen] = useState(false);
 
     useEffect(() => {
         if (initialData) setData(initialData);
@@ -308,172 +309,207 @@ const Contact2Dynamic = ({ data: initialData }) => {
     const mapSection = getComp("google-map-section");
     const activeComp = selectedId ? getComp(selectedId) : null;
 
-    return (
-        <div className="flex min-h-screen bg-gray-100 font-sans" style={{ width: "100%" }}>
-            <div className="flex-1" onClick={() => setSelectedId(null)}>
-                <DeviceMockup activeDevice={viewMode} onChange={setViewMode}>
-                    <div className="bg-white min-h-screen">
+    const renderCanvasContent = (isModel)=>(
+        <div className="bg-white min-h-screen">
 
-                        {/* 1. Hero Banner */}
-                        <div
-                            className="relative w-full overflow-hidden mb-12"
-                            onClick={(e) => { e.stopPropagation(); setSelectedId("contact-hero-banner"); }}
-                            style={{
-                                height: heroBanner.props.height || '300px',
-                                backgroundImage: `url(${heroBanner.props.backgroundImage})`,
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center'
-                            }}
-                        >
-                            <div className="absolute inset-0" style={{ backgroundColor: heroBanner.props.overlayColor }}></div>
+        {/* 1. Hero Banner */}
+        <div
+            className="relative w-full overflow-hidden mb-12"
+            onClick={(e) => { e.stopPropagation(); setSelectedId("contact-hero-banner"); }}
+            style={{
+                height: heroBanner.props.height || '300px',
+                backgroundImage: `url(${heroBanner.props.backgroundImage})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+            }}
+        >
+            <div className="absolute inset-0" style={{ backgroundColor: heroBanner.props.overlayColor }}></div>
+        </div>
+
+        {/* 2. Main Heading */}
+        <div className="px-6 text-center max-w-3xl mx-auto mb-16" style={{ width: viewMode === "desktop" ? "40%" : "100% ", margin: "0 auto" }}>
+            <Editable
+                id="main-heading-contact" field="heading" tag="h1"
+                className="font-bold mb-4"
+                style={{
+                    fontSize: `${headingSection.props.headingFontSize}px`,
+                    color: headingSection.props.headingColor,
+                }}
+            />
+            <Editable
+                id="main-heading-contact" field="content" tag="p"
+                className="leading-relaxed"
+                style={{
+                    fontSize: `${headingSection.props.contentFontSize}px`,
+                    color: headingSection.props.contentColor,
+                }}
+            />
+        </div>
+
+        {/* Right: Info List */}
+        <div
+            className="space-y-12"
+            onClick={(e) => { e.stopPropagation(); setSelectedId("contact-info-list"); }}
+            style={{
+                display: "flex",
+                flexDirection: viewMode !== "mobile" ? "row" : "column",
+                justifyContent: "space-between",
+                alignItems: viewMode === "desktop" ? "" : "flex-start",
+                // padding: "60px 50px",
+                padding: viewMode === "desktop" ? "60px 50px" : "35px 26px",
+                gap: viewMode === "desktop" ? "20px" : "0px"
+            }}
+        >
+            {infoSection.props.sections?.map((section, idx) => (
+                <div key={idx} className="relative group p-2 border border-transparent hover:border-gray-100 rounded-lg transition-all">
+                    <Editable
+                        id="contact-info-list" index={idx} field="heading" tag="h3"
+                        className="font-bold mb-3"
+                        style={{
+                            fontSize: `${infoSection.props.headingFontSize}px`,
+                            color: infoSection.props.headingColor
+                        }}
+                    />
+                    <Editable
+                        id="contact-info-list" index={idx} field="content" tag="div"
+                        className="leading-relaxed whitespace-pre-line"
+                        style={{
+                            fontSize: `${infoSection.props.contentFontSize}px`,
+                            color: infoSection.props.contentColor
+                        }}
+                    />
+
+                    {/* Delete Button with Trash Icon */}
+                    {!isModel && (
+                             <button
+                             onClick={(e) => {
+                                 e.stopPropagation(); // Prevent selecting the whole list when deleting
+                                 handleDeleteSection("contact-info-list", idx);
+                             }}
+                             style={{ color: "#b21111", cursor: "pointer" }}
+                             className="absolute -top-3 -right-3 opacity-0 group-hover:opacity-100 bg-red-300 hover:bg-red-400 text-white p-1.5 rounded-full shadow-md transition-all z-10 flex items-center justify-center"
+                             title="Delete Section"
+                         >
+                             <Trash2 size={12} />
+                         </button>
+
+                    )}
+                   
+                </div>
+            ))}
+        </div>
+
+        {/* 3. Layout Grid (Form & Info List) */}
+        <div className="max-w-7xl mx-auto px-6     mb-20">
+
+            {/* Left: Form */}
+            <div className="w-full">
+                <div className="mb-8" onClick={(e) => { e.stopPropagation(); setSelectedId("contact-form-section"); }}>
+
+                </div>
+                {formSection && (
+                    <div
+                        className="transition-all cursor-pointer rounded-xl p-4"
+                        style={{
+                            padding: viewMode === "desktop" ? "0 80px" : "0",
+                            // Visual feedback so the user knows this whole block is selectable
+                            outline: selectedId === "contact-form-section" ? "2px solid #6366f1" : "none",
+                            backgroundColor: selectedId === "contact-form-section" ? "rgba(99, 102, 241, 0.05)" : "transparent"
+                        }}
+                        // THIS IS THE KEY: Clicking anywhere in the section selects the form
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            setSelectedId("contact-form-section");
+                        }}
+                    >
+                        <div style={{ width: viewMode === "desktop" ? "42%" : "100%", margin: "0 auto", textAlign: "center", marginBottom: "40px" }}>
+                            <Editable id="contact-form-section" field="formHeading" tag="h2" className="text-2xl font-bold mb-2 text-[#111827]" />
+                            <Editable id="contact-form-section" field="formDescription" tag="p" className="text-sm text-gray-500" />
                         </div>
 
-                        {/* 2. Main Heading */}
-                        <div className="px-6 text-center max-w-3xl mx-auto mb-16" style={{ width: viewMode === "desktop" ? "40%" : "100% ", margin: "0 auto" }}>
-                            <Editable
-                                id="main-heading-contact" field="heading" tag="h1"
-                                className="font-bold mb-4"
-                                style={{
-                                    fontSize: `${headingSection.props.headingFontSize}px`,
-                                    color: headingSection.props.headingColor,
-                                }}
-                            />
-                            <Editable
-                                id="main-heading-contact" field="content" tag="p"
-                                className="leading-relaxed"
-                                style={{
-                                    fontSize: `${headingSection.props.contentFontSize}px`,
-                                    color: headingSection.props.contentColor,
-                                }}
-                            />
-                        </div>
-
-                        {/* Right: Info List */}
-                        <div
-                            className="space-y-12"
-                            onClick={(e) => { e.stopPropagation(); setSelectedId("contact-info-list"); }}
-                            style={{
-                                display: "flex",
-                                flexDirection: viewMode !== "mobile" ? "row" : "column",
-                                justifyContent: "space-between",
-                                alignItems: viewMode === "desktop" ? "" : "flex-start",
-                                // padding: "60px 50px",
-                                padding: viewMode === "desktop" ? "60px 50px" : "35px 26px",
-                                gap: viewMode === "desktop" ? "20px" : "0px"
-                            }}
-                        >
-                            {infoSection.props.sections?.map((section, idx) => (
-                                <div key={idx} className="relative group p-2 border border-transparent hover:border-gray-100 rounded-lg transition-all">
-                                    <Editable
-                                        id="contact-info-list" index={idx} field="heading" tag="h3"
-                                        className="font-bold mb-3"
-                                        style={{
-                                            fontSize: `${infoSection.props.headingFontSize}px`,
-                                            color: infoSection.props.headingColor
-                                        }}
-                                    />
-                                    <Editable
-                                        id="contact-info-list" index={idx} field="content" tag="div"
-                                        className="leading-relaxed whitespace-pre-line"
-                                        style={{
-                                            fontSize: `${infoSection.props.contentFontSize}px`,
-                                            color: infoSection.props.contentColor
-                                        }}
-                                    />
-
-                                    {/* Delete Button with Trash Icon */}
-                                    <button
-                                        onClick={(e) => {
-                                            e.stopPropagation(); // Prevent selecting the whole list when deleting
-                                            handleDeleteSection("contact-info-list", idx);
-                                        }}
-                                        style={{ color: "#b21111", cursor: "pointer" }}
-                                        className="absolute -top-3 -right-3 opacity-0 group-hover:opacity-100 bg-red-300 hover:bg-red-400 text-white p-1.5 rounded-full shadow-md transition-all z-10 flex items-center justify-center"
-                                        title="Delete Section"
-                                    >
-                                        <Trash2 size={12} />
-                                    </button>
+                        <form className="flex-wrap -mx-2" style={{ display: "flex", flexWrap: "wrap" }}>
+                            {formSection.props.fields?.map((field) => (
+                                <div
+                                    key={field.id}
+                                    className="px-2 mb-6"
+                                    style={{ width: viewMode === "desktop" ? field.width : "100%" }}
+                                >
+                                    {field.type === "textarea" ? (
+                                        <textarea
+                                            className="w-full border py-2 outline-none border-gray-300 rounded p-2"
+                                            placeholder={field.label}
+                                        />
+                                    ) : (
+                                        <input
+                                            type={field.type}
+                                            className="w-full border-b border-gray-300 py-2 outline-none"
+                                            placeholder={field.label}
+                                        />
+                                    )}
                                 </div>
                             ))}
-                        </div>
 
-                        {/* 3. Layout Grid (Form & Info List) */}
-                        <div className="max-w-7xl mx-auto px-6     mb-20">
-
-                            {/* Left: Form */}
-                            <div className="w-full">
-                                <div className="mb-8" onClick={(e) => { e.stopPropagation(); setSelectedId("contact-form-section"); }}>
-
-                                </div>
-                                {formSection && (
-                                    <div
-                                        className="transition-all cursor-pointer rounded-xl p-4"
-                                        style={{
-                                            padding: viewMode === "desktop" ? "0 80px" : "0",
-                                            // Visual feedback so the user knows this whole block is selectable
-                                            outline: selectedId === "contact-form-section" ? "2px solid #6366f1" : "none",
-                                            backgroundColor: selectedId === "contact-form-section" ? "rgba(99, 102, 241, 0.05)" : "transparent"
-                                        }}
-                                        // THIS IS THE KEY: Clicking anywhere in the section selects the form
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            setSelectedId("contact-form-section");
-                                        }}
-                                    >
-                                        <div style={{ width: viewMode === "desktop" ? "42%" : "100%", margin: "0 auto", textAlign: "center", marginBottom: "40px" }}>
-                                            <Editable id="contact-form-section" field="formHeading" tag="h2" className="text-2xl font-bold mb-2 text-[#111827]" />
-                                            <Editable id="contact-form-section" field="formDescription" tag="p" className="text-sm text-gray-500" />
-                                        </div>
-
-                                        <form className="flex-wrap -mx-2" style={{ display: "flex", flexWrap: "wrap" }}>
-                                            {formSection.props.fields.map((field) => (
-                                                <div
-                                                    key={field.id}
-                                                    className="px-2 mb-6"
-                                                    style={{ width: viewMode === "desktop" ? field.width : "100%" }}
-                                                >
-                                                    {field.type === "textarea" ? (
-                                                        <textarea
-                                                            className="w-full border py-2 outline-none border-gray-300 rounded p-2"
-                                                            placeholder={field.label}
-                                                        />
-                                                    ) : (
-                                                        <input
-                                                            type={field.type}
-                                                            className="w-full border-b border-gray-300 py-2 outline-none"
-                                                            placeholder={field.label}
-                                                        />
-                                                    )}
-                                                </div>
-                                            ))}
-
-                                            <div className="w-full px-2 pt-4 flex justify-center items-center">
-                                                <button
-                                                    type="button" // Use type="button" in editor to prevent accidental refreshes
-                                                    className="px-10 py-3 text-sm font-bold tracking-widest uppercase transition-all"
-                                                    style={{
-                                                        backgroundColor: formSection.props.buttonColor,
-                                                        color: formSection.props.buttonTextColor,
-                                                        padding: "7px 40px",
-                                                        marginBottom: "40px"
-                                                    }}
-                                                >
-                                                    {formSection.props.buttonText}
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                )}
-
+                            <div className="w-full px-2 pt-4 flex justify-center items-center">
+                                <button
+                                    type="button" // Use type="button" in editor to prevent accidental refreshes
+                                    className="px-10 py-3 text-sm font-bold tracking-widest uppercase transition-all"
+                                    style={{
+                                        backgroundColor: formSection.props.buttonColor,
+                                        color: formSection.props.buttonTextColor,
+                                        padding: "7px 40px",
+                                        marginBottom: "40px"
+                                    }}
+                                >
+                                    {formSection.props.buttonText}
+                                </button>
                             </div>
-
-
-                        </div>
-
-
+                        </form>
                     </div>
+                )}
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+    )
+
+    return (
+        <div className="flex min-h-screen bg-gray-100 font-sans" style={{ width: "100%" }}>
+
+<button
+        onClick={() => setIsPreviewOpen(true)}
+        style={{fontSize:"13px",backgroundColor: "#615fff"}}
+        className="fixed top-3 right-80 z-50  cursor-pointer    text-white px-6 py-2  shadow-2xl  rounded-lg transition-all flex items-center gap-2 font-bold"
+      >
+        <MousePointer2 size={13} /> Preview 
+      </button>
+            <div className="flex-1" onClick={() => setSelectedId(null)}>
+                <DeviceMockup activeDevice={viewMode} onChange={setViewMode}>
+                    {renderCanvasContent(0)}
                 </DeviceMockup>
             </div>
+
+            {isPreviewOpen && (
+                            <div className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm flex flex-col items-center justify-start overflow-y-auto p-10">
+                                {/* Close Button */}
+                                <button
+                                    onClick={() => setIsPreviewOpen(false)}
+                                    className="absolute top-6 right-10 text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all"
+                                >
+                                    <X size={32} />
+                                </button>
+            
+                                <div className="w-full  mt-10 mb-20">
+                                    <div className="  p-12 font-serif text-black rounded-xl pointer-events-none">
+                                        {/* We use pointer-events-none so they can't edit while previewing */}
+                                        {renderCanvasContent(1)}
+                                    </div>
+                                </div>
+                            </div>
+                        )}
 
             {/* --- SIDEBAR SETTINGS --- */}
             <div
@@ -490,7 +526,7 @@ const Contact2Dynamic = ({ data: initialData }) => {
                             className="  text-white px-5 py-2 rounded-lg text-sm font-semibold   hover:shadow-md hover:bg-blue-500 cursor-pointer transition-all active:scale-95"
                             style={{ backgroundColor: "#615fff", padding: "8px 18px", fontSize: "14px" }}
                         >
-                            Save Changes
+                           Publish
                         </button>
                     </div>
                 </div>

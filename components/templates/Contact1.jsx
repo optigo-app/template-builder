@@ -136,10 +136,12 @@ import { Settings2, MousePointer2, Plus, Trash2, X } from 'lucide-react';
 import DeviceMockup from '../layout/DeviceMockup';
 import Swal from 'sweetalert2';
 
+
 const Contact1Dynamic = ({ data: initialData }) => {
     const [data, setData] = useState(initialData || { components: [] });
     const [selectedId, setSelectedId] = useState(null);
     const [viewMode, setViewMode] = useState('desktop');
+    const [isPreviewOpen, setIsPreviewOpen] = useState(false);
 
     useEffect(() => {
         if (initialData) setData(initialData);
@@ -255,139 +257,176 @@ const Contact1Dynamic = ({ data: initialData }) => {
     const contentSection = getComp("text-content-section");
     const mapSection = getComp("google-map-section");
 
+    const renderCanvasContent = (isModel) => (
+        <div className={`bg-white min-h-screen  py-6   font-sans ${viewMode === "desktop" ? "px-16" : " "}`}>
+
+        {/* 1. Header Section */}
+        <div className="text-center mb-12 mx-auto" style={{ width: "50%", margin: "0 auto 40px" }}>
+            <Editable
+                id="main-heading-contact" field="heading" tag="h1"
+                className="font-serif mb-4 cursor-pointer"
+                style={{ fontSize: `${headingSection.props.headingFontSize}px`, color: headingSection.props.headingColor }}
+            />
+            <Editable
+                id="main-heading-contact" field="content" tag="p"
+                className="leading-relaxed cursor-pointer"
+                style={{ fontSize: `${headingSection.props.contentFontSize}px`, color: headingSection.props.contentColor }}
+            />
+        </div>
+
+        {/* 2. Main Grid */}
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start"
+            style={{ boxShadow: "0 0 10px #0000001a", marginInline: "10%", flexDirection: viewMode === "desktop" ? "row" : "column" }}>
+
+            {formSection && (
+                <div className="w-full " style={{ width: viewMode === "desktop" ? "70%" : "100%", display: "flex", flexDirection: "column", alignItems: "center", margin: "90px 0px", borderRight: viewMode === "desktop" ? "1px solid gray" : "none" }}>
+
+
+                    <form className="space-y-5" style={{ width: viewMode === "desktop" ? "70%" : "90%", margin: "0 auto" }}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            setSelectedId("contact-form-section");
+                        }}>
+                        {formSection?.props?.fields?.map((field) => (
+                            <div key={field.id} className="flex flex-col " style={{ marginBottom: "20px" }}>
+                                <label className="text-[10px]   text-gray-400 mb-1 tracking-widest uppercase text-[14px]" style={{ fontSize: "12px" }}>
+                                    {field.label}
+                                </label>
+                                {field.type === "textarea" ? (
+                                    <textarea
+                                        className="border border-gray-200 p-3 h-32 outline-none focus:border-gray-400 transition-colors resize-none text-sm"
+                                        placeholder={field.placeholder}
+                                        style={{ padding: "7px 15px" }}
+                                    />
+                                ) : (
+                                    <input
+                                        type={field.type}
+                                        className="border border-gray-200 p-3 outline-none focus:border-gray-400 transition-colors text-sm"
+                                        placeholder={field.placeholder}
+                                        style={{ padding: "7px 15px" }}
+                                    />
+                                )}
+                            </div>
+                        ))}
+                        <div className="pt-4">
+                            <button
+                                type="submit"
+                                className="w-[180px] py-3 text-[12px] font-bold tracking-[0.2em] transition-all hover:brightness-95 uppercase"
+                                style={{
+                                    backgroundColor: formSection.props.buttonColor,
+                                    color: formSection.props.buttonTextColor,
+                                    fontWeight: "500",
+                                    fontSize: "14px",
+                                    padding: "8px 15px"
+                                }}
+                            >
+                                {formSection.props.buttonText}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            )}
+
+            {/* Info & Map Section */}
+            <div className="w-full p-10 space-y-12" style={{ marginTop: "90px", padding: "0px 30px" }} >
+                <div className="space-y-8" onClick={(e) => { e.stopPropagation(); setSelectedId(contentSection.id); }}>
+                    {contentSection.props.sections?.map((section, idx) => (
+                        <div key={idx} className="relative group" style={{ marginBottom: "18px" }}>
+                            <Editable
+                                id={contentSection.id} index={idx} field="heading" tag="h3"
+                                className="font-bold mb-2"
+                                style={{ fontSize: `${contentSection.props.headingFontSize}px`, color: contentSection.props.headingColor, marginBottom: "0px" }}
+                            />
+                            <Editable
+                                id={contentSection.id} index={idx} field="content" tag="p"
+                                className="whitespace-pre-line leading-relaxed"
+                                style={{ fontSize: `${contentSection.props.fontSize}px`, color: contentSection.props.contentColor }}
+                            />
+
+                            {!isModel && (
+                                <button
+                                onClick={() => handleDeleteSection(contentSection.id, idx)}
+                                className="absolute -top-2 -right-2 cursor-pointer opacity-0 group-hover:opacity-100 bg-red-500 text-white p-1 rounded-full transition-opacity"
+                            >
+                                <X size={12} />
+                            </button>
+
+                            )}
+                            
+                        </div>
+                    ))}
+
+                </div>
+
+                {/* Map Section */}
+                <div
+                    className="w-full grayscale-[0.5] hover:grayscale-0 transition-all cursor-pointer relative"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedId("google-map-section"); // Ensure this matches the Sidebar ID exactly
+                    }}
+                >
+                    {/* Overlay to capture clicks because iframes often eat click events */}
+                    <div className="absolute inset-0 z-10"></div>
+
+                    <iframe
+                        title="map"
+                        src={mapSection.props.mapUrl || "about:blank"}
+                        className="w-full bg-gray-100"
+                        height={mapSection.props.height || "300px"}
+                        style={{ border: 0, borderRadius: `${mapSection.props.borderRadius || 0}px` }}
+                    ></iframe>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    );
+
     return (
         <div className="flex min-h-screen bg-gray-100 font-sans" style={{ width: "100%" }}>
+
+<button
+        onClick={() => setIsPreviewOpen(true)}
+        style={{fontSize:"13px",backgroundColor: "#615fff"}}
+        className="fixed top-3 right-80 z-50  cursor-pointer    text-white px-6 py-2  shadow-2xl  rounded-lg transition-all flex items-center gap-2 font-bold"
+      >
+        <MousePointer2 size={13} /> Preview 
+      </button>
             <div className="flex-1  " onClick={() => setSelectedId(null)}>
-                <DeviceMockup activeDevice={viewMode} onChange={setViewMode}>
-                    <div className={`bg-white min-h-screen  py-6   font-sans ${viewMode === "desktop" ? "px-16" : " "}`}>
-
-                        {/* 1. Header Section */}
-                        <div className="text-center mb-12 mx-auto" style={{ width: "50%", margin: "0 auto 40px" }}>
-                            <Editable
-                                id="main-heading-contact" field="heading" tag="h1"
-                                className="font-serif mb-4 cursor-pointer"
-                                style={{ fontSize: `${headingSection.props.headingFontSize}px`, color: headingSection.props.headingColor }}
-                            />
-                            <Editable
-                                id="main-heading-contact" field="content" tag="p"
-                                className="leading-relaxed cursor-pointer"
-                                style={{ fontSize: `${headingSection.props.contentFontSize}px`, color: headingSection.props.contentColor }}
-                            />
-                        </div>
-
-                        {/* 2. Main Grid */}
-                        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start"
-                            style={{ boxShadow: "0 0 10px #0000001a", marginInline: "10%", flexDirection: viewMode === "desktop" ? "row" : "column" }}>
-
-                            {formSection && (
-                                <div className="w-full " style={{ width: viewMode === "desktop" ? "70%" : "100%", display: "flex", flexDirection: "column", alignItems: "center", margin: "90px 0px", borderRight: viewMode === "desktop" ? "1px solid gray" : "none" }}>
+            <DeviceMockup activeDevice={viewMode} onChange={setViewMode}>
+               {renderCanvasContent(0)}
+            </DeviceMockup>
+        </div>
 
 
-                                    <form className="space-y-5" style={{ width: viewMode === "desktop" ? "70%" : "90%", margin: "0 auto" }}
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            setSelectedId("contact-form-section");
-                                        }}>
-                                        {formSection?.props?.fields?.map((field) => (
-                                            <div key={field.id} className="flex flex-col " style={{ marginBottom: "20px" }}>
-                                                <label className="text-[10px]   text-gray-400 mb-1 tracking-widest uppercase text-[14px]" style={{ fontSize: "12px" }}>
-                                                    {field.label}
-                                                </label>
-                                                {field.type === "textarea" ? (
-                                                    <textarea
-                                                        className="border border-gray-200 p-3 h-32 outline-none focus:border-gray-400 transition-colors resize-none text-sm"
-                                                        placeholder={field.placeholder}
-                                                        style={{ padding: "7px 15px" }}
-                                                    />
-                                                ) : (
-                                                    <input
-                                                        type={field.type}
-                                                        className="border border-gray-200 p-3 outline-none focus:border-gray-400 transition-colors text-sm"
-                                                        placeholder={field.placeholder}
-                                                        style={{ padding: "7px 15px" }}
-                                                    />
-                                                )}
-                                            </div>
-                                        ))}
-                                        <div className="pt-4">
-                                            <button
-                                                type="submit"
-                                                className="w-[180px] py-3 text-[12px] font-bold tracking-[0.2em] transition-all hover:brightness-95 uppercase"
-                                                style={{
-                                                    backgroundColor: formSection.props.buttonColor,
-                                                    color: formSection.props.buttonTextColor,
-                                                    fontWeight: "500",
-                                                    fontSize: "14px",
-                                                    padding: "8px 15px"
-                                                }}
-                                            >
-                                                {formSection.props.buttonText}
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-                            )}
+            {isPreviewOpen && (
+                <div className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm flex flex-col items-center justify-start overflow-y-auto p-10">
+                    {/* Close Button */}
+                    <button
+                        onClick={() => setIsPreviewOpen(false)}
+                        className="absolute top-6 right-10 text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all"
+                    >
+                        <X size={32} />
+                    </button>
 
-                            {/* Info & Map Section */}
-                            <div className="w-full p-10 space-y-12" style={{ marginTop: "90px", padding: "0px 30px" }} >
-                                <div className="space-y-8" onClick={(e) => { e.stopPropagation(); setSelectedId(contentSection.id); }}>
-                                    {contentSection.props.sections?.map((section, idx) => (
-                                        <div key={idx} className="relative group" style={{ marginBottom: "18px" }}>
-                                            <Editable
-                                                id={contentSection.id} index={idx} field="heading" tag="h3"
-                                                className="font-bold mb-2"
-                                                style={{ fontSize: `${contentSection.props.headingFontSize}px`, color: contentSection.props.headingColor, marginBottom: "0px" }}
-                                            />
-                                            <Editable
-                                                id={contentSection.id} index={idx} field="content" tag="p"
-                                                className="whitespace-pre-line leading-relaxed"
-                                                style={{ fontSize: `${contentSection.props.fontSize}px`, color: contentSection.props.contentColor }}
-                                            />
-                                            <button
-                                                onClick={() => handleDeleteSection(contentSection.id, idx)}
-                                                className="absolute -top-2 -right-2 opacity-0 group-hover:opacity-100 bg-red-500 text-white p-1 rounded-full transition-opacity"
-                                            >
-                                                <X size={12} />
-                                            </button>
-                                        </div>
-                                    ))}
-
-                                </div>
-
-                                {/* Map Section */}
-                                <div
-                                    className="w-full grayscale-[0.5] hover:grayscale-0 transition-all cursor-pointer relative"
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        setSelectedId("google-map-section"); // Ensure this matches the Sidebar ID exactly
-                                    }}
-                                >
-                                    {/* Overlay to capture clicks because iframes often eat click events */}
-                                    <div className="absolute inset-0 z-10"></div>
-
-                                    <iframe
-                                        title="map"
-                                        src={mapSection.props.mapUrl || "about:blank"}
-                                        className="w-full bg-gray-100"
-                                        height={mapSection.props.height || "300px"}
-                                        style={{ border: 0, borderRadius: `${mapSection.props.borderRadius || 0}px` }}
-                                    ></iframe>
-                                </div>
-                            </div>
-
+                    <div className="w-full  mt-10 mb-20">
+                        <div className="  p-12 font-serif text-black rounded-xl pointer-events-none">
+                            {/* We use pointer-events-none so they can't edit while previewing */}
+                            {renderCanvasContent(1)}
                         </div>
                     </div>
-                </DeviceMockup>
-            </div>
+                </div>
+            )}
 
             {/* SIDEBAR SETTINGS */}
 
             <div
                 className="w-80 bg-white border-l border-gray-200 shadow-2xl fixed top-0 right-0 h-screen overflow-y-auto z-[60] flex flex-col "
-                style={{ width: "16%", right: "0px" ,scrollbarWidth:"0px"}}
+                style={{ width: "16%", right: "0px", scrollbarWidth: "0px" }}
                 onClick={(e) => e.stopPropagation()}
             >
-               
+
                 {/* Header Section */}
                 <div className="p-3 bg-white border-b border-gray-200 sticky top-0 z-10">
                     <div className="flex justify-between items-center">
@@ -397,7 +436,7 @@ const Contact1Dynamic = ({ data: initialData }) => {
                             className="  text-white px-5 py-2 rounded-lg text-sm font-semibold   hover:shadow-md hover:bg-blue-500 cursor-pointer transition-all active:scale-95"
                             style={{ backgroundColor: "#615fff", padding: "8px 18px", fontSize: "14px" }}
                         >
-                            Save Changes
+                           Publish
                         </button>
                     </div>
                 </div>

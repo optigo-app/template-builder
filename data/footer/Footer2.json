@@ -15,7 +15,7 @@
         },
         "textColor": "#6b6b6b",
         "headingColor": "#000000",
-        "fontSize": "17px",
+        "fontSize": "15px",
         "backgroundColor": "#f5e6e6"
       }
     },
@@ -44,7 +44,7 @@
                 "url": "#"
               },
               {
-                "label": "jhjhjh",
+                "label": "Terms",
                 "url": ""
               }
             ],
@@ -102,16 +102,17 @@
       "type": "copyright",
       "props": {
         "content": "Copyright © 2025 Sonasons. All Rights Reserved.",
-        "textColor": "#6b6b6b",
+        "textColor": "#813b3b",
         "fontSize": "12px",
         "textAlign": "center",
         "padding": "20px 0",
         "borderTop": "1px solid #000000",
-        "backgroundColor": "#f5e6e6"
+        "backgroundColor": "#f5e6e6",
+        "linkColor": "#813b3b"
       }
     }
   ],
-  "backgroundColor": "#fcfcfc",
+  "backgroundColor": "#ffffff",
   "category": "footer",
   "groups": [
     {

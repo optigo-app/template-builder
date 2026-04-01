@@ -1,7 +1,7 @@
 import React from 'react';
 import { Monitor, Tablet, Smartphone } from 'lucide-react';
 import Link from 'next/link';
-const DeviceMockup = ({ children, activeDevice, onChange }) => {
+const DeviceMockup = ({ children, activeDevice, onChange  }) => {
   const devices = [
     { id: 'mobile', icon: Smartphone, width: '375px', label: 'Mobile' },
     { id: 'tablet', icon: Tablet, width: '768px', label: 'Tablet' },

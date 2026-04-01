@@ -254,7 +254,7 @@ const Footer4 = ({ data: initialData }) => {
 
         return (
             <footer className="w-full font-sans border-t border-gray-100" style={{ backgroundColor: data?.backgroundColor || "#ffffff" }}>
-                <div className={`max-w-7xl mx-auto px-6 py-12 flex ${isMobile ? 'flex-col gap-10' : 'flex-row justify-between items-start gap-8'}`}>
+                <div className={`max-w-7xl mx-auto px-6 py-12 flex ${isMobile ? 'flex-col gap-10' : 'flex-row justify-between items-start gap-8 flex-wrap'}`}>
 
                     {/* Section 1: Logo & Social */}
                     <div

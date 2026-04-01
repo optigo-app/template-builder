@@ -31,6 +31,7 @@ import Footer4 from "@/components/templates/footer/Footer4"
 
 
 import Policy1 from "@/components/templates/privacy-policy/Policy1"
+import Policy2 from "@/components/templates/privacy-policy/Policy2"
 
 
 
@@ -184,6 +185,7 @@ export default function EditLayout({ tempId }) {
                 {tempId === "Footer4" && <Footer4 data={currentData} />}
 
                 {tempId === "Policy1" && <Policy1 data={currentData} />}
+                {tempId === "Policy2" && <Policy2 data={currentData} />}
             </div>
         </div>
     )

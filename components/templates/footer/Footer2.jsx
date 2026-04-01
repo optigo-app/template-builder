@@ -212,7 +212,7 @@ const Footer2 = ({ data: initialData }) => {
 
                 <div className={`max-w-7xl mx-auto px-6 py-10 grid ${isMobile ? 'grid-cols-1 gap-10 text-center' : 'grid-cols-4 gap-8'}`}>
 
-                    {/* Company Details */}
+                   
                     <div
                         className={`p-2 rounded-lg transition-all cursor-pointer ${selectedId === companySec.id ? 'ring-2 ring-blue-500 bg-white/30' : ''}`}
                         onClick={(e) => { e.stopPropagation(); setSelectedId(companySec.id); }}
@@ -223,8 +223,7 @@ const Footer2 = ({ data: initialData }) => {
                             {companySec.props.link?.label}
                         </a>
                     </div>
-
-                    {/* Group Links */}
+ 
                     {groupsSec.props.groups?.map((group, gIdx) => (
                         <div
                             key={gIdx}
@@ -275,7 +274,7 @@ const Footer2 = ({ data: initialData }) => {
 
     return (
         <div className="flex min-h-screen bg-gray-100" style={{ width: "81%" }} onClick={() => setSelectedId(null)}>
-              <button onClick={() => setIsPreviewOpen(true)} className="fixed cursor-pointer top-3 right-80 z-50 text-white px-6 py-2 shadow-2xl rounded-lg font-bold bg-[#615fff]">
+            <button onClick={() => setIsPreviewOpen(true)} className="fixed cursor-pointer top-3 right-80 z-50 text-white px-6 py-2 shadow-2xl rounded-lg font-bold bg-[#615fff]">
                 Preview
             </button>
 
@@ -283,274 +282,275 @@ const Footer2 = ({ data: initialData }) => {
                 {renderCanvasContent()}
             </DeviceMockup>
 
-            
-                        {isPreviewOpen && (
-                            <div className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm flex items-center justify-center p-10 overflow-y-auto">
-                                <button onClick={() => setIsPreviewOpen(false)} className="absolute cursor-pointer top-6 right-10 text-white"><X size={32} /></button>
-                                <div className="w-full max-w-7xl bg-white rounded-xl overflow-hidden pointer-events-none">
-                                    {renderCanvasContent()}
-                                </div>
+
+            {isPreviewOpen && (
+                <div className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm flex items-center justify-center p-10 overflow-y-auto">
+                    <button onClick={() => setIsPreviewOpen(false)} className="absolute cursor-pointer top-6 right-10 text-white"><X size={32} /></button>
+                    <div className="w-full max-w-7xl bg-white rounded-xl overflow-hidden pointer-events-none">
+                        {renderCanvasContent()}
+                    </div>
+                </div>
+            )}
+
+
+            <div
+                className="bg-white border-l border-gray-200 fixed top-0 right-0 h-screen overflow-y-auto z-[60] flex flex-col shadow-2xl"
+                style={{ width: "18%" }}
+                onClick={(e) => e.stopPropagation()}
+            >
+                {/* HEADER */}
+                <div className="p-4 bg-white border-b sticky top-0 z-20 flex justify-between items-center">
+                    <div className="flex items-center gap-2">
+                        <div className="p-1.5 bg-indigo-50 text-[#615fff] rounded-lg">
+                            <Settings2 size={18} />
+                        </div>
+                        <h2 className="text-sm font-black text-gray-800 uppercase tracking-tight">Editor</h2>
+                    </div>
+                    <button
+                        onClick={handleSave}
+                        className="text-white px-5 py-2 rounded-lg text-sm font-semibold bg-[#615fff] hover:shadow-md hover:bg-blue-500 cursor-pointer transition-all active:scale-95"
+                        style={{ padding: "8px 18px", fontSize: "14px" }}
+                    >
+                        Publish
+                    </button>
+                </div>
+
+                <div className="p-5 space-y-8">
+                    {/* --- GLOBAL THEME --- */}
+                    <section className="space-y-4">
+                        <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.15em]">Global Canvas</label>
+                        <div className="bg-gray-50 p-4 rounded-2xl border border-gray-100 space-y-3">
+                            <div className="flex justify-between items-center">
+                                <span className="text-xs font-bold text-gray-700">Background</span>
+                                <span className="text-[10px] font-mono text-gray-400 uppercase">{data?.backgroundColor || "#ffffff"}</span>
                             </div>
-                        )}
-
-        
-<div
-    className="bg-white border-l border-gray-200 fixed top-0 right-0 h-screen overflow-y-auto z-[60] flex flex-col shadow-2xl"
-    style={{ width: "18%" }}
-    onClick={(e) => e.stopPropagation()}
->
-    {/* HEADER */}
-    <div className="p-4 bg-white border-b sticky top-0 z-20 flex justify-between items-center">
-        <div className="flex items-center gap-2">
-            <div className="p-1.5 bg-indigo-50 text-[#615fff] rounded-lg">
-                <Settings2 size={18} />
-            </div>
-            <h2 className="text-sm font-black text-gray-800 uppercase tracking-tight">Editor</h2>
-        </div>
-        <button 
-            onClick={handleSave} 
-            className="text-white px-4 py-1.5 rounded-full text-xs font-bold bg-[#615fff] hover:bg-[#504ee6] shadow-md shadow-indigo-100 transition-all active:scale-95"
-        >
-            Publish
-        </button>
-    </div>
-
-    <div className="p-5 space-y-8">
-        {/* --- GLOBAL THEME --- */}
-        <section className="space-y-4">
-            <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.15em]">Global Canvas</label>
-            <div className="bg-gray-50 p-4 rounded-2xl border border-gray-100 space-y-3">
-                <div className="flex justify-between items-center">
-                    <span className="text-xs font-bold text-gray-700">Background</span>
-                    <span className="text-[10px] font-mono text-gray-400 uppercase">{data?.backgroundColor || "#ffffff"}</span>
-                </div>
-                <div className="relative h-10 w-full rounded-xl border-2 border-white shadow-sm overflow-hidden group">
-                    <input
-                        type="color"
-                        className="absolute inset-0 w-full h-full cursor-pointer scale-[3] bg-transparent"
-                        value={data?.backgroundColor || "#ffffff"}
-                        onChange={(e) => setData(prev => ({ ...prev, backgroundColor: e.target.value }))}
-                    />
-                </div>
-            </div>
-        </section>
-
-        {/* --- COMPONENT SPECIFIC SETTINGS --- */}
-        {activeComp ? (
-            <div className="space-y-8 animate-in fade-in slide-in-from-right-4 duration-300">
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-indigo-50 rounded-full border border-indigo-100">
-                    <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
-                    <span className="text-[10px] font-black text-indigo-700 uppercase tracking-wider">
-                        {activeComp.id.replace('section-', '')}
-                    </span>
-                </div>
-
-                {/* 1. HEADING TYPOGRAPHY */}
-                {activeComp.id !== "section-copyright" && (
-                    <div className="space-y-4">
-                        <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.15em]">Heading Typography</label>
-                        <div className="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm space-y-5">
-                            <div className="space-y-3">
-                                <div className="flex justify-between text-[11px] font-bold text-gray-600">
-                                    <span>Text Color</span>
-                                    
-                                </div>
-                                <div style={{display: "flex", alignItems: "center",gap:"10px"}}>
+                            <div className="relative h-10 w-full rounded-xl border-2 border-white shadow-sm overflow-hidden group">
                                 <input
-                                    type="color" 
-                                    className=" h-8 cursor-pointer rounded-lg overflow-hidden"
-                                    value={activeComp.props.headingColor || "#000000"}
-                                    onChange={(e) => handleUpdate(activeComp.id, "headingColor", e.target.value)}
-                                />
-                                <span className="font-mono text-gray-400 uppercase">{activeComp.props.headingColor || "#000000"}</span>
-                                </div>
-                            </div>
-                            <div className="space-y-3">
-                                <div className="flex justify-between text-[11px] font-bold text-gray-600">
-                                    <span>Font Size</span>
-                                    <span className="text-indigo-600 bg-indigo-50 px-2 rounded">{activeComp.props.headingSize || '24px'}</span>
-                                </div>
-                                <input
-                                    type="range" min="12" max="60"
-                                    value={parseInt(activeComp.props.headingSize) || 24}
-                                    onChange={(e) => handleUpdate(activeComp.id, "headingSize", `${e.target.value}px`)}
-                                    className="w-full accent-[#615fff]"
+                                    type="color"
+                                    className="absolute inset-0 w-full h-full cursor-pointer scale-[3] bg-transparent"
+                                    value={data?.backgroundColor || "#ffffff"}
+                                    onChange={(e) => setData(prev => ({ ...prev, backgroundColor: e.target.value }))}
                                 />
                             </div>
                         </div>
-                    </div>
-                )}
+                    </section>
 
-                {/* 2. CONTENT / LINK TYPOGRAPHY */}
-                <div className="space-y-4">
-                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.15em]">Body & Links</label>
-                    <div className="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm space-y-5">
-                        <div className="space-y-3">
-                            <div className="flex justify-between text-[11px] font-bold text-gray-600">
-                                <span>Text Color</span>
-                               
+                    {/* --- COMPONENT SPECIFIC SETTINGS --- */}
+                    {activeComp ? (
+                        <div className="space-y-8 animate-in fade-in slide-in-from-right-4 duration-300">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 bg-indigo-50 rounded-full border border-indigo-100">
+                                <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
+                                <span className="text-[10px] font-black text-indigo-700 uppercase tracking-wider">
+                                    {activeComp.id.replace('section-', '')}
+                                </span>
                             </div>
-                            <div style={{display: "flex", alignItems: "center",gap:"10px"}}>
-                            <input
-                                type="color" className=" h-8 cursor-pointer rounded-lg"
-                                value={activeComp.props.textColor || activeComp.props.linkColor || "#666666"}
-                                onChange={(e) => {
-                                    handleUpdate(activeComp.id, "textColor", e.target.value);
-                                    handleUpdate(activeComp.id, "linkColor", e.target.value);
-                                }}
-                            />
-                             <span className="font-mono text-gray-400 uppercase">{activeComp.props.textColor || activeComp.props.linkColor || "#666666"}</span>
-                            </div>
-                        </div>
-                        <div className="space-y-3">
-                            <div className="flex justify-between text-[11px] font-bold text-gray-600">
-                                <span>Font Size</span>
-                                <span className="text-indigo-600 bg-indigo-50 px-2 rounded">{activeComp.props.fontSize || '14px'}</span>
-                            </div>
-                            <input
-                                type="range" min="10" max="30"
-                                value={parseInt(activeComp.props.fontSize) || 14}
-                                onChange={(e) => handleUpdate(activeComp.id, "fontSize", `${e.target.value}px`)}
-                                className="w-full accent-[#615fff]"
-                            />
-                        </div>
-                    </div>
-                </div>
 
-                {/* 3. SECTION-ACCOUNT LINK MANAGEMENT */}
-                {activeComp.id === "section-account" && (
-                    <div className="space-y-4">
-                        <div className="flex justify-between items-center">
-                            <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.15em]">Account Links</label>
-                            <button
-                                onClick={() => handleUpdate(activeComp.id, "links", [...(activeComp.props.links || []), { label: "New Link", url: "#" }])}
-                                className="p-1.5 bg-indigo-600 text-white rounded-full hover:shadow-lg transition-all"
-                            >
-                                <Plus size={12} />
-                            </button>
-                        </div>
-                        <div className="space-y-2">
-                            {activeComp.props.links?.map((link, i) => (
-                                <div key={i} className="flex gap-2 items-center bg-gray-50 p-2.5 rounded-xl border border-gray-100 group">
-                                    <input
-                                        className="text-[11px] p-2 bg-white border border-gray-200 rounded-lg w-full focus:ring-1 focus:ring-indigo-500 outline-none font-medium"
-                                        value={link.label}
-                                        onChange={(e) => {
-                                            const newList = [...activeComp.props.links];
-                                            newList[i] = { ...newList[i], label: e.target.value };
-                                            handleUpdate(activeComp.id, "links", newList);
-                                        }}
-                                    />
-                                    <button 
-                                        className="opacity-0 group-hover:opacity-100 transition-opacity"
-                                        onClick={() => handleUpdate(activeComp.id, "links", activeComp.props.links.filter((_, idx) => idx !== i))}
-                                    >
-                                        <Trash2 size={14} className="text-red-400 hover:text-red-600" />
-                                    </button>
+                            {/* 1. HEADING TYPOGRAPHY */}
+                            {activeComp.id !== "section-copyright" && (
+                                <div className="space-y-4">
+                                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.15em]">Heading Typography</label>
+                                    <div className="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm space-y-5">
+                                        <div className="space-y-3">
+                                            <div className="flex justify-between text-[11px] font-bold text-gray-600">
+                                                <span>Text Color</span>
+
+                                            </div>
+                                            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                                                <input
+                                                    type="color"
+                                                    className=" h-8 cursor-pointer rounded-lg overflow-hidden"
+                                                    value={activeComp.props.headingColor || "#000000"}
+                                                    onChange={(e) => handleUpdate(activeComp.id, "headingColor", e.target.value)}
+                                                />
+                                                <span className="font-mono text-gray-400 uppercase">{activeComp.props.headingColor || "#000000"}</span>
+                                            </div>
+                                        </div>
+                                        <div className="space-y-3">
+                                            <div className="flex justify-between text-[11px] font-bold text-gray-600">
+                                                <span>Font Size</span>
+                                                <span className="text-indigo-600 bg-indigo-50 px-2 rounded">{activeComp.props.headingSize || '24px'}</span>
+                                            </div>
+                                            <input
+                                                type="range" min="12" max="60"
+                                                value={parseInt(activeComp.props.headingSize) || 24}
+                                                onChange={(e) => handleUpdate(activeComp.id, "headingSize", `${e.target.value}px`)}
+                                                className="w-full accent-[#615fff]"
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
-                            ))}
-                        </div>
-                    </div>
-                )}
+                            )}
 
-                {/* 4. SECTION-GROUP-LINKS MANAGEMENT */}
-                {activeComp.id === "section-group-links" && (
-                    <div className="space-y-4">
-                        <div className="flex justify-between items-center">
-                            <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.15em]">Link Groups</label>
-                            <button
-                                onClick={() => handleUpdate(activeComp.id, "groups", [...(activeComp.props.groups || []), { heading: "New Group", links: [] }])}
-                                className="px-3 py-1 bg-gray-800 text-white text-[10px] font-bold rounded-full hover:bg-black transition-all"
-                            >
-                                + ADD GROUP
-                            </button>
-                        </div>
-                        <div className="space-y-4">
-                            {activeComp.props.groups?.map((group, gIdx) => (
-                                <div key={gIdx} className="border border-gray-200 rounded-2xl p-4 bg-white shadow-sm space-y-4 relative group/card">
-                                    <div className="flex items-center gap-2">
-                                        <input
-                                            className="font-black text-xs flex-1 text-gray-800 bg-transparent border-b-2 border-transparent focus:border-indigo-500 outline-none uppercase tracking-wide"
-                                            value={group.heading}
-                                            onChange={(e) => {
-                                                const newGroups = [...activeComp.props.groups];
-                                                newGroups[gIdx] = { ...newGroups[gIdx], heading: e.target.value };
-                                                handleUpdate(activeComp.id, "groups", newGroups);
-                                            }}
-                                        />
-                                        <button onClick={() => handleUpdate(activeComp.id, "groups", activeComp.props.groups.filter((_, i) => i !== gIdx))}>
-                                            <Trash2 size={14} className="text-gray-300 hover:text-red-500 transition-colors" />
-                                        </button>
+                            {/* 2. CONTENT / LINK TYPOGRAPHY */}
+                            <div className="space-y-4">
+                                <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.15em]">Body & Links</label>
+                                <div className="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm space-y-5">
+                                    <div className="space-y-3">
+                                        <div className="flex justify-between text-[11px] font-bold text-gray-600">
+                                            <span>Text Color</span>
+
+                                        </div>
+                                        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                                            <input
+                                                type="color" className=" h-8 cursor-pointer rounded-lg"
+                                                value={activeComp.props.textColor || activeComp.props.linkColor || "#666666"}
+                                                onChange={(e) => {
+                                                    handleUpdate(activeComp.id, "textColor", e.target.value);
+                                                    handleUpdate(activeComp.id, "linkColor", e.target.value);
+                                                }}
+                                            />
+                                            <span className="font-mono text-gray-400 uppercase">{activeComp.props.textColor || activeComp.props.linkColor || "#666666"}</span>
+                                        </div>
                                     </div>
                                     <div className="space-y-3">
-                                        {group.links?.map((link, lIdx) => (
-                                            <div key={lIdx} className="flex gap-2 items-center">
+                                        <div className="flex justify-between text-[11px] font-bold text-gray-600">
+                                            <span>Font Size</span>
+                                            <span className="text-indigo-600 bg-indigo-50 px-2 rounded">{activeComp.props.fontSize || '14px'}</span>
+                                        </div>
+                                        <input
+                                            type="range" min="10" max="30"
+                                            value={parseInt(activeComp.props.fontSize) || 14}
+                                            onChange={(e) => handleUpdate(activeComp.id, "fontSize", `${e.target.value}px`)}
+                                            className="w-full accent-[#615fff]"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* 3. SECTION-ACCOUNT LINK MANAGEMENT */}
+                            {activeComp.id === "section-account" && (
+                                <div className="space-y-4">
+                                    <div className="flex justify-between items-center">
+                                        <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.15em]">Account Links</label>
+                                        <button
+                                            onClick={() => handleUpdate(activeComp.id, "links", [...(activeComp.props.links || []), { label: "New Link", url: "#" }])}
+                                            className="p-1.5 bg-indigo-600 text-white rounded-full hover:shadow-lg transition-all"
+                                        >
+                                            <Plus size={12} />
+                                        </button>
+                                    </div>
+                                    <div className="space-y-2">
+                                        {activeComp.props.links?.map((link, i) => (
+                                            <div key={i} className="flex gap-2 items-center bg-gray-50 p-2.5 rounded-xl border border-gray-100 group">
                                                 <input
-                                                    className="text-[10px] p-2 bg-gray-50 border border-transparent rounded-lg w-1/2 focus:bg-white focus:border-indigo-200 outline-none"
+                                                    className="text-[11px] p-2 bg-white border border-gray-200 rounded-lg w-full focus:ring-1 focus:ring-indigo-500 outline-none font-medium"
                                                     value={link.label}
-                                                    placeholder="Label"
                                                     onChange={(e) => {
-                                                        const newGroups = [...activeComp.props.groups];
-                                                        const newLinks = [...newGroups[gIdx].links];
-                                                        newLinks[lIdx] = { ...newLinks[lIdx], label: e.target.value };
-                                                        newGroups[gIdx] = { ...newGroups[gIdx], links: newLinks };
-                                                        handleUpdate(activeComp.id, "groups", newGroups);
+                                                        const newList = [...activeComp.props.links];
+                                                        newList[i] = { ...newList[i], label: e.target.value };
+                                                        handleUpdate(activeComp.id, "links", newList);
                                                     }}
                                                 />
-                                                <input
-                                                    className="text-[10px] p-2 bg-gray-50 border border-transparent rounded-lg w-1/2 focus:bg-white focus:border-indigo-200 outline-none font-mono text-gray-400"
-                                                    value={link.url}
-                                                    placeholder="URL"
-                                                    onChange={(e) => {
-                                                        const newGroups = [...activeComp.props.groups];
-                                                        const newLinks = [...newGroups[gIdx].links];
-                                                        newLinks[lIdx] = { ...newLinks[lIdx], url: e.target.value };
-                                                        newGroups[gIdx] = { ...newGroups[gIdx], links: newLinks };
-                                                        handleUpdate(activeComp.id, "groups", newGroups);
-                                                    }}
-                                                />
-                                                <button 
-                                                    onClick={() => {
-                                                        const newGroups = [...activeComp.props.groups];
-                                                        newGroups[gIdx].links = newGroups[gIdx].links.filter((_, i) => i !== lIdx);
-                                                        handleUpdate(activeComp.id, "groups", newGroups);
-                                                    }}
-                                                    className="text-gray-300 hover:text-red-500 transition-colors"
+                                                <button
+                                                    className="opacity-0 group-hover:opacity-100 transition-opacity"
+                                                    onClick={() => handleUpdate(activeComp.id, "links", activeComp.props.links.filter((_, idx) => idx !== i))}
                                                 >
-                                                    <X size={14} />
+                                                    <Trash2 size={14} className="text-red-400 hover:text-red-600" />
                                                 </button>
                                             </div>
                                         ))}
-                                        <button
-                                            onClick={() => {
-                                                const newGroups = [...activeComp.props.groups];
-                                                newGroups[gIdx].links = [...(newGroups[gIdx].links || []), { label: "New Link", url: "https://" }];
-                                                handleUpdate(activeComp.id, "groups", newGroups);
-                                            }}
-                                            className="w-full py-2 border-2 border-dashed border-gray-100 rounded-xl text-[10px] text-gray-400 font-bold hover:border-indigo-200 hover:text-indigo-500 transition-all"
-                                        >
-                                            + ADD ITEM
-                                        </button>
                                     </div>
                                 </div>
-                            ))}
+                            )}
+
+                            {/* 4. SECTION-GROUP-LINKS MANAGEMENT */}
+                            {activeComp.id === "section-group-links" && (
+                                <div className="space-y-4">
+                                    <div className="flex justify-between items-center">
+                                        <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.15em]">Link Groups</label>
+                                        <button
+                                            onClick={() => handleUpdate(activeComp.id, "groups", [...(activeComp.props.groups || []), { heading: "New Group", links: [] }])}
+                                            className="px-3 py-1 bg-gray-800 text-white text-[10px] font-bold rounded-full hover:bg-black transition-all"
+                                        >
+                                            + ADD GROUP
+                                        </button>
+                                    </div>
+                                    <div className="space-y-4">
+                                        {activeComp.props.groups?.map((group, gIdx) => (
+                                            <div key={gIdx} className="border border-gray-200 rounded-2xl p-4 bg-white shadow-sm space-y-4 relative group/card">
+                                                <div className="flex items-center gap-2">
+                                                    <input
+                                                        className="font-black text-xs flex-1 text-gray-800 bg-transparent border-b-2 border-transparent focus:border-indigo-500 outline-none uppercase tracking-wide"
+                                                        value={group.heading}
+                                                        onChange={(e) => {
+                                                            const newGroups = [...activeComp.props.groups];
+                                                            newGroups[gIdx] = { ...newGroups[gIdx], heading: e.target.value };
+                                                            handleUpdate(activeComp.id, "groups", newGroups);
+                                                        }}
+                                                    />
+                                                    <button onClick={() => handleUpdate(activeComp.id, "groups", activeComp.props.groups.filter((_, i) => i !== gIdx))}>
+                                                        <Trash2 size={14} className="text-gray-300 hover:text-red-500 transition-colors" />
+                                                    </button>
+                                                </div>
+                                                <div className="space-y-3">
+                                                    {group.links?.map((link, lIdx) => (
+                                                        <div key={lIdx} className="flex gap-2 items-center">
+                                                            <input
+                                                                className="text-[10px] p-2 bg-gray-50 border border-transparent rounded-lg w-1/2 focus:bg-white focus:border-indigo-200 outline-none"
+                                                                value={link.label}
+                                                                placeholder="Label"
+                                                                onChange={(e) => {
+                                                                    const newGroups = [...activeComp.props.groups];
+                                                                    const newLinks = [...newGroups[gIdx].links];
+                                                                    newLinks[lIdx] = { ...newLinks[lIdx], label: e.target.value };
+                                                                    newGroups[gIdx] = { ...newGroups[gIdx], links: newLinks };
+                                                                    handleUpdate(activeComp.id, "groups", newGroups);
+                                                                }}
+                                                            />
+                                                            <input
+                                                                className="text-[10px] p-2 bg-gray-50 border border-transparent rounded-lg w-1/2 focus:bg-white focus:border-indigo-200 outline-none font-mono text-gray-400"
+                                                                value={link.url}
+                                                                placeholder="URL"
+                                                                onChange={(e) => {
+                                                                    const newGroups = [...activeComp.props.groups];
+                                                                    const newLinks = [...newGroups[gIdx].links];
+                                                                    newLinks[lIdx] = { ...newLinks[lIdx], url: e.target.value };
+                                                                    newGroups[gIdx] = { ...newGroups[gIdx], links: newLinks };
+                                                                    handleUpdate(activeComp.id, "groups", newGroups);
+                                                                }}
+                                                            />
+                                                            <button
+                                                                onClick={() => {
+                                                                    const newGroups = [...activeComp.props.groups];
+                                                                    newGroups[gIdx].links = newGroups[gIdx].links.filter((_, i) => i !== lIdx);
+                                                                    handleUpdate(activeComp.id, "groups", newGroups);
+                                                                }}
+                                                                className="text-gray-300 hover:text-red-500 transition-colors"
+                                                            >
+                                                                <X size={14} />
+                                                            </button>
+                                                        </div>
+                                                    ))}
+                                                    <button
+                                                        onClick={() => {
+                                                            const newGroups = [...activeComp.props.groups];
+                                                            newGroups[gIdx].links = [...(newGroups[gIdx].links || []), { label: "New Link", url: "https://" }];
+                                                            handleUpdate(activeComp.id, "groups", newGroups);
+                                                        }}
+                                                        className="w-full py-2 border-2 border-dashed border-gray-100 rounded-xl text-[10px] text-gray-400 font-bold hover:border-indigo-200 hover:text-indigo-500 transition-all"
+                                                    >
+                                                        + ADD ITEM
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
                         </div>
-                    </div>
-                )}
-            </div>
-        ) : (
-            <div className="flex flex-col items-center justify-center pt-20 space-y-4 text-center">
-                <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center border border-dashed border-gray-200">
-                    <Settings2 size={24} className="text-gray-300" />
+                    ) : (
+                        <div className="flex flex-col items-center justify-center pt-20 space-y-4 text-center">
+                            <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center border border-dashed border-gray-200">
+                                <Settings2 size={24} className="text-gray-300" />
+                            </div>
+                            <div>
+                                <p className="text-sm font-bold text-gray-400">No Section Selected</p>
+                                <p className="text-[11px] text-gray-300 px-6">Click on a component in the preview to customize its styles.</p>
+                            </div>
+                        </div>
+                    )}
                 </div>
-                <div>
-                    <p className="text-sm font-bold text-gray-400">No Section Selected</p>
-                    <p className="text-[11px] text-gray-300 px-6">Click on a component in the preview to customize its styles.</p>
-                </div>
             </div>
-        )}
-    </div>
-</div>
         </div >
     );
 };

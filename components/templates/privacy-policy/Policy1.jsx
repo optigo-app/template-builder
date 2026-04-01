@@ -649,6 +649,35 @@ const Policy1 = ({ data: initialData }) => {
             )}
         </div>
     );
+    return (
+        // Parent container must be w-full and h-screen
+        <div className="flex h-screen w-full bg-[#f8f9fa] font-sans" onClick={() => setSelectedId(null)}>
+            
+            {/* Main Editor Area: flex-1 makes it take up all remaining space */}
+            <div className="relative flex-1 flex flex-col items-center overflow-y-auto">
+                
+                {/* Preview Button: Positioned relative to this container or the screen */}
+                <button
+                    onClick={() => setIsPreviewOpen(true)}
+                    className="fixed top-3 right-[22%] z-50 text-white px-6 py-2 shadow-2xl rounded-lg transition-all flex items-center gap-2 font-bold bg-[#615fff]"
+                >
+                    <MousePointer2 size={13} /> Preview
+                </button>
+    
+                {/* Canvas Area */}
+                <div className="w-full max-w-5xl p-8">
+                    <DeviceMockup activeDevice={viewMode} onChange={setViewMode}>
+                        {renderCanvasContent()}
+                    </DeviceMockup>
+                </div>
+            </div>
+    
+            {/* Sidebar: Occupies exactly 19% or a fixed width */}
+            <div className="w-[19%] border-l bg-white">
+                {/* Sidebar content here */}
+            </div>
+        </div>
+    );
 };
 
 export default Policy1;

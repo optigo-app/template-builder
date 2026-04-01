@@ -1,0 +1,90 @@
+{
+  "templateId": "Contact4",
+  "preview": "contact4.png",
+  "name": "Contact Us Split Layout",
+  "backgroundColor": "#4c3e72",
+  "components": [
+    {
+      "id": "section-left-info",
+      "type": "content-block",
+      "props": {
+        "heading": "Contact Us",
+        "content": "Not sure what you need? The team at Square Events will be happy to listen to you and suggest event ideas you hadn't considered.",
+        "headingFontSize": 48,
+        "headingColor": "#ffffff",
+        "contentFontSize": 18,
+        "contentColor": "#e0e0e0",
+        "textAlign": "left",
+        "email": "info@squareevents.com",
+        "phone": "Support: (+21) 123 456 586",
+        "textColor": "#ffffff"
+      }
+    },
+    {
+      "id": "section-right-form",
+      "type": "form-container",
+      "props": {
+        "formHeading": "We'd love to hear from you! gbhgh",
+        "formSubheading": "Let's get in touch fbfb",
+        "backgroundColor": "#ffffff",
+        "borderRadius": 16,
+        "padding": "40px",
+        "buttonText": "Send Message",
+        "buttonColor": "#4c3e72",
+        "buttonTextColor": "#ffffff",
+        "fields": [
+          {
+            "id": "f1",
+            "label": "Full Name",
+            "placeholder": "Full Name",
+            "type": "text",
+            "width": "48%"
+          },
+          {
+            "id": "f2",
+            "label": "Company",
+            "placeholder": "Company",
+            "type": "text",
+            "width": "48%"
+          },
+          {
+            "id": "f3",
+            "label": "Email",
+            "placeholder": "olivia@untitledui.com",
+            "type": "email",
+            "width": "100%"
+          },
+          {
+            "id": "f4",
+            "label": "Phone number",
+            "placeholder": "+1 (555) 000-0000",
+            "type": "tel",
+            "width": "100%"
+          },
+          {
+            "id": "f5",
+            "label": "Address",
+            "placeholder": "Address",
+            "type": "text",
+            "width": "100%"
+          },
+          {
+            "id": "f6",
+            "label": "Your Message",
+            "placeholder": "Type your message here",
+            "type": "textarea",
+            "width": "100%"
+          },
+          {
+            "id": "field-1774868182378",
+            "type": "number",
+            "label": "New Label",
+            "placeholder": "Enter value...",
+            "width": "100%"
+          }
+        ]
+      }
+    }
+  ],
+  "category": "contact-us"
+}

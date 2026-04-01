@@ -1,0 +1,100 @@
+{
+  "templateId": "Footer1",
+  "preview": "Footer1.png",
+  "name": "Footer Layout",
+  "components": [
+    {
+      "id": "section-logo",
+      "type": "logo",
+      "props": {
+        "image": "http://fgstore.web/WebSiteStaticImage/logoIcon/webLogo.png",
+        "alt": "Elior Jewel Logo",
+        "height": "91px",
+        "objectFit": "contain",
+        "padding": "20px",
+        "backgroundColor": "#000000"
+      }
+    },
+    {
+      "id": "section-links",
+      "type": "links",
+      "props": {
+        "links": [
+          {
+            "label": "Terms & Conditions",
+            "url": "#"
+          },
+          {
+            "label": "Privacy Policy",
+            "url": "#"
+          },
+          {
+            "label": "About Us",
+            "url": "#"
+          },
+          {
+            "label": "Contact Us",
+            "url": "#"
+          },
+          {
+            "label": "New Link",
+            "url": "#"
+          }
+        ],
+        "textColor": "#ffffff",
+        "fontSize": "14px",
+        "fontWeight": "medium",
+        "gap": "24px",
+        "backgroundColor": "#000000"
+      }
+    },
+    {
+      "id": "section-social-icons",
+      "type": "social-icons",
+      "props": {
+        "icons": [
+          {
+            "platform": "Instagram",
+            "color": "#E1306C"
+          },
+          {
+            "platform": "Facebook",
+            "color": "#1877F2"
+          },
+          {
+            "platform": "X",
+            "color": "#ffffff"
+          },
+          {
+            "platform": "YouTube",
+            "color": "#FF0000"
+          },
+          {
+            "platform": "Pinterest",
+            "color": "#E60023"
+          },
+          {
+            "platform": "LinkedIn",
+            "color": "#0A66C2"
+          }
+        ],
+        "iconSize": "24px",
+        "gap": "16px",
+        "backgroundColor": "#000000"
+      }
+    },
+    {
+      "id": "section-copyright",
+      "type": "copyright",
+      "props": {
+        "content": "© 2026, sparrowinfo",
+        "textColor": "#ffffff",
+        "fontSize": "12px",
+        "textAlign": "center",
+        "padding": "10px 0",
+        "backgroundColor": "#000000"
+      }
+    }
+  ],
+  "category": "footer"
+}

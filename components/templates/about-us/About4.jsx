@@ -141,15 +141,16 @@
 
 import React, { useState, useEffect } from 'react';
 import { Settings2, Plus, Trash2, Image as ImageIcon, Type, MousePointer2, X } from 'lucide-react';
-import DeviceMockup from '../layout/DeviceMockup';
+import DeviceMockup from '../../layout/DeviceMockup';
 import Swal from 'sweetalert2';
+ import templatesData from '@/data/templates.json';
 
 const About4 = ({ data: initialData }) => {
   const [data, setData] = useState(initialData || { components: [] });
   const [selectedId, setSelectedId] = useState(null);
   const [activeTabId, setActiveTabId] = useState(initialData?.components?.find(c => c.type === 'tabs-section')?.props.tabs[0]?.id || null);
   const [viewMode, setViewMode] = useState('desktop');
-
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   useEffect(() => {
     if (initialData) setData(initialData);
   }, [initialData]);
@@ -228,41 +229,58 @@ const About4 = ({ data: initialData }) => {
 
   const handleSave = async () => {
     try {
-      // 1. Subtle Loading State (No annoying popup)
-      Toast.fire({
-        icon: 'info',
-        title: 'Saving template...',
-        timer: 0, // Stay open until finished
-      });
-
-      const response = await fetch('/api/save-template', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        // 2. Success Toast
+   
         Toast.fire({
-          icon: 'success',
-          title: 'Saved successfully',
-          background: '#ffffff',
-          iconColor: '#10b981', // Modern Emerald green
+            icon: 'info',
+            title: 'Saving template...',
+            showConfirmButton: false,
+            timer: 0, 
         });
-      } else {
-        throw new Error();
-      }
-    } catch (error) {
-      // 3. Error Toast
-      Toast.fire({
-        icon: 'error',
-        title: 'Save failed',
-        background: '#fff1f2', // Light red tint
-        iconColor: '#f43f5e', // Modern Rose red
-      });
-    }
-  };
 
+     
+        let folderName = "general"; 
+        
+      
+        templatesData.forEach(cat => {
+            const found = cat.templates.find(t => t.templateId === data.templateId);
+            if (found) {
+ 
+                folderName = cat.category; 
+            }
+        });
+
+        const payload = {
+            ...data,
+            category: folderName 
+        };
+
+  
+        const response = await fetch('/api/save-template', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+        });
+
+        if (response.ok) {
+            Toast.fire({
+                icon: 'success',
+                title: 'Saved successfully',
+                timer: 2000,
+            });
+        } else {
+            const errorText = await response.text();
+            console.error("Server Error:", errorText);
+            throw new Error();
+        }
+    } catch (error) {
+        console.error("Frontend Error:", error);
+        Toast.fire({
+            icon: 'error',
+            title: 'Save failed',
+            timer: 3000,
+        });
+    }
+};
 
 
   const activeComp = selectedId ? getComp(selectedId) : null;
@@ -285,98 +303,135 @@ const About4 = ({ data: initialData }) => {
     );
   };
 
-  return (
-    <div className="flex min-h-screen bg-gray-100 font-sans" style={{ width: "100%" }}>
-      <div className="flex-1  " onClick={() => setSelectedId(null)}>
-        <DeviceMockup activeDevice={viewMode} onChange={setViewMode}>
-          <div className="bg-white min-h-screen font-sans text-gray-800 pb-20 overflow-y-auto">
+  const renderCanvasContent =( forModel)=>(
+    <div className="bg-white min-h-screen font-sans text-gray-800 pb-20 overflow-y-auto">
 
-            {data?.components?.filter(c => c.type === 'heading').map(header => (
-              <div key={header.id} className="py-12 text-center px-4 group relative cursor-pointer" onClick={(e) => { e.stopPropagation(); setSelectedId(header.id); }}>
-                <Editable id={header.id} field="heading" tag="h1" className="tracking-widest uppercase font-bold"
-                  style={{ color: header.props.headingColor, fontSize: `${header.props.headingFontSize}px` }}
-                />
+    {data?.components?.filter(c => c.type === 'heading').map(header => (
+      <div key={header.id} className="py-12 text-center px-4 group relative cursor-pointer" onClick={(e) => { e.stopPropagation(); setSelectedId(header.id); }}>
+        <Editable id={header.id} field="heading" tag="h1" className="tracking-widest uppercase font-bold"
+          style={{ color: header.props.headingColor, fontSize: `${header.props.headingFontSize}px` }}
+        />
+      </div>
+    ))}
+
+    <div className="max-w-7xl mx-auto px-8">
+      <div className="flex flex-col lg:flex-row gap-12 items-start"
+        style={{ flexDirection: viewMode === 'desktop' ? 'row' : 'column' }}>
+
+        <div style={{ width: viewMode === 'desktop' ? '50%' : '100%' }}>
+          {/* Tab Heads Navigation */}
+          <div className="flex items-center border-b border-gray-200 mb-8 overflow-x-auto no-scrollbar group/tabs">
+            {tabsSection.props.tabs.map((tab) => (
+              <div key={tab.id} className="relative group/tab">
+                <button
+                  onClick={() => {
+                    setActiveTabId(tab.id); // Use ID here
+                    setSelectedId(tabsSection.id);
+                  }}
+                  className={`py-2 px-6 text-xs font-bold tracking-widest transition-all border-b-2 whitespace-nowrap ${activeTabId === tab.id ? 'border-gray-800 text-gray-900' : 'border-transparent text-gray-400'
+                    }`}
+                >
+                  {tab["tab-head"]}
+                </button>
+                {forModel === 0 && ( 
+                  <button
+                  onClick={(e) => handleDeleteTab(tab.id, e)}
+                  className="absolute top-2 -right-1 bg-red-500 text-white rounded-full p-0.5 opacity-0 group-hover/tab:opacity-100 transition-opacity cursor-pointer"
+                >
+
+                  <X size={10} />
+
+                </button>
+
+                 )}
+                
               </div>
             ))}
-
-            <div className="max-w-7xl mx-auto px-8">
-              <div className="flex flex-col lg:flex-row gap-12 items-start"
-                style={{ flexDirection: viewMode === 'desktop' ? 'row' : 'column' }}>
-
-                <div style={{ width: viewMode === 'desktop' ? '50%' : '100%' }}>
-                  {/* Tab Heads Navigation */}
-                  <div className="flex items-center border-b border-gray-200 mb-8 overflow-x-auto no-scrollbar group/tabs">
-                    {tabsSection.props.tabs.map((tab) => (
-                      <div key={tab.id} className="relative group/tab">
-                        <button
-                          onClick={() => {
-                            setActiveTabId(tab.id); // Use ID here
-                            setSelectedId(tabsSection.id);
-                          }}
-                          className={`py-2 px-6 text-xs font-bold tracking-widest transition-all border-b-2 whitespace-nowrap ${activeTabId === tab.id ? 'border-gray-800 text-gray-900' : 'border-transparent text-gray-400'
-                            }`}
-                        >
-                          {tab["tab-head"]}
-                        </button>
-                        <button
-                          onClick={(e) => handleDeleteTab(tab.id, e)}
-                          className="absolute top-2 -right-1 bg-red-500 text-white rounded-full p-0.5 opacity-0 group-hover/tab:opacity-100 transition-opacity cursor-pointer"
-                        >
-
-                          <X size={10} />
-
-                        </button>
-                      </div>
-                    ))}
-                    {/* ADD NEW TAB BUTTON */}
-                    <button
-                      onClick={(e) => { e.stopPropagation(); handleAddTab(); }}
-                      className="ml-4 p-2 text-indigo-500 hover:bg-indigo-50 rounded-full transition-colors cursor-pointer"
-                      title="Add New Tab"
-                    >
-                      <Plus size={18} />
-                    </button>
-                  </div>
-
-                  <div className="min-h-[300px]" onClick={(e) => { e.stopPropagation(); setSelectedId(tabsSection.id); }}>
-                    <Editable
-                      id={tabsSection?.id}
-                      tabId={activeTab?.id}
-                      isTab field="heading"
-                      tag="h2"
-                      className="font-bold mb-4"
-                      style={{
-                        fontSize: `${activeTab?.["tab-content"].headingFontSize}px`,
-                        color: tabsSection.props.contentHeadingColor || '#111' // Uses the new global heading color
-                      }}
-                    />
-                    <Editable
-                      id={tabsSection?.id}
-                      tabId={activeTab?.id}
-                      isTab field="content"
-                      tag="p"
-                      className="leading-relaxed text-justify whitespace-pre-line"
-                      style={{
-                        fontSize: `${activeTab?.["tab-content"].fontSize}px`,
-                        color: activeTab?.["tab-content"].color || '#4b5563' // Uses the specific tab text color
-                      }}
-                    />
-                  </div>
-                </div>
-
-                <div style={{ width: viewMode === 'desktop' ? '50%' : '100%' }} className="flex justify-center">
-                  <img
-                    src={tabsSection.props["about-image"]?.src}
-                    onClick={(e) => { e.stopPropagation(); setSelectedId("common-image-trigger"); }}
-                    className={`shadow-2xl transition-all cursor-pointer w-full object-cover aspect-[4/3] ${selectedId === "common-image-trigger" ? 'ring-4 ring-indigo-500' : ''}`}
-                    style={{ borderRadius: `${tabsSection.props["about-image"]?.borderRadius || 0}px` }}
-                  />
-                </div>
-              </div>
-            </div>
+            {/* ADD NEW TAB BUTTON */}
+            {forModel === 0 && (
+               <button
+               onClick={(e) => { e.stopPropagation(); handleAddTab(); }}
+               className="ml-4 p-2 text-indigo-500 hover:bg-indigo-50 rounded-full transition-colors cursor-pointer"
+               title="Add New Tab"
+             >
+               <Plus size={18} />
+             </button>
+            )}
+           
           </div>
+
+          <div className="min-h-[300px]" onClick={(e) => { e.stopPropagation(); setSelectedId(tabsSection.id); }}>
+            <Editable
+              id={tabsSection?.id}
+              tabId={activeTab?.id}
+              isTab field="heading"
+              tag="h2"
+              className="font-bold mb-4"
+              style={{
+                fontSize: `${activeTab?.["tab-content"].headingFontSize}px`,
+                color: tabsSection.props.contentHeadingColor || '#111' // Uses the new global heading color
+              }}
+            />
+            <Editable
+              id={tabsSection?.id}
+              tabId={activeTab?.id}
+              isTab field="content"
+              tag="p"
+              className="leading-relaxed text-justify whitespace-pre-line"
+              style={{
+                fontSize: `${activeTab?.["tab-content"].fontSize}px`,
+                color: activeTab?.["tab-content"].color || '#4b5563' // Uses the specific tab text color
+              }}
+            />
+          </div>
+        </div>
+
+        <div style={{ width: viewMode === 'desktop' ? '50%' : '100%' }} className="flex justify-center">
+          <img
+            src={tabsSection.props["about-image"]?.src}
+            onClick={(e) => { e.stopPropagation(); setSelectedId("common-image-trigger"); }}
+            className={`shadow-2xl transition-all cursor-pointer w-full object-cover aspect-[4/3] ${selectedId === "common-image-trigger" ? 'ring-4 ring-indigo-500' : ''}`}
+            style={{ borderRadius: `${tabsSection.props["about-image"]?.borderRadius || 0}px` }}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  )
+
+  return (
+    <div className="flex min-h-screen bg-gray-100 font-sans" style={{ width: "100%" }}>
+       <button
+               onClick={() => setIsPreviewOpen(true)}
+               style={{fontSize:"13px",backgroundColor: "#615fff"}}
+               className="fixed top-3 right-80 z-50  cursor-pointer    text-white px-6 py-2  shadow-2xl  rounded-lg transition-all flex items-center gap-2 font-bold"
+             >
+               <MousePointer2 size={13} /> Preview 
+             </button>
+      <div className="flex-1  " onClick={() => setSelectedId(null)}>
+        <DeviceMockup activeDevice={viewMode} onChange={setViewMode}>
+          {renderCanvasContent(0)}
         </DeviceMockup>
       </div>
+
+      {isPreviewOpen && (
+                    <div className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm flex flex-col items-center justify-start overflow-y-auto p-10">
+                      {/* Close Button */}
+                      <button
+                        onClick={() => setIsPreviewOpen(false)}
+                        className="absolute top-6 right-10 text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all"
+                      >
+                        <X size={32} />
+                      </button>
+            
+                      <div className="w-full  mt-10 mb-20">
+                        <div className="  p-12 font-serif text-black rounded-xl pointer-events-none">
+                          {/* We use pointer-events-none so they can't edit while previewing */}
+                          {renderCanvasContent(1)}
+                        </div>
+                      </div>
+                    </div>
+                  )}
 
       {/* SETTINGS SIDEBAR */}
       {/* SETTINGS SIDEBAR */}
@@ -394,7 +449,7 @@ const About4 = ({ data: initialData }) => {
               className="  text-white px-5 py-2 rounded-lg text-sm font-semibold   hover:shadow-md hover:bg-blue-500 cursor-pointer transition-all active:scale-95"
               style={{ backgroundColor: "#615fff", padding: "8px 18px", fontSize: "14px" }}
             >
-              Save Changes
+             Publish
             </button>
           </div>
         </div>

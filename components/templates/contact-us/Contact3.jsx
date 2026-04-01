@@ -151,14 +151,16 @@
 // export default Contact3;
 
 import React, { useState, useEffect } from 'react';
-import { Settings2, Plus, Trash2, MapPin } from 'lucide-react';
-import DeviceMockup from '../layout/DeviceMockup';
+import { Settings2, Plus, Trash2, MapPin,MousePointer2,X } from 'lucide-react';
+import DeviceMockup from '../../layout/DeviceMockup';
 import Swal from 'sweetalert2';
+import templatesData from '@/data/templates.json';
 
 const Contact3Dynamic = ({ data: initialData }) => {
     const [data, setData] = useState(initialData || { components: [] });
     const [selectedId, setSelectedId] = useState(null);
     const [viewMode, setViewMode] = useState('desktop');
+    const [isPreviewOpen, setIsPreviewOpen] = useState(false);
 
     useEffect(() => {
         if (initialData) setData(initialData);
@@ -231,37 +233,55 @@ const Contact3Dynamic = ({ data: initialData }) => {
 
     const handleSave = async () => {
         try {
-            // 1. Subtle Loading State (No annoying popup)
+       
             Toast.fire({
                 icon: 'info',
                 title: 'Saving template...',
-                timer: 0, // Stay open until finished
+                showConfirmButton: false,
+                timer: 0, 
             });
-
+    
+         
+            let folderName = "general"; 
+            
+          
+            templatesData.forEach(cat => {
+                const found = cat.templates.find(t => t.templateId === data.templateId);
+                if (found) {
+     
+                    folderName = cat.category; 
+                }
+            });
+    
+            const payload = {
+                ...data,
+                category: folderName 
+            };
+    
+      
             const response = await fetch('/api/save-template', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data),
+                body: JSON.stringify(payload),
             });
-
+    
             if (response.ok) {
-                // 2. Success Toast
                 Toast.fire({
                     icon: 'success',
                     title: 'Saved successfully',
-                    background: '#ffffff',
-                    iconColor: '#10b981', // Modern Emerald green
+                    timer: 2000,
                 });
             } else {
+                const errorText = await response.text();
+                console.error("Server Error:", errorText);
                 throw new Error();
             }
         } catch (error) {
-            // 3. Error Toast
+            console.error("Frontend Error:", error);
             Toast.fire({
                 icon: 'error',
                 title: 'Save failed',
-                background: '#fff1f2', // Light red tint
-                iconColor: '#f43f5e', // Modern Rose red
+                timer: 3000,
             });
         }
     };
@@ -295,139 +315,173 @@ const Contact3Dynamic = ({ data: initialData }) => {
     const infoSection = getComp("contact-info-address-map");
     const activeComp = selectedId ? getComp(selectedId) : null;
 
+
+
+    const renderCanvasContent = (isModel)=>(
+        <div className="bg-white min-h-screen py-20 px-4">
+        {/* 1. Main Heading Section */}
+        <div
+            className="max-w-4xl mx-auto mb-16 text-center"
+            onClick={(e) => { e.stopPropagation(); setSelectedId("main-heading-contact"); }}
+            style={{ marginBottom: "40px", paddingTop: "20px" }}
+        >
+            <Editable
+                id="main-heading-contact" field="heading" tag="h1"
+                className="font-bold mb-4"
+                disabled={isModel === 1}
+                style={{
+                    fontSize: `${headingComp.props.headingFontSize}px`,
+                    color: headingComp.props.headingColor,
+                    marginBottom: "10px"
+                }}
+            />
+            <Editable
+                id="main-heading-contact" field="content" tag="p"
+                disabled={isModel === 1}
+                style={{
+                    fontSize: `${headingComp.props.contentFontSize}px`,
+                    color: headingComp.props.contentColor
+                }}
+            />
+        </div>
+
+        {/* 2. Grid Container */}
+        <div
+            className={`max-w-7xl mx-auto flex ${viewMode === 'mobile' ? 'flex-col' : 'flex-row'} gap-8`}
+            style={{ justifyContent: "space-between" }}
+        >
+            {/* Left Side: Contact Form */}
+            <div
+                className="bg-white p-8 rounded-xl shadow-sm border border-gray-100"
+                onClick={(e) => { e.stopPropagation(); setSelectedId("contact-form-section"); }}
+                style={{ width: viewMode === "mobile" ? "100%" : "49%" }}
+            >
+                <div className="space-y-6">
+                    {formSection.props.fields?.map((field) => (
+                        <div key={field.id} className="flex flex-col">
+                            {field.type === "textarea" ? (
+                                <textarea
+                                    rows={4}
+
+                                    style={{ border: "1px solid #e5e7eb", padding: "10px", fontSize: "13px" }}
+                                    placeholder={field.label}
+                                />
+                            ) : (
+                                <input
+
+
+                                    placeholder={field.label}
+                                    style={{ border: "1px solid #e5e7eb", padding: "10px", fontSize: "13px" }}
+                                />
+                            )}
+                        </div>
+                    ))}
+                    <button
+                        className="w-full py-3 mt-4 font-bold tracking-widest rounded-lg"
+                        style={{
+                            backgroundColor: formSection.props.buttonColor,
+                            color: formSection.props.buttonTextColor
+                        }}
+                    >
+                        {formSection.props.buttonText}
+                    </button>
+                </div>
+            </div>
+
+            {/* Right Side: Info + Map */}
+            <div
+                className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 flex flex-col"
+                onClick={(e) => { e.stopPropagation(); setSelectedId("contact-info-address-map"); }}
+                style={{ width: viewMode === "mobile" ? "100%" : "50%" }}
+            >
+                <div className="space-y-8 flex-grow">
+                    {infoSection.props.sections?.map((section, idx) => (
+                        <div key={idx} className="relative group">
+                            {/* 2. Contact Info Styles */}
+                            <Editable
+                                id="contact-info-address-map" index={idx} field="heading" tag="h3"
+                                className="font-bold mb-2"
+                                style={{
+                                    color: infoSection.props.infoHeadingColor || "#111827",
+                                    fontSize: `${infoSection.props.infoHeadingSize || 18}px`
+                                }}
+                            />
+                            <Editable
+                                id="contact-info-address-map" index={idx} field="content" tag="p"
+                                className="leading-relaxed"
+                                style={{
+                                    color: infoSection.props.infoContentColor || "#4b5563",
+                                    fontSize: `${infoSection.props.infoContentSize || 16}px`
+                                }}
+                            />
+                        </div>
+                    ))}
+                </div>
+
+                {/* 3. Dynamic Map Implementation */}
+                {infoSection.props.mapSection && (
+                    <div className="overflow-hidden mt-8 border border-gray-100 rounded-lg">
+                        {infoSection.props.mapUrl ? (
+                            <iframe
+                                title="Map"
+                                src={infoSection.props.mapUrl}
+                                width="100%"
+                                height={infoSection.props.mapHeight || 200}
+                                style={{ border: 0 }}
+                                allowFullScreen=""
+                                loading="lazy"
+                            ></iframe>
+                        ) : (
+                            <div
+                                className="bg-gray-100 flex items-center justify-center"
+                                style={{ height: `${infoSection.props.mapHeight || 200}px` }}
+                            >
+                                <div className="text-center text-gray-400">
+                                    <MapPin className="mx-auto mb-2" />
+                                    <p className="text-xs uppercase tracking-widest font-bold">Add URL in Sidebar</p>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                )}
+            </div>
+        </div>
+    </div>
+    )
+
     return (
         <div className="flex min-h-screen bg-gray-100 font-sans" style={{ width: "100%" }}>
+              <button
+        onClick={() => setIsPreviewOpen(true)}
+        style={{fontSize:"13px",backgroundColor: "#615fff"}}
+        className="fixed top-3 right-80 z-50  cursor-pointer    text-white px-6 py-2  shadow-2xl  rounded-lg transition-all flex items-center gap-2 font-bold"
+      >
+        <MousePointer2 size={13} /> Preview 
+      </button>
             <div className="flex-1 " onClick={() => setSelectedId(null)}>
                 <DeviceMockup activeDevice={viewMode} onChange={setViewMode}>
-                    <div className="bg-white min-h-screen py-20 px-4">
-                        {/* 1. Main Heading Section */}
-                        <div
-                            className="max-w-4xl mx-auto mb-16 text-center"
-                            onClick={(e) => { e.stopPropagation(); setSelectedId("main-heading-contact"); }}
-                            style={{ marginBottom: "40px", paddingTop: "20px" }}
-                        >
-                            <Editable
-                                id="main-heading-contact" field="heading" tag="h1"
-                                className="font-bold mb-4"
-                                style={{
-                                    fontSize: `${headingComp.props.headingFontSize}px`,
-                                    color: headingComp.props.headingColor,
-                                    marginBottom: "10px"
-                                }}
-                            />
-                            <Editable
-                                id="main-heading-contact" field="content" tag="p"
-                                style={{
-                                    fontSize: `${headingComp.props.contentFontSize}px`,
-                                    color: headingComp.props.contentColor
-                                }}
-                            />
-                        </div>
-
-                        {/* 2. Grid Container */}
-                        <div
-                            className={`max-w-7xl mx-auto flex ${viewMode === 'mobile' ? 'flex-col' : 'flex-row'} gap-8`}
-                            style={{ justifyContent: "space-between" }}
-                        >
-                            {/* Left Side: Contact Form */}
-                            <div
-                                className="bg-white p-8 rounded-xl shadow-sm border border-gray-100"
-                                onClick={(e) => { e.stopPropagation(); setSelectedId("contact-form-section"); }}
-                                style={{ width: viewMode === "mobile" ? "100%" : "49%" }}
-                            >
-                                <div className="space-y-6">
-                                    {formSection.props.fields?.map((field) => (
-                                        <div key={field.id} className="flex flex-col">
-                                            {field.type === "textarea" ? (
-                                                <textarea
-                                                    rows={4}
-
-                                                    style={{ border: "1px solid #e5e7eb", padding: "10px", fontSize: "13px" }}
-                                                    placeholder={field.label}
-                                                />
-                                            ) : (
-                                                <input
-
-
-                                                    placeholder={field.label}
-                                                    style={{ border: "1px solid #e5e7eb", padding: "10px", fontSize: "13px" }}
-                                                />
-                                            )}
-                                        </div>
-                                    ))}
-                                    <button
-                                        className="w-full py-3 mt-4 font-bold tracking-widest rounded-lg"
-                                        style={{
-                                            backgroundColor: formSection.props.buttonColor,
-                                            color: formSection.props.buttonTextColor
-                                        }}
-                                    >
-                                        {formSection.props.buttonText}
-                                    </button>
-                                </div>
-                            </div>
-
-                            {/* Right Side: Info + Map */}
-                            <div
-                                className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 flex flex-col"
-                                onClick={(e) => { e.stopPropagation(); setSelectedId("contact-info-address-map"); }}
-                                style={{ width: viewMode === "mobile" ? "100%" : "50%" }}
-                            >
-                                <div className="space-y-8 flex-grow">
-                                    {infoSection.props.sections?.map((section, idx) => (
-                                        <div key={idx} className="relative group">
-                                            {/* 2. Contact Info Styles */}
-                                            <Editable
-                                                id="contact-info-address-map" index={idx} field="heading" tag="h3"
-                                                className="font-bold mb-2"
-                                                style={{
-                                                    color: infoSection.props.infoHeadingColor || "#111827",
-                                                    fontSize: `${infoSection.props.infoHeadingSize || 18}px`
-                                                }}
-                                            />
-                                            <Editable
-                                                id="contact-info-address-map" index={idx} field="content" tag="p"
-                                                className="leading-relaxed"
-                                                style={{
-                                                    color: infoSection.props.infoContentColor || "#4b5563",
-                                                    fontSize: `${infoSection.props.infoContentSize || 16}px`
-                                                }}
-                                            />
-                                        </div>
-                                    ))}
-                                </div>
-
-                                {/* 3. Dynamic Map Implementation */}
-                                {infoSection.props.mapSection && (
-                                    <div className="overflow-hidden mt-8 border border-gray-100 rounded-lg">
-                                        {infoSection.props.mapUrl ? (
-                                            <iframe
-                                                title="Map"
-                                                src={infoSection.props.mapUrl}
-                                                width="100%"
-                                                height={infoSection.props.mapHeight || 200}
-                                                style={{ border: 0 }}
-                                                allowFullScreen=""
-                                                loading="lazy"
-                                            ></iframe>
-                                        ) : (
-                                            <div
-                                                className="bg-gray-100 flex items-center justify-center"
-                                                style={{ height: `${infoSection.props.mapHeight || 200}px` }}
-                                            >
-                                                <div className="text-center text-gray-400">
-                                                    <MapPin className="mx-auto mb-2" />
-                                                    <p className="text-xs uppercase tracking-widest font-bold">Add URL in Sidebar</p>
-                                                </div>
-                                            </div>
-                                        )}
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                    </div>
+                    {renderCanvasContent(0)}
                 </DeviceMockup>
             </div>
+
+            {isPreviewOpen && (
+                                        <div className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm flex flex-col items-center justify-start overflow-y-auto p-10">
+                                            {/* Close Button */}
+                                            <button
+                                                onClick={() => setIsPreviewOpen(false)}
+                                                className="absolute top-6 right-10 text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all"
+                                            >
+                                                <X size={32} />
+                                            </button>
+                        
+                                            <div className="w-full  mt-10 mb-20">
+                                                <div className="  p-12 font-serif text-black rounded-xl pointer-events-none">
+                                                    {/* We use pointer-events-none so they can't edit while previewing */}
+                                                    {renderCanvasContent(1)}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
 
             {/* --- SIDEBAR --- */}
             {/* --- SIDEBAR --- */}
@@ -445,7 +499,7 @@ const Contact3Dynamic = ({ data: initialData }) => {
                             className="  text-white px-5 py-2 rounded-lg text-sm font-semibold   hover:shadow-md hover:bg-blue-500 cursor-pointer transition-all active:scale-95"
                             style={{ backgroundColor: "#615fff", padding: "8px 18px", fontSize: "14px" }}
                         >
-                            Save Changes
+                           Publish
                         </button>
                     </div>
                 </div>

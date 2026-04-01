@@ -1,0 +1,100 @@
+{
+  "templateId": "Contact5",
+  "preview": "contact5.png",
+  "name": "Solar Contact Split Layout",
+  "category": "contact-us",
+  "backgroundColor": "#f0f9f4",
+  "components": [
+    {
+      "id": "section-1-hero",
+      "type": "hero-header",
+      "props": {
+        "heading": "Contact Us",
+        "subtext": "Laoreet sit amet cursus sit amet dictum sit amet justo.",
+        "backgroundImage": "http://elvee.web/WebSiteStaticImage/Banner/aboutusBanner1.png",
+        "headingFontSize": 58,
+        "headingColor": "#ffffff",
+        "contentFontSize": 19,
+        "contentColor": "#cec5c5",
+        "textAlign": "left",
+        "padding": "100px 5%"
+      }
+    },
+    {
+      "id": "section-2-info",
+      "type": "content-block",
+      "props": {
+        "heading": "Get Your Instant Free fghgh Quote Now fhghghghghj",
+        "subheading": "Qadipiscing elit, sed do eiusmod tempor.",
+        "content": "Adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+        "phoneDisplay": "0 800 555 44 33",
+        "iconColor": "#2d5a43",
+        "headingFontSize": 36,
+        "headingColor": "#111827",
+        "contentFontSize": 16,
+        "contentColor": "#4b5563",
+        "textAlign": "left"
+      }
+    },
+    {
+      "id": "section-3-form",
+      "type": "form-container",
+      "props": {
+        "backgroundColor": "#ffffff",
+        "borderRadius": 14,
+        "padding": "48px",
+        "buttonText": "Learn More",
+        "buttonColor": "#2d5a43",
+        "buttonTextColor": "#ffffff",
+        "buttonBorderRadius": 50,
+        "fields": [
+          {
+            "id": "field-name",
+            "label": "Name",
+            "placeholder": "Name",
+            "type": "text",
+            "width": "100%",
+            "showIcon": true,
+            "icon": "User"
+          },
+          {
+            "id": "field-phone",
+            "label": "Phone",
+            "placeholder": "Phone",
+            "type": "tel",
+            "width": "100%",
+            "showIcon": true,
+            "icon": "Phone"
+          },
+          {
+            "id": "field-email",
+            "label": "Email Address",
+            "placeholder": "Email Address",
+            "type": "email",
+            "width": "100%",
+            "showIcon": true,
+            "icon": "Mail"
+          },
+          {
+            "id": "field-subject",
+            "label": "Subject",
+            "placeholder": "Subject",
+            "type": "text",
+            "width": "100%",
+            "showIcon": true,
+            "icon": "AlertCircle"
+          },
+          {
+            "id": "field-message",
+            "label": "Message",
+            "placeholder": "How can we help you? Feel free to get in touch!",
+            "type": "textarea",
+            "width": "100%",
+            "showIcon": true,
+            "icon": "Edit2"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -295,7 +295,7 @@
 //           <div className="flex justify-between items-center mb-4">
 //             <h2 className="text-xl font-bold text-gray-900 tracking-tight">Settings</h2>
 //             <button onClick={handleSave} className="text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-600 transition-all active:scale-95" style={{backgroundColor:"#615fff"}}>
-//               Save Changes
+//              Publish
 //             </button>
 //           </div>
 //         </div>
@@ -643,13 +643,18 @@
 
 import React, { useState, useEffect } from 'react';
 import { Trash2, Image as ImageIcon, Type, Plus, Settings2, Layout, Sliders, Trash, Maximize } from 'lucide-react';
-import DeviceMockup from '../layout/DeviceMockup';
+import DeviceMockup from '../../layout/DeviceMockup';
+import { MousePointer2 } from "lucide-react";
+import { X } from "lucide-react";
 import Swal from 'sweetalert2';
+import templatesData from '@/data/templates.json';
+
 
 const About3 = ({ data: initialData }) => {
   const [data, setData] = useState(initialData || { components: [] });
   const [selectedId, setSelectedId] = useState(null);
   const [viewMode, setViewMode] = useState('desktop');
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
 
   useEffect(() => {
     if (initialData) setData(initialData);
@@ -710,40 +715,58 @@ const About3 = ({ data: initialData }) => {
 
   const handleSave = async () => {
     try {
-      // 1. Subtle Loading State (No annoying popup)
-      Toast.fire({
-        icon: 'info',
-        title: 'Saving template...',
-        timer: 0, // Stay open until finished
-      });
-
-      const response = await fetch('/api/save-template', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        // 2. Success Toast
+   
         Toast.fire({
-          icon: 'success',
-          title: 'Saved successfully',
-          background: '#ffffff',
-          iconColor: '#10b981', // Modern Emerald green
+            icon: 'info',
+            title: 'Saving template...',
+            showConfirmButton: false,
+            timer: 0, 
         });
-      } else {
-        throw new Error();
-      }
+
+     
+        let folderName = "general"; 
+        
+      
+        templatesData.forEach(cat => {
+            const found = cat.templates.find(t => t.templateId === data.templateId);
+            if (found) {
+ 
+                folderName = cat.category; 
+            }
+        });
+
+        const payload = {
+            ...data,
+            category: folderName 
+        };
+
+  
+        const response = await fetch('/api/save-template', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+        });
+
+        if (response.ok) {
+            Toast.fire({
+                icon: 'success',
+                title: 'Saved successfully',
+                timer: 2000,
+            });
+        } else {
+            const errorText = await response.text();
+            console.error("Server Error:", errorText);
+            throw new Error();
+        }
     } catch (error) {
-      // 3. Error Toast
-      Toast.fire({
-        icon: 'error',
-        title: 'Save failed',
-        background: '#fff1f2', // Light red tint
-        iconColor: '#f43f5e', // Modern Rose red
-      });
+        console.error("Frontend Error:", error);
+        Toast.fire({
+            icon: 'error',
+            title: 'Save failed',
+            timer: 3000,
+        });
     }
-  };
+};
 
 
   const activeComp = selectedId ? getComp(selectedId) : null;
@@ -767,11 +790,8 @@ const About3 = ({ data: initialData }) => {
     );
   };
 
-  return (
-    <div className="flex min-h-screen bg-gray-100 font-sans" style={{ width: "100%" }}>
-      <div className="flex-1 " onClick={() => setSelectedId(null)}>
-        <DeviceMockup activeDevice={viewMode} onChange={setViewMode}>
-          <div className="bg-white min-h-screen font-sans text-gray-800 pb-20 overflow-y-auto">
+  const renderCanvasContent = (isModel)=>(
+    <div className="bg-white min-h-screen font-sans text-gray-800 pb-20 overflow-y-auto">
 
             {/* DYNAMIC TOP HEADING */}
             {data?.components?.filter(c => c.type === 'heading').map(header => (
@@ -789,8 +809,8 @@ const About3 = ({ data: initialData }) => {
                 <div className="w-16 h-px bg-indigo-500 mx-auto mt-4 mb-4"></div>
               </div>
             ))}
-
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col">
+{/* max-w-7xl */}
+            <div className="  mx-auto px-4 sm:px-6 lg:px-8 flex flex-col">
               {data?.components?.filter(c => c.type !== 'heading').map((section) => (
                 <section
                   key={section.id}
@@ -841,17 +861,55 @@ const About3 = ({ data: initialData }) => {
                 </section>
               ))}
 
-              <button
-                onClick={(e) => { e.stopPropagation(); handleAddSection(); }}
-                className="my-10 mx-auto flex items-center gap-2 px-6 py-3 border-2 border-dashed border-gray-300 rounded-xl text-gray-400 hover:border-indigo-400 hover:text-indigo-500 transition-all"
-              >
-                <Plus size={20} /> Add New Section
-              </button>
+              {!isModel && (
+                  <button
+                  onClick={(e) => { e.stopPropagation(); handleAddSection(); }}
+                  className="my-10 cursor-pointer mx-auto flex items-center gap-2 px-6 py-3 border-2 border-dashed border-gray-300 rounded-xl text-gray-400 hover:border-indigo-400 hover:text-indigo-500 transition-all"
+                >
+                  <Plus size={20} /> Add New Section
+                </button>
+              )}
+              
             </div>
           </div>
+    );
+
+
+  return (
+    <div className="flex min-h-screen bg-gray-100 font-sans" style={{ width: "100%" }}>
+
+      <button
+              onClick={() => setIsPreviewOpen(true)}
+              style={{fontSize:"13px",backgroundColor: "#615fff"}}
+              className="fixed top-3 right-80 z-50  cursor-pointer    text-white px-6 py-2  shadow-2xl  rounded-lg transition-all flex items-center gap-2 font-bold"
+            >
+              <MousePointer2 size={13} /> Preview 
+            </button>
+      <div className="flex-1 " onClick={() => setSelectedId(null)}>
+        <DeviceMockup activeDevice={viewMode} onChange={setViewMode}>
+        {renderCanvasContent(0)}
         </DeviceMockup>
       </div>
 
+
+ {isPreviewOpen && (
+              <div className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm flex flex-col items-center justify-start overflow-y-auto p-10">
+                {/* Close Button */}
+                <button
+                  onClick={() => setIsPreviewOpen(false)}
+                  className="absolute top-6 right-10 text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all"
+                >
+                  <X size={32} />
+                </button>
+      
+                <div className="w-full  mt-10 mb-20">
+                  <div className="  p-12 font-serif text-black rounded-xl pointer-events-none">
+                    {/* We use pointer-events-none so they can't edit while previewing */}
+                    {renderCanvasContent(1)}
+                  </div>
+                </div>
+              </div>
+            )}
       {/* SETTINGS SIDEBAR */}
       <div
         className="w-80 bg-white border-l border-gray-200 shadow-2xl fixed top-0 right-0 h-screen overflow-y-auto z-[60] flex flex-col"
@@ -867,7 +925,7 @@ const About3 = ({ data: initialData }) => {
               className="  text-white px-5 py-2 rounded-lg text-sm font-semibold   hover:shadow-md hover:bg-blue-500 cursor-pointer transition-all active:scale-95"
               style={{ backgroundColor: "#615fff", padding: "8px 18px", fontSize: "14px" }}
             >
-              Save Changes
+             Publish
             </button>
           </div>
         </div>

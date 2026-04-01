@@ -1,0 +1,113 @@
+{
+  "templateId": "Footer3",
+  "preview": "Footer3.png",
+  "name": "Luxury Jewelry Footer",
+  "components": [
+    {
+      "id": "section-logo",
+      "type": "logo",
+      "props": {
+        "image": "http://malakan.web/WebSiteStaticImage/logoIcon/webLogo1.png",
+        "alt": "logo",
+        "height": "72px",
+        "backgroundColor": "#f8f7f5",
+        "padding": "40px"
+      }
+    },
+    {
+      "id": "section-links",
+      "type": "links",
+      "props": {
+        "groups": [
+          {
+            "links": [
+              {
+                "label": "HOME ",
+                "url": "/"
+              },
+              {
+                "label": "CONTACT US",
+                "url": "/contact"
+              },
+              {
+                "label": "TERMS & CONDITION",
+                "url": "/terms"
+              },
+              {
+                "label": "ABOUT US",
+                "url": "/about"
+              },
+              {
+                "label": "PRIVACY POLICY",
+                "url": "/privacy"
+              }
+            ]
+          }
+        ],
+        "textColor": "#000000",
+        "fontSize": "14px",
+        "fontWeight": "medium",
+        "letterSpacing": "1px",
+        "backgroundColor": "#f8f7f5"
+      }
+    },
+    {
+      "id": "section-company-detail",
+      "type": "company-detail",
+      "props": {
+        "socialIcons": [
+          {
+            "platform": "Instagram",
+            "color": "#E1306C",
+            "url": "#"
+          },
+          {
+            "platform": "Facebook",
+            "color": "#1877F2",
+            "url": "#"
+          },
+          {
+            "platform": "X",
+            "color": "#000000",
+            "url": "#"
+          },
+          {
+            "platform": "YouTube",
+            "color": "#FF0000",
+            "url": "#"
+          },
+          {
+            "platform": "Pinterest",
+            "color": "#E60023",
+            "url": "#"
+          },
+          {
+            "platform": "LinkedIn",
+            "color": "#0A66C2",
+            "url": "#"
+          }
+        ],
+        "location": "Block No. M1 To M6, Gujarat Hira Bourse Gem & Jewellery Park, Pal-Hazira Road, Ichchhapore, Surat, Gujarat - 394510",
+        "phone": "9632587412",
+        "email": "email1@fakeeg.com",
+        "textColor": "#4a4a4a",
+        "fontSize": "13px",
+        "iconSize": "20px",
+        "backgroundColor": "#f8f7f5"
+      }
+    },
+    {
+      "id": "section-copyright",
+      "type": "copyright",
+      "props": {
+        "content": "©2025 Shree Diamond",
+        "textColor": "#f3ecec",
+        "fontSize": "14px",
+        "textAlign": "center",
+        "padding": "30px 0",
+        "backgroundColor": "#0d0d0d"
+      }
+    }
+  ],
+  "category": "footer"
+}

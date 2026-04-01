@@ -1,0 +1,68 @@
+{
+  "templateId": "Policy1",
+  "preview": "Policy1.png",
+  "name": "Privacy Policy Layout",
+  "backgroundColor": "#ffffff",
+  "components": [
+    {
+      "id": "section-1-main-header",
+      "type": "content-block",
+      "props": {
+        "heading": "Privacy Policy",
+        "content": "Eliorjewel.com is committed to maintaining the highest standards of secure transactions and customer information protection. This Privacy Policy explains how we collect, use, and safeguard your personal information when you interact with our website.",
+        "headingFontSize": 18,
+        "headingColor": "#111827",
+        "contentFontSize": 13,
+        "contentColor": "#374151",
+        "textAlign": "left",
+        "padding": "40px 5%",
+        "backgroundImage": ""
+      }
+    },
+    {
+      "id": "section-2-terms-list",
+      "type": "terms-array",
+      "props": {
+        "terms": [
+          {
+            "heading": "COLLECTION OF INFORMATION CVBVB",
+            "content": "All of our jewelry is designed and manufactured on-site. We develop new designs by brand wise such as modern jewelleries, high fashion jewelleries occasional oriented jewellery, plain gold jewelleries at every months. These new designs will appear on our website also we present new products on gem and jewellery exhibitions at india and international sectors.  hmmj jgk ghjhj"
+          },
+          {
+            "heading": "INFORMATION ON OUR SITE",
+            "content": "We make every effort to ensure that our online catalog is as accurate and complete as possible. To allow you to view our pieces in full detail, some pieces may appear larger or smaller than their actual size and weight in our product images; and since every computer monitor is set differently, size may vary slightly."
+          },
+          {
+            "heading": "RETURN POLICY",
+            "content": "We committed to complete customer satisfaction. We take pride in the quality and workmanship of our merchandise manufactured in our state-of-the-art facility, and we are confident that you will be completely satisfied. The contents of the package must be in their original condition and secure within the box. For your security do not indicate the contents of the package on the exterior of the box."
+          },
+          {
+            "heading": "SHIPPING POLICY",
+            "content": "All of our shipments will be delivered using Indian Courier as well as international couriers. All custom orders will be shipped the following day when your order is completed."
+          },
+          {
+            "heading": "LIMITED WARRANTY",
+            "content": "Our guarantee is simple and straightforward. If something is wrong due to faulty workmanship, we take care of it. It's a fair way of doing business. That being said, precious metals erode and stones can become damaged over time. When normal wear occurs, repairs can be done in house by our expert staff at the normal repair fee. Any work performed by a jeweler other than Elvee automatically voids the warranty. It is the responsibility of the customer to maintain insurance against loss or damage not covered by the warranty."
+          }
+        ],
+        "headingFontSize": 14,
+        "headingColor": "#111827",
+        "contentFontSize": 14,
+        "contentColor": "#000000",
+        "spacing": "24px"
+      }
+    },
+    {
+      "id": "section-3-declaration",
+      "type": "footer-note",
+      "props": {
+        "text": "* The policy of terms and condition will be change after you cover the membership and above policy is consider as basic policy for non-membership customers.",
+        "fontSize": 17,
+        "color": "#ff3333",
+        "fontStyle": "italic",
+        "padding": "20px 5%"
+      }
+    }
+  ],
+  "category": "privacy-policy"
+}

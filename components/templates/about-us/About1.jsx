@@ -195,7 +195,7 @@
 //         onClick={handleSave}
 //         className="fixed top-5 right-5 bg-indigo-600 text-white px-6 py-2 rounded-full shadow-lg hover:bg-indigo-700 transition-all font-sans font-bold z-50 hover:scale-105 active:scale-95"
 //       >
-//         Save Changes
+//        Publish
 //       </button>
 
 //       <div className="max-w-4xl mx-auto">
@@ -377,7 +377,7 @@
 //         onClick={handleSave}
 //         className="fixed top-5 right-5 bg-indigo-600 text-white px-6 py-2 rounded-full shadow-lg hover:bg-indigo-700 transition-all font-sans font-bold z-50 hover:scale-105 active:scale-95"
 //       >
-//         Save Changes
+//        Publish
 //       </button>
 
 //       <div className="max-w-4xl mx-auto">
@@ -725,15 +725,19 @@
 
 import React, { useState, useEffect } from 'react';
 import { Trash2 } from 'lucide-react';
-import DeviceMockup from '../layout/DeviceMockup';
+import { MousePointer2 } from "lucide-react";
+import { X } from "lucide-react";
+import DeviceMockup from '../../layout/DeviceMockup'; 
 import Swal from 'sweetalert2';
 import { Image as ImageIcon, Type, Plus, Settings2, Layout, Sliders, Trash, Maximize } from 'lucide-react';
+import templatesData from '@/data/templates.json';
+
 
 const About1 = ({ data: initialData }) => {
   const [data, setData] = useState(initialData);
   const [selectedId, setSelectedId] = useState(null);
   const [viewMode, setViewMode] = useState('desktop');
-
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   useEffect(() => {
     setData(initialData);
   }, [initialData]);
@@ -775,8 +779,8 @@ const About1 = ({ data: initialData }) => {
 
   const activeComp = selectedId ? getComp(selectedId) : null;
 
-   
-    
+
+
   const Toast = Swal.mixin({
     toast: true,
     position: 'top-end',
@@ -791,117 +795,205 @@ const About1 = ({ data: initialData }) => {
     }
   });
 
+  // const handleSave = async () => {
+  //   try {
+
+  //     Toast.fire({
+  //       icon: 'info',
+  //       title: 'Saving template...',
+  //       timer: 0,
+  //     });
+
+  //     const response = await fetch('/api/save-template', {
+  //       method: 'POST',
+  //       headers: { 'Content-Type': 'application/json' },
+  //       body: JSON.stringify(data),
+  //     });
+
+  //     if (response.ok) {
+
+  //       Toast.fire({
+  //         icon: 'success',
+  //         title: 'Saved successfully',
+  //         background: '#ffffff',
+  //         iconColor: '#10b981',
+  //       });
+  //     } else {
+  //       throw new Error();
+  //     }
+  //   } catch (error) {
+
+  //     Toast.fire({
+  //       icon: 'error',
+  //       title: 'Save failed',
+  //       background: '#fff1f2',
+  //       iconColor: '#f43f5e',
+  //     });
+  //   }
+  // };
+
+
   const handleSave = async () => {
     try {
-  
-      Toast.fire({
-        icon: 'info',
-        title: 'Saving template...',
-        timer: 0,  
-      });
-
-      const response = await fetch('/api/save-template', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-    
+        // 1. Loading Toast
         Toast.fire({
-          icon: 'success',
-          title: 'Saved successfully',
-          background: '#ffffff',
-          iconColor: '#10b981', 
+            icon: 'info',
+            title: 'Saving template...',
+            showConfirmButton: false,
+            timer: 0, 
         });
-      } else {
-        throw new Error();
-      }
+
+        // 2. Logic to find folder name
+        let folderName = "general"; 
+        
+        // This loop now uses the 'templatesData' we imported in Step 1
+        templatesData.forEach(cat => {
+            const found = cat.templates.find(t => t.templateId === data.templateId);
+            if (found) {
+                // Use 'category' because that is the key in your JSON
+                folderName = cat.category; 
+            }
+        });
+
+        const payload = {
+            ...data,
+            category: folderName 
+        };
+
+        // 3. Send to API
+        const response = await fetch('/api/save-template', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+        });
+
+        if (response.ok) {
+            Toast.fire({
+                icon: 'success',
+                title: 'Saved successfully',
+                timer: 2000,
+            });
+        } else {
+            const errorText = await response.text();
+            console.error("Server Error:", errorText);
+            throw new Error();
+        }
     } catch (error) {
-      
-      Toast.fire({
-        icon: 'error',
-        title: 'Save failed',
-        background: '#fff1f2',  
-        iconColor: '#f43f5e', 
-      });
+        console.error("Frontend Error:", error);
+        Toast.fire({
+            icon: 'error',
+            title: 'Save failed',
+            timer: 3000,
+        });
     }
-  };
+};
+  const renderCanvasContent = () => (
+    <div className="">
+      <div className="bg-white shadow-2xl p-12   font-serif text-black rounded-xl" style={{ minHeight: "100%", padding: "20px" }}>
+
+        <header className="mb-8" style={{ wordBreak: "break-all" }}>
+          <Editable id="heading-1" className="text-3xl font-bold uppercase tracking-wider mb-6" tag="h1" />
+          <div
+            className={`relative group overflow-hidden shadow-xl cursor-pointer transition-all ${selectedId === 'image-1' ? 'ring-4 ring-indigo-500' : ''}`}
+            style={{ borderRadius: getComp("image-1").props.borderRadius, }}
+            onClick={(e) => { e.stopPropagation(); setSelectedId("image-1"); }}
+          >
+            <img src={getComp("image-1").props.src || "https://via.placeholder.com/600x400"} className="w-full h-auto object-cover" alt="header" />
+          </div>
+        </header>
+
+        <section className="mb-12">
+          <Editable id="heading-2" tag="h2" className="text-2xl font-bold uppercase tracking-wide mb-2" />
+          <Editable id="text-1" tag="p" className="text-sm italic leading-relaxed opacity-90" />
+        </section>
+
+        <section className="mb-12">
+          <Editable id="heading-3" tag="h2" className="text-2xl font-bold uppercase tracking-wide mb-2" />
+          <Editable id="text-2" tag="p" className="text-sm italic mb-8 opacity-90" />
+
+          {/* LIST SECTION - STYLES NOW APPLY CORRECTLY */}
+          <div className="space-y-6">
+            {getComp("list-1").props.items?.map((item, index) => (
+              <div
+                key={index}
+                className={`border-t border-black/40 pt-4 cursor-pointer transition-all ${selectedId === 'list-1' ? 'focus:ring-2  ring-indigo-300 ring-1   rounded-sm' : ''}`}
+                onClick={(e) => { e.stopPropagation(); setSelectedId("list-1"); }}
+
+                style={{ color: getComp("list-1").props.color }}
+              >
+                <h3
+                  className="text-lg font-bold mb-1 outline-none"
+                  contentEditable
+                  suppressContentEditableWarning
+                  onBlur={(e) => {
+                    const newItems = [...getComp("list-1").props.items];
+                    newItems[index].title = e.target.innerText;
+                    handleUpdate("list-1", "items", newItems);
+                  }}
+                >
+                  {item.title}
+                </h3>
+                <p
+                  className="text-xs italic opacity-80 outline-none"
+
+                  style={{
+                    fontSize: getComp("list-1").props.fontSize,
+                    color: getComp("list-1").props.color
+                  }}
+                  contentEditable
+                  suppressContentEditableWarning
+                  onBlur={(e) => {
+                    const newItems = [...getComp("list-1").props.items];
+                    newItems[index].content = e.target.innerText;
+                    handleUpdate("list-1", "items", newItems);
+                  }}
+                >
+                  {item.content}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
+    </div>
+
+  );
 
   return (
     <div className="flex min-h-screen bg-gray-100 font-sans" style={{ width: "81.5%" }} onClick={() => setSelectedId(null)}>
+      <button
+        onClick={() => setIsPreviewOpen(true)}
+        style={{fontSize:"13px",backgroundColor: "#615fff"}}
+        className="fixed top-3 right-80 z-50  cursor-pointer    text-white px-6 py-2  shadow-2xl  rounded-lg transition-all flex items-center gap-2 font-bold"
+      >
+        <MousePointer2 size={13} /> Preview 
+      </button>
+
       {/* LEFT: MAIN EDITOR CANVAS */}
-      <DeviceMockup activeDevice={viewMode} onChange={setViewMode} style={{padding:"12px"}} component={initialData?.templateId} data={data}>
-        <div className="">
-          <div className="bg-white shadow-2xl p-12   font-serif text-black rounded-xl" style={{ minHeight: "100%", padding: "20px" }}>
+      <DeviceMockup activeDevice={viewMode} onChange={setViewMode} style={{ padding: "12px" }} >
+        {renderCanvasContent()}
+      </DeviceMockup>
 
-            <header className="mb-8" style={{ wordBreak: "break-all" }}>
-              <Editable id="heading-1" className="text-3xl font-bold uppercase tracking-wider mb-6" tag="h1" />
-              <div
-                className={`relative group overflow-hidden shadow-xl cursor-pointer transition-all ${selectedId === 'image-1' ? 'ring-4 ring-indigo-500' : ''}`}
-                style={{ borderRadius: getComp("image-1").props.borderRadius, }}
-                onClick={(e) => { e.stopPropagation(); setSelectedId("image-1"); }}
-              >
-                <img src={getComp("image-1").props.src || "https://via.placeholder.com/600x400"} className="w-full h-auto object-cover" alt="header" />
-              </div>
-            </header>
 
-            <section className="mb-12">
-              <Editable id="heading-2" tag="h2" className="text-2xl font-bold uppercase tracking-wide mb-2" />
-              <Editable id="text-1" tag="p" className="text-sm italic leading-relaxed opacity-90" />
-            </section>
 
-            <section className="mb-12">
-              <Editable id="heading-3" tag="h2" className="text-2xl font-bold uppercase tracking-wide mb-2" />
-              <Editable id="text-2" tag="p" className="text-sm italic mb-8 opacity-90" />
+      {isPreviewOpen && (
+        <div className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm flex flex-col items-center justify-start overflow-y-auto p-10">
+          {/* Close Button */}
+          <button
+            onClick={() => setIsPreviewOpen(false)}
+            className="absolute top-6 right-10 text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all"
+          >
+            <X size={32} />
+          </button>
 
-              {/* LIST SECTION - STYLES NOW APPLY CORRECTLY */}
-              <div className="space-y-6">
-                {getComp("list-1").props.items?.map((item, index) => (
-                  <div
-                    key={index}
-                    className={`border-t border-black/40 pt-4 cursor-pointer transition-all ${selectedId === 'list-1' ? 'focus:ring-2  ring-indigo-300 ring-1   rounded-sm' : ''}`}
-                    onClick={(e) => { e.stopPropagation(); setSelectedId("list-1"); }}
-          
-                    style={{ color: getComp("list-1").props.color }}
-                  >
-                    <h3
-                      className="text-lg font-bold mb-1 outline-none"
-                      contentEditable
-                      suppressContentEditableWarning
-                      onBlur={(e) => {
-                        const newItems = [...getComp("list-1").props.items];
-                        newItems[index].title = e.target.innerText;
-                        handleUpdate("list-1", "items", newItems);
-                      }}
-                    >
-                      {item.title}
-                    </h3>
-                    <p
-                      className="text-xs italic opacity-80 outline-none"
-                      
-                      style={{
-                        fontSize: getComp("list-1").props.fontSize,
-                        color: getComp("list-1").props.color
-                      }}
-                      contentEditable
-                      suppressContentEditableWarning
-                      onBlur={(e) => {
-                        const newItems = [...getComp("list-1").props.items];
-                        newItems[index].content = e.target.innerText;
-                        handleUpdate("list-1", "items", newItems);
-                      }}
-                    >
-                      {item.content}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </section>
+          <div className="w-full  mt-10 mb-20">
+            <div className="bg-white shadow-2xl p-12 font-serif text-black rounded-xl pointer-events-none">
+              {/* We use pointer-events-none so they can't edit while previewing */}
+              {renderCanvasContent()}
+            </div>
           </div>
         </div>
-
-      </DeviceMockup>
+      )}
 
       {/* RIGHT: SETTINGS SIDEBAR */}
       <div
@@ -912,13 +1004,13 @@ const About1 = ({ data: initialData }) => {
         {/* Header Section */}
         <div className="p-3 bg-white border-b border-gray-200 sticky top-0 z-10">
           <div className="flex justify-between items-center">
-            <h2 className="text-xl font-bold flex items-center gap-2 text-gray-800" style={{fontSize: "18px"}} ><Settings2 size={18} /> Settings</h2>
+            <h2 className="text-xl font-bold flex items-center gap-2 text-gray-800" style={{ fontSize: "18px" }} ><Settings2 size={18} /> Settings</h2>
             <button
               onClick={handleSave}
               className="  text-white px-5 py-2 rounded-lg text-sm font-semibold   hover:shadow-md hover:bg-blue-500 cursor-pointer transition-all active:scale-95"
-              style={{ backgroundColor: "#615fff", padding: "8px 18px",fontSize: "14px" }}
+              style={{ backgroundColor: "#615fff", padding: "8px 18px", fontSize: "14px" }}
             >
-              Save Changes
+             Publish
             </button>
           </div>
 
@@ -950,32 +1042,32 @@ const About1 = ({ data: initialData }) => {
                           <span className="text-xs font-mono text-gray-400 uppercase">{activeComp.props.color}</span>
                         </div>
                         <div className="flex flex-col gap-1.5 w-full">
-  {/* Professional Small Label */}
-  
+                          {/* Professional Small Label */}
 
-  <div className="flex items-center bg-gray-50 border border-gray-200 rounded-lg p-1 gap-2 focus-within:border-[#615fff] focus-within:ring-1 focus-within:ring-[#615fff]/20 transition-all shadow-sm">
-    {/* Premium Color Swatch */}
-    <div className="relative w-8 h-8 shrink-0 rounded-md overflow-hidden border border-gray-200 shadow-inner">
-      <input
-        type="color"
-        value={activeComp.props.color || "#000000"}
-        onChange={(e) => handleUpdate(activeComp.id, "color", e.target.value)}
-        className="absolute inset-0 w-full h-full cursor-pointer scale-[2.5] bg-transparent"
-        style={{ border: 'none', appearance: 'none' }}
-      />
-    </div>
 
-    {/* Hex Code Text Input */}
-    <input
-      type="text"
-      maxLength={7}
-      placeholder="#000000"
-      value={activeComp.props.color || ""}
-      onChange={(e) => handleUpdate(activeComp.id, "color", e.target.value)}
-      className="bg-transparent border-none text-[11px] font-mono w-full outline-none uppercase text-gray-700 placeholder:text-gray-300"
-    />
-  </div>
-</div>
+                          <div className="flex items-center bg-gray-50 border border-gray-200 rounded-lg p-1 gap-2 focus-within:border-[#615fff] focus-within:ring-1 focus-within:ring-[#615fff]/20 transition-all shadow-sm">
+                            {/* Premium Color Swatch */}
+                            <div className="relative w-8 h-8 shrink-0 rounded-md overflow-hidden border border-gray-200 shadow-inner">
+                              <input
+                                type="color"
+                                value={activeComp.props.color || "#000000"}
+                                onChange={(e) => handleUpdate(activeComp.id, "color", e.target.value)}
+                                className="absolute inset-0 w-full h-full cursor-pointer scale-[2.5] bg-transparent"
+                                style={{ border: 'none', appearance: 'none' }}
+                              />
+                            </div>
+
+                            {/* Hex Code Text Input */}
+                            <input
+                              type="text"
+                              maxLength={7}
+                              placeholder="#000000"
+                              value={activeComp.props.color || ""}
+                              onChange={(e) => handleUpdate(activeComp.id, "color", e.target.value)}
+                              className="bg-transparent border-none text-[11px] font-mono w-full outline-none uppercase text-gray-700 placeholder:text-gray-300"
+                            />
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -983,23 +1075,23 @@ const About1 = ({ data: initialData }) => {
 
                 {/* TYPOGRAPHY GROUP */}
                 {(activeComp.id === "list-1" || activeComp.props.fontSize) && (
-            <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
-              <label className="text-[11px] font-black text-gray-400 uppercase tracking-widest block mb-3">Typography</label>
-              <div>
-                <div className="flex justify-between mb-3">
-                  <span className="text-sm font-medium text-gray-700">Font Size</span>
-                  <span className="px-2 py-0.5 bg-indigo-50 text-indigo-600 rounded text-xs font-bold">{activeComp.props.fontSize || '12px'}</span>
-                </div>
-                <input 
-                  type="range" min="8" max="60"
-                  value={parseInt(activeComp.props.fontSize) || 12}
-                  onChange={(e) => handleUpdate(activeComp.id, "fontSize", `${e.target.value}px`)}
-                  className="w-full h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer  "
-                  style={{ accentColor: "#615fff" }}
-                />
-              </div>
-            </div>
-          )}
+                  <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                    <label className="text-[11px] font-black text-gray-400 uppercase tracking-widest block mb-3">Typography</label>
+                    <div>
+                      <div className="flex justify-between mb-3">
+                        <span className="text-sm font-medium text-gray-700">Font Size</span>
+                        <span className="px-2 py-0.5 bg-indigo-50 text-indigo-600 rounded text-xs font-bold">{activeComp.props.fontSize || '12px'}</span>
+                      </div>
+                      <input
+                        type="range" min="8" max="60"
+                        value={parseInt(activeComp.props.fontSize) || 12}
+                        onChange={(e) => handleUpdate(activeComp.id, "fontSize", `${e.target.value}px`)}
+                        className="w-full h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer  "
+                        style={{ accentColor: "#615fff" }}
+                      />
+                    </div>
+                  </div>
+                )}
                 {activeComp.id === "list-1" && (
                   <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 mt-6">
                     <div className="flex justify-between items-center mb-4">
@@ -1072,25 +1164,7 @@ const About1 = ({ data: initialData }) => {
                     </div>
 
                     <div>
-                      {/* <span className="text-sm font-medium text-gray-700 block mb-2">Display Width</span>
-                <div className="relative">
-                  <input 
-                    type="text" 
-                    className="w-full p-2.5 border border-gray-200 rounded-lg text-sm bg-gray-50   focus:ring-indigo-500 outline-none pl-4" 
-                    value={activeComp.props.width} 
-                    onChange={(e) => handleUpdate("image-1", "width", e.target.value)} 
-                    style={{padding:"7px"}}
-                    onFocus={(e) => {
-                      e.target.style.borderColor = "#615fff";
-                      e.target.style.ringColor = "#615fff";
                      
-                    }}
-                    onBlur={(e) => {
-                      e.target.style.borderColor = "#e5e7eb";
-                   
-                    }}
-                  />
-                </div> */}
                     </div>
                   </div>
                 )}
@@ -1118,3 +1192,11 @@ const About1 = ({ data: initialData }) => {
 };
 
 export default About1;
+
+
+
+
+
+
+
+ 

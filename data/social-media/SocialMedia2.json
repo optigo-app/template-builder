@@ -1,0 +1,96 @@
+{
+  "templateId": "SocialMedia2",
+  "preview": "SocialMedia2.png",
+  "name": "Grid Social Feed",
+  "backgroundColor": "#ffffff",
+  "components": [
+    {
+      "id": "header-1774938100001",
+      "type": "social-header",
+      "props": {
+        "title": "Connect With",
+        "username": "@username",
+        "followers": "28k Followers",
+        "buttonText": "Join Now",
+        "borderRadius": 9,
+        "aspectRatio": "2/1",
+        "logo": "",
+        "themeColor": "#1a1414"
+      }
+    },
+    {
+      "id": "post-1774938100002",
+      "type": "social-post",
+      "props": {
+        "image": "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/ecommerce/accessories/Checkered-Sunglasses-on-Stone-Pedestal-2.png",
+        "socialmedianame": "instagram",
+        "borderRadius": 12,
+        "aspectRatio": "1/1",
+        "iconShape": "circle",
+        "iconColor": "#374151"
+      }
+    },
+    {
+      "id": "post-1774938100003",
+      "type": "social-post",
+      "props": {
+        "image": "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/ecommerce/accessories/Elegant-Jewelry-Close-Up-2.png",
+        "socialmedianame": "facebook",
+        "borderRadius": 12,
+        "aspectRatio": "1/1",
+        "isVideo": false,
+        "iconShape": "circle",
+        "iconColor": "#374151"
+      }
+    },
+    {
+      "id": "post-1774938100004",
+      "type": "social-post",
+      "props": {
+        "image": "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/ecommerce/accessories/Elegant-Gold-Earrings-2.png",
+        "socialmedianame": "linkedin",
+        "borderRadius": 12,
+        "aspectRatio": "1/1",
+        "iconShape": "circle",
+        "iconColor": "#374151"
+      }
+    },
+    {
+      "id": "post-1774938100005",
+      "type": "social-post",
+      "props": {
+        "image": "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/ecommerce/accessories/Golden-Hair-Clip-Close-Up-2.png",
+        "socialmedianame": "facebook",
+        "borderRadius": 12,
+        "aspectRatio": "1/1",
+        "iconShape": "circle",
+        "iconColor": "#8b4b4b"
+      }
+    },
+    {
+      "id": "post-1774938100006",
+      "type": "social-post",
+      "props": {
+        "image": "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/ecommerce/accessories/Elegant-Pearl-Bracelet-on-Wrist-2.png",
+        "socialmedianame": "instagram",
+        "borderRadius": 12,
+        "aspectRatio": "1/1",
+        "iconShape": "square",
+        "iconColor": "#303a4b"
+      }
+    },
+    {
+      "id": "post-1774938100007",
+      "type": "social-post",
+      "props": {
+        "image": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=1974&auto=format&fit=crop",
+        "socialmedianame": "instagram",
+        "borderRadius": 11,
+        "aspectRatio": "1/1",
+        "iconShape": "circle",
+        "iconColor": "#374151"
+      }
+    }
+  ],
+  "category": "social-media"
+}

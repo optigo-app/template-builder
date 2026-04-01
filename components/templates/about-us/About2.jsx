@@ -143,10 +143,12 @@
 
 import React, { useState, useEffect } from 'react';
 import { Trash2, Plus } from 'lucide-react';
-import DeviceMockup from '../layout/DeviceMockup';
+import DeviceMockup from '../../layout/DeviceMockup';
 import { MousePointer2 } from "lucide-react";
 import { X } from "lucide-react";
 import Swal from 'sweetalert2';
+import templatesData from '@/data/templates.json';
+
 import { Image as ImageIcon, Type, Settings2, Layout, Sliders, Trash, Maximize } from 'lucide-react';
 
 const About2 = ({ data: initialData }) => {
@@ -189,40 +191,58 @@ const About2 = ({ data: initialData }) => {
 
   const handleSave = async () => {
     try {
-      // 1. Subtle Loading State (No annoying popup)
-      Toast.fire({
-        icon: 'info',
-        title: 'Saving template...',
-        timer: 0, // Stay open until finished
-      });
-
-      const response = await fetch('/api/save-template', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        // 2. Success Toast
+   
         Toast.fire({
-          icon: 'success',
-          title: 'Saved successfully',
-          background: '#ffffff',
-          iconColor: '#10b981', // Modern Emerald green
+            icon: 'info',
+            title: 'Saving template...',
+            showConfirmButton: false,
+            timer: 0, 
         });
-      } else {
-        throw new Error();
-      }
+
+     
+        let folderName = "general"; 
+        
+      
+        templatesData.forEach(cat => {
+            const found = cat.templates.find(t => t.templateId === data.templateId);
+            if (found) {
+ 
+                folderName = cat.category; 
+            }
+        });
+
+        const payload = {
+            ...data,
+            category: folderName 
+        };
+
+  
+        const response = await fetch('/api/save-template', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+        });
+
+        if (response.ok) {
+            Toast.fire({
+                icon: 'success',
+                title: 'Saved successfully',
+                timer: 2000,
+            });
+        } else {
+            const errorText = await response.text();
+            console.error("Server Error:", errorText);
+            throw new Error();
+        }
     } catch (error) {
-      // 3. Error Toast
-      Toast.fire({
-        icon: 'error',
-        title: 'Save failed',
-        background: '#fff1f2', // Light red tint
-        iconColor: '#f43f5e', // Modern Rose red
-      });
+        console.error("Frontend Error:", error);
+        Toast.fire({
+            icon: 'error',
+            title: 'Save failed',
+            timer: 3000,
+        });
     }
-  };
+};
 
   const Editable = ({ id, className, tag: Tag = "div", style = {} }) => {
     const comp = getComp(id);

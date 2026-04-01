@@ -102,10 +102,14 @@ import { useRouter } from 'next/navigation'
 
 export default function Sidebar({ categories, selected, onSelect }) {
   const router = useRouter();
-
-  const HandleNavigate = (cat) => {
-    onSelect(cat.category);
-    router.push("/")
+  
+const HandleNavigate = (cat) => {
+  onSelect(cat.category);
+  console.log("amish",cat.category)
+  console.log("amish selected",selected)
+   
+    // router.push("/")
+    router.push(`/?category=${cat.category}`);
   }
   return (
     <div className="  h-screen bg-white  flex flex-col justify-between" style={{ boxShadow: "rgba(47, 43, 61, 0.12) 0px 0.125rem 0.5rem 0px", position: "sticky", top: 0, width: "20%" }}>

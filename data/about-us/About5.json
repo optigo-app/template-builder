@@ -1,0 +1,81 @@
+{
+  "templateId": "About5",
+  "preview": "about5.png",
+  "name": "VK Jewels & Kohira About Us",
+  "components": [
+    {
+      "id": "section-main-history",
+      "type": "heading",
+      "props": {
+        "heading": "THE JOURNEY OF VK JEWELS & THE BIRTH OF KOHIRA",
+        "content": "Kohira's story is rooted in the rich legacy of VK Jewels, a name synonymous with craftsmanship, innovation, and integrity in the gold jewellery manufacturing industry. Our journey began in 1993, when VK Jewels was established as a silver jewellery manufacturing unit. With a dedication to excellence and a passion for design, VK Jewels quickly became a trusted name in the industry. By 2013, VK Jewels had ventured into the global market, exporting fine jewellery to countries around the world. As we entered 2023 we added this jewel to the crown, Kohira our exclusive brand of lab-grown diamond jewellery. Kohira represents the perfect fusion of tradition and innovation, inspired by the legendary Kohinoor Diamond. Kohira now operates 13 physical stores across India, along with our official online store kohira.com.",
+        "src": "https://amantis.in/wp-content/uploads/2025/07/FAvy-1-1024x1024.jpg",
+        "rowDirection": "row",
+        "fontSize": 14,
+        "color": "#000000",
+        "headingFontSize": 28,
+        "headingColor": "#0b0a0a",
+        "borderRadius": 0
+      }
+    },
+    {
+      "id": "section-vision",
+      "type": "content-section",
+      "props": {
+        "heading": "VISION",
+        "content": "To become the most trusted B2C brand for jewellery consumers in the lab-grown diamond jewellery segment by consistently delivering quality products, adhering to sound policies and ethical practices, conducting effective promotions, and establishing a strong global presence.",
+        "src": "https://www.kohira.com/_next/image?url=%2Fimages%2Fabout-us%2FVision.png&w=2048&q=75",
+        "rowDirection": "row",
+        "fontSize": 13,
+        "color": "#4b5563",
+        "headingFontSize": 26,
+        "headingColor": "#ce9292",
+        "borderRadius": 8,
+        "imageWidth": "100%"
+      }
+    },
+    {
+      "id": "section-mission",
+      "type": "content-section",
+      "props": {
+        "heading": "MISSION",
+        "content": "At Kohira, our mission is to transform dreams into reality by elevating aspirations through the creation of exquisite lab-grown diamond jewellery.",
+        "src": "https://www.kohira.com/_next/image?url=%2Fimages%2Fabout-us%2FMission.png&w=2048&q=75",
+        "rowDirection": "row",
+        "fontSize": 14,
+        "color": "#4b5563",
+        "headingFontSize": 24,
+        "headingColor": "#0b0a0a",
+        "borderRadius": 5,
+        "imageWidth": "100%"
+      }
+    },
+    {
+      "id": "card-1774864374726",
+      "type": "card-section",
+      "props": {
+        "heading": "VISION",
+        "content": "To become the most trusted B2C brand for jewellery consumers in the lab-grown diamond jewellery segment by consistently delivering quality products, adhering to sound policies and ethical practices, conducting effective promotions, and establishing a strong global presence.",
+        "src": "https://www.kohira.com/_next/image?url=%2Fimages%2Fabout-us%2FVision.png&w=2048&q=75",
+        "fontSize": 14,
+        "headingFontSize": 34,
+        "borderRadius": 0,
+        "color": "#353131",
+        "headingColor": "#120d0d"
+      }
+    },
+    {
+      "id": "card-1774864729222",
+      "type": "card-section",
+      "props": {
+        "heading": "MISSION",
+        "content": "To become the most trusted B2C brand for jewellery consumers in the lab-grown diamond jewellery segment by consistently delivering quality products, adhering to sound policies and ethical practices, conducting effective promotions, and establishing a strong global presence.",
+        "src": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=2070",
+        "fontSize": 14,
+        "headingFontSize": 20,
+        "borderRadius": 0
+      }
+    }
+  ],
+  "category": "about-us"
+}

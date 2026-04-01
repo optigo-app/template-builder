@@ -1,0 +1,90 @@
+{
+  "templateId": "SocialMedia3",
+  "preview": "SocialMedia3.png",
+  "name": "Horizontal Instagram Feed",
+  "backgroundColor": "#f9f9f9",
+  "category": "social-media",
+  "components": [
+    {
+      "id": "header",
+      "type": "social-header",
+      "props": {
+        "title": "Follow Us! qs",
+        "username": "@Instagram",
+        "followers": "",
+        "buttonText": "",
+        "borderRadius": 0,
+        "aspectRatio": "auto",
+        "logo": "",
+        "themeColor": "#000000",
+        "titleSize": 41,
+        "usernameSize": 16
+      }
+    },
+    {
+      "id": "post-20260331002",
+      "type": "social-post",
+      "props": {
+        "image": "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/ecommerce/accessories/Elegant-Jewelry-Close-Up-2.png",
+        "username": "@masasd",
+        "socialmedianame": "instagram",
+        "borderRadius": 8,
+        "aspectRatio": "3/4",
+        "iconShape": "circle",
+        "iconColor": "#E1306C"
+      }
+    },
+    {
+      "id": "post-20260331003",
+      "type": "social-post",
+      "props": {
+        "image": "https://images.unsplash.com/photo-1488161628813-04466f872be2?q=80&w=1974&auto=format&fit=crop",
+        "username": "@noahplays",
+        "socialmedianame": "instagram",
+        "borderRadius": 8,
+        "aspectRatio": "3/4",
+        "iconShape": "circle",
+        "iconColor": "#E1306C"
+      }
+    },
+    {
+      "id": "post-20260331004",
+      "type": "social-post",
+      "props": {
+        "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1974&auto=format&fit=crop",
+        "username": "@emmacollins",
+        "socialmedianame": "instagram",
+        "borderRadius": 8,
+        "aspectRatio": "3/4",
+        "iconShape": "circle",
+        "iconColor": "#E1306C"
+      }
+    },
+    {
+      "id": "post-20260331005",
+      "type": "social-post",
+      "props": {
+        "image": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1974&auto=format&fit=crop",
+        "username": "@oliviawears",
+        "socialmedianame": "instagram",
+        "borderRadius": 8,
+        "aspectRatio": "3/4",
+        "iconShape": "circle",
+        "iconColor": "#E1306C"
+      }
+    },
+    {
+      "id": "post-20260331006",
+      "type": "social-post",
+      "props": {
+        "image": "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1974&auto=format&fit=crop",
+        "username": "@ethansound",
+        "socialmedianame": "instagram",
+        "borderRadius": 8,
+        "aspectRatio": "3/4",
+        "iconShape": "circle",
+        "iconColor": "#E1306C"
+      }
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "templateId": "Terms2",
+  "preview": "Terms2.png",
+  "name": "Jewelry Legal Layout",
+  "category": "terms-condition",
+  "backgroundColor": "#ffffff",
+  "components": [
+    {
+      "id": "section-1-main-header",
+      "type": "content-block",
+      "props": {
+        "heading": "Terms and Conditions",
+        "content": "By using this website, you acknowledge that you have read, understood, and agreed to these terms and conditions. If you have any questions or concerns, please contact us.",
+        "headingFontSize": "36",
+        "headingColor": "#7d95ca",
+        "contentFontSize": 14,
+        "contentColor": "#4b5563",
+        "textAlign": "left",
+        "padding": "40px 5%",
+        "backgroundImage": ""
+      }
+    },
+    {
+      "id": "section-2-terms-list",
+      "type": "terms-array",
+      "props": {
+        "terms": [
+          {
+            "heading": "Product Descriptions   dfvf",
+            "content": "We strive to provide accurate product information; however, we do not warrant that the content on the website is accurate, complete, or error-free. We reserve the right to correct any errors or omissions and to update any product information at any time without any prior notice."
+          },
+          {
+            "heading": " Order Acceptance",
+            "content": "All orders are subject to our acceptance and availability. We reserve the right to refuse any order for any reason, including but not limited to availability, product pricing, or errors in product information."
+          },
+          {
+            "heading": "Pricing and Payment",
+            "content": "All prices are listed in Indian rupees. We reserve the right to change prices at any time without notice. We accept payments through debit cards, credit cards, net banking and secure third party payment gateway RazorPay, and we do not store your payment information."
+          },
+          {
+            "heading": "Shipping and Returns",
+            "content": "Please refer to our Shipping and Returns policy for information on delivery times, shipping costs, and our return/exchange process."
+          },
+          {
+            "heading": "User Conduct",
+            "content": "You agree not to engage in any activity that may disrupt or interfere with the functioning of the website. This includes but is not limited to hacking, unauthorized access, or distribution of harmful code."
+          },
+          {
+            "heading": "Privacy Policy",
+            "content": "Your privacy is important to us. Please review our Privacy Policy to understand how we collect, use, and protect your personal information."
+          },
+          {
+            "heading": "Governing Law",
+            "content": "These terms and conditions are governed by and construed in accordance with the laws of India. Any disputes arising from these terms will be subject to the exclusive jurisdiction of the courts in India."
+          },
+          {
+            "heading": "Changes to Terms",
+            "content": "We reserve the right to update or modify these terms and conditions at any time without prior notice. It is your responsibility to review this page periodically for changes."
+          }
+        ],
+        "headingFontSize": "19",
+        "headingColor": "#121721",
+        "contentFontSize": 13,
+        "contentColor": "#000000",
+        "spacing": "20px",
+        "fontSize": 19,
+        "color": "#5c3838"
+      }
+    },
+    {
+      "id": "section-3-declaration",
+      "type": "footer-note",
+      "props": {
+        "text": "By using this website, you acknowledge that you have read, understood, and agreed to these terms and conditions. If you have any questions or concerns, please contact us at Ph: +91 8866937682",
+        "email": "ELIORJEWEL@GMAIL.COMgh",
+        "fontSize": 15,
+        "color": "#606266",
+        "fontStyle": "normal",
+        "padding": "30px 5%",
+        "showEmailButton": true
+      }
+    }
+  ]
+}

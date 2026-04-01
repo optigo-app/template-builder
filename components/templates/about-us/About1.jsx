@@ -727,9 +727,11 @@ import React, { useState, useEffect } from 'react';
 import { Trash2 } from 'lucide-react';
 import { MousePointer2 } from "lucide-react";
 import { X } from "lucide-react";
-import DeviceMockup from '../layout/DeviceMockup';
+import DeviceMockup from '../../layout/DeviceMockup'; 
 import Swal from 'sweetalert2';
 import { Image as ImageIcon, Type, Plus, Settings2, Layout, Sliders, Trash, Maximize } from 'lucide-react';
+import templatesData from '@/data/templates.json';
+
 
 const About1 = ({ data: initialData }) => {
   const [data, setData] = useState(initialData);
@@ -793,43 +795,98 @@ const About1 = ({ data: initialData }) => {
     }
   });
 
+  // const handleSave = async () => {
+  //   try {
+
+  //     Toast.fire({
+  //       icon: 'info',
+  //       title: 'Saving template...',
+  //       timer: 0,
+  //     });
+
+  //     const response = await fetch('/api/save-template', {
+  //       method: 'POST',
+  //       headers: { 'Content-Type': 'application/json' },
+  //       body: JSON.stringify(data),
+  //     });
+
+  //     if (response.ok) {
+
+  //       Toast.fire({
+  //         icon: 'success',
+  //         title: 'Saved successfully',
+  //         background: '#ffffff',
+  //         iconColor: '#10b981',
+  //       });
+  //     } else {
+  //       throw new Error();
+  //     }
+  //   } catch (error) {
+
+  //     Toast.fire({
+  //       icon: 'error',
+  //       title: 'Save failed',
+  //       background: '#fff1f2',
+  //       iconColor: '#f43f5e',
+  //     });
+  //   }
+  // };
+
+
   const handleSave = async () => {
     try {
-
-      Toast.fire({
-        icon: 'info',
-        title: 'Saving template...',
-        timer: 0,
-      });
-
-      const response = await fetch('/api/save-template', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-
+        // 1. Loading Toast
         Toast.fire({
-          icon: 'success',
-          title: 'Saved successfully',
-          background: '#ffffff',
-          iconColor: '#10b981',
+            icon: 'info',
+            title: 'Saving template...',
+            showConfirmButton: false,
+            timer: 0, 
         });
-      } else {
-        throw new Error();
-      }
+
+        // 2. Logic to find folder name
+        let folderName = "general"; 
+        
+        // This loop now uses the 'templatesData' we imported in Step 1
+        templatesData.forEach(cat => {
+            const found = cat.templates.find(t => t.templateId === data.templateId);
+            if (found) {
+                // Use 'category' because that is the key in your JSON
+                folderName = cat.category; 
+            }
+        });
+
+        const payload = {
+            ...data,
+            category: folderName 
+        };
+
+        // 3. Send to API
+        const response = await fetch('/api/save-template', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+        });
+
+        if (response.ok) {
+            Toast.fire({
+                icon: 'success',
+                title: 'Saved successfully',
+                timer: 2000,
+            });
+        } else {
+            const errorText = await response.text();
+            console.error("Server Error:", errorText);
+            throw new Error();
+        }
     } catch (error) {
-
-      Toast.fire({
-        icon: 'error',
-        title: 'Save failed',
-        background: '#fff1f2',
-        iconColor: '#f43f5e',
-      });
+        console.error("Frontend Error:", error);
+        Toast.fire({
+            icon: 'error',
+            title: 'Save failed',
+            timer: 3000,
+        });
     }
-  };
-
+};
   const renderCanvasContent = () => (
     <div className="">
       <div className="bg-white shadow-2xl p-12   font-serif text-black rounded-xl" style={{ minHeight: "100%", padding: "20px" }}>

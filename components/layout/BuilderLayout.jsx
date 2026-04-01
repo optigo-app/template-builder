@@ -4,23 +4,25 @@ import { useState } from "react"
 import Sidebar from "./Sidebar"
 // import TemplateCard from "../templates/TemplateCard"
 import templatesData from "@/data/templates.json"
-import About1 from "@/components/templates/About1"
-import About2 from "@/components/templates/About2"
-import About3 from "@/components/templates/About3"
-import About4 from "@/components/templates/About4"
-import img from "@/public/img/about1.png"
+ 
+ 
 import Link from 'next/link';
+import { useRouter, useSearchParams } from "next/navigation";
 
 
 export default function BuilderLayout() {
-    const [selected, setSelected] = useState("about-us")
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const category_selecetd = searchParams.get("category") || "about-us";
+    const [selected, setSelected] = useState(category_selecetd || "about-us")
 
     const category = templatesData.find(
         (c) => c.category === selected
     )
 
+ 
     return (
-        <div className="flex">
+        <div className="flex ">
 
             <Sidebar
                 categories={templatesData}
@@ -28,7 +30,7 @@ export default function BuilderLayout() {
                 onSelect={setSelected}
             />
 
-            <div className="  p-6  " style={{ display: "flex", flexWrap: "wrap", gap: "10px", backgroundColor: "#fbf9fa",width:"100%" }}>
+            <div className="  p-6  " style={{ display: "flex", flexWrap: "wrap", gap: "10px", width:"100%",height:"50%" }}>
 
                 {category?.templates.map((template,i) => (
                     <div  key={i}>
@@ -45,7 +47,7 @@ export default function BuilderLayout() {
                                 {/* Image Container with Hover Overlay */}
                                 <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-gray-50 flex items-center justify-center">
                                     <img
-                                        src={`/img/${template.preview}`}
+                                        src={`/img/${category.category}/${template.preview}`}
                                         alt={template.templateId}
                                         className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
                                     />

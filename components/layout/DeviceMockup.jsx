@@ -19,7 +19,7 @@ const DeviceMockup = ({ children, activeDevice, onChange }) => {
           <button
             key={device.id}
             onClick={() => onChange(device.id)}
-            className={`p-2 rounded-lg transition-all flex items-center gap-2 ${
+            className={`p-2 rounded-lg transition-all flex items-center cursor-pointer gap-2 ${
               activeDevice === device.id 
                 ? 'bg-indigo-100 text-indigo-600 ring-1 ring-indigo-300' 
                 : 'text-gray-500 hover:bg-gray-100'

@@ -178,7 +178,7 @@
               "content": "Brand Vision",
               "level": "h3",
               "fontSize": 18,
-              "color": "#111111",
+              " ": "#111111",
               "textAlign": "left"
             }
           },
@@ -258,7 +258,7 @@
             "id": "section-founder",
             "type": "content-section",
             "props": {
-              "heading": "RUSHIT PATEL (FOUNDER & MANAGING DIRECTOR)",
+              "heading": "RUSHIT PATEL (FOUNDER & MANAGING DIRECTOR) fdgg",
               "content": "Meet the visionary behind Love in Diamonds, Mr. Rushit Patel. With over two decades of diverse business expertise, his true passion lies the world of diamonds. Hailing from the renowned diamond city of India and enriched by his experiences across African countries, he holds an unwavering fascination for the captivating allure of diamonds. Endowed with an impeccable eye for gems, Mr. Patel sees beyond mere stones, recognizing them as vessels of emotion that reflect the wearer's unique essence. From the elegance of classic cuts to the breathtaking brilliance of vibrant hues, he relentlessly pursues perfection in every facet. Fueled by boundless creativity and an unwavering commitment to excellence, Mr. Patel stands as a true luminary in the field. At Love in Diamonds, he ensures that each jewel is not just a creation, but a masterpiece crafted from the heart to resonate deeply with your soul.",
               "src": "https://your-image-url.com/founder-portrait.png",
               "rowDirection": "row",
@@ -332,6 +332,60 @@
             }
           ]
      
+      },
+      {
+        "templateId": "About5",
+        "preview": "about5.png",
+        "name": "VK Jewels & Kohira About Us",
+        "components": [
+          {
+            "id": "section-main-history",
+            "type": "heading",
+            "props": {
+              "heading": "THE JOURNEY OF VK JEWELS & THE BIRTH OF KOHIRA",
+              "content": "Kohira's story is rooted in the rich legacy of VK Jewels, a name synonymous with craftsmanship, innovation, and integrity in the gold jewellery manufacturing industry. Our journey began in 1993, when VK Jewels was established as a silver jewellery manufacturing unit. With a dedication to excellence and a passion for design, VK Jewels quickly became a trusted name in the industry. By 2013, VK Jewels had ventured into the global market, exporting fine jewellery to countries around the world. As we entered 2023 we added this jewel to the crown, Kohira our exclusive brand of lab-grown diamond jewellery. Kohira represents the perfect fusion of tradition and innovation, inspired by the legendary Kohinoor Diamond. Kohira now operates 13 physical stores across India, along with our official online store kohira.com.",
+              "src": "https://your-image-url.com/book-icon.png",
+              "rowDirection": "row",
+              "fontSize": 14,
+              "color": "#4b5563",
+              "headingFontSize": 28,
+              "headingColor": "#0b0a0a",
+              "borderRadius": 0
+            }
+          },
+          {
+            "id": "section-vision",
+            "type": "content-section",
+            "props": {
+              "heading": "VISION",
+              "content": "To become the most trusted B2C brand for jewellery consumers in the lab-grown diamond jewellery segment by consistently delivering quality products, adhering to sound policies and ethical practices, conducting effective promotions, and establishing a strong global presence.",
+              "src": "https://your-image-url.com/vision-workshop-image.jpg",
+              "rowDirection": "row",
+              "fontSize": 14,
+              "color": "#4b5563",
+              "headingFontSize": 24,
+              "headingColor": "#0b0a0a",
+              "borderRadius": 8,
+              "imageWidth": "100%"
+            }
+          },
+          {
+            "id": "section-mission",
+            "type": "content-section",
+            "props": {
+              "heading": "MISSION",
+              "content": "At Kohira, our mission is to transform dreams into reality by elevating aspirations through the creation of exquisite lab-grown diamond jewellery.",
+              "src": "https://your-image-url.com/mission-diamond-image.jpg",
+              "rowDirection": "row",
+              "fontSize": 14,
+              "color": "#4b5563",
+              "headingFontSize": 24,
+              "headingColor": "#0b0a0a",
+              "borderRadius": 8,
+              "imageWidth": "100%"
+            }
+          }
+        ]
       }
     ]
   },
@@ -623,9 +677,1067 @@
             ]
           }
         ]
+      },
+      {
+        "templateId": "Contact4",
+        "preview": "contact4.png",
+        "name": "Contact Us Split Layout",
+        "backgroundColor": "#4c3e72",
+        "components": [
+           
+          {
+            "id": "section-left-info",
+            "type": "content-block",
+            "props": {
+              "heading": "Contact Us",
+              "content": "Not sure what you need? The team at Square Events will be happy to listen to you and suggest event ideas you hadn't considered.",
+              "headingFontSize": 48,
+              "headingColor": "#ffffff",
+              "backgroundImage":"elvee-jewelry-banner.jpg",
+              "contentFontSize": 18,
+              "contentColor": "#e0e0e0",
+              "textAlign": "left",
+              "email": "info@squareevents.com",
+              "phone": "Support: (+21) 123 456 586",
+              "textColor": "#ffffff"
+            }
+          },
+          {
+            "id": "section-right-form",
+            "type": "form-container",
+            "props": {
+              "formHeading": "We'd love to hear from you!",
+              "formSubheading": "Let's get in touch",
+              "backgroundColor": "#ffffff",
+              "borderRadius": 16,
+              "padding": "40px",
+              "buttonText": "Send Message",
+              "buttonColor": "#4c3e72",
+              "buttonTextColor": "#ffffff",
+              "fields": [
+                {
+                  "id": "f1",
+                  "label": "Full Name",
+                  "placeholder": "Full Name",
+                  "type": "text",
+                  "width": "48%"
+                },
+                {
+                  "id": "f2",
+                  "label": "Company",
+                  "placeholder": "Company",
+                  "type": "text",
+                  "width": "48%"
+                },
+                {
+                  "id": "f3",
+                  "label": "Email",
+                  "placeholder": "olivia@untitledui.com",
+                  "type": "email",
+                  "width": "100%"
+                },
+                {
+                  "id": "f4",
+                  "label": "Phone number",
+                  "placeholder": "+1 (555) 000-0000",
+                  "type": "tel",
+                  "width": "100%"
+                },
+                {
+                  "id": "f5",
+                  "label": "Address",
+                  "placeholder": "Address",
+                  "type": "text",
+                  "width": "100%"
+                },
+                {
+                  "id": "f6",
+                  "label": "Your Message",
+                  "placeholder": "Type your message here",
+                  "type": "textarea",
+                  "width": "100%"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "templateId": "Contact5",
+        "preview": "contact5.png",
+        "name": "Solar Contact Split Layout",
+        "category": "contact-us",
+        "backgroundColor": "#f0f9f4",
+        "components": [
+          {
+            "id": "section-1-hero",
+            "type": "hero-header",
+            "props": {
+              "heading": "Contact Us",
+              "subtext": "Laoreet sit amet cursus sit amet dictum sit amet justo.",
+              "backgroundImage": "solar-panel-bg.jpg",
+              "headingFontSize": 56,
+              "headingColor": "#ffffff",
+              "contentFontSize": 18,
+              "contentColor": "#e0e0e0",
+              "textAlign": "left",
+              "padding": "100px 5%"
+            }
+          },
+          {
+            "id": "section-2-info",
+            "type": "content-block",
+            "props": {
+              "heading": "Get Your Instant Free Quote Now",
+              "subheading": "Qadipiscing elit, sed do eiusmod tempor.",
+              "content": "Adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+              "phoneDisplay": "0 800 555 44 33",
+              "iconColor": "#2d5a43",
+              "headingFontSize": 36,
+              "headingColor": "#111827",
+              "contentFontSize": 16,
+              "contentColor": "#4b5563",
+              "textAlign": "left"
+            }
+          },
+          {
+            "id": "section-3-form",
+            "type": "form-container",
+            "props": {
+              "backgroundColor": "#ffffff",
+              "borderRadius": 24,
+              "padding": "48px",
+              "buttonText": "Learn More",
+              "buttonColor": "#2d5a43",
+              "buttonTextColor": "#ffffff",
+              "buttonBorderRadius": 50,
+              "fields": [
+                {
+                  "id": "field-name",
+                  "label": "Name",
+                  "placeholder": "Name",
+                  "type": "text",
+                  "width": "100%",
+                  "showIcon": true,
+                  "icon": "User"
+                },
+                {
+                  "id": "field-phone",
+                  "label": "Phone",
+                  "placeholder": "Phone",
+                  "type": "tel",
+                  "width": "100%",
+                  "showIcon": true,
+                  "icon": "Phone"
+                },
+                {
+                  "id": "field-email",
+                  "label": "Email Address",
+                  "placeholder": "Email Address",
+                  "type": "email",
+                  "width": "100%",
+                  "showIcon": true,
+                  "icon": "Mail"
+                },
+                {
+                  "id": "field-subject",
+                  "label": "Subject",
+                  "placeholder": "Subject",
+                  "type": "text",
+                  "width": "100%",
+                  "showIcon": true,
+                  "icon": "AlertCircle"
+                },
+                {
+                  "id": "field-message",
+                  "label": "Message",
+                  "placeholder": "How can we help you? Feel free to get in touch!",
+                  "type": "textarea",
+                  "width": "100%",
+                  "showIcon": true,
+                  "icon": "Edit2"
+                }
+              ]
+            }
+          }
+        ]
       }
         
       
+    ]
+  },
+  {
+    "category": "terms-condition",
+    "templates": [
+      {
+        "templateId": "Terms1",
+        "preview": "Terms1.png",
+        "name": "Legal Terms Layout",
+        "backgroundColor": "#ffffff",
+        "components": [
+          {
+            "id": "section-1-main-header",
+            "type": "content-block",
+            "props": {
+              "heading": "TERMS AND CONDITIONS",
+              "content": "These terms and conditions apply to Web site located at www.elvee.in and It is a basic terms and condition and please it carefully. By using the site, you agree to be bound by these TERMS AND CONDITIONS.",
+              "headingFontSize": 18,
+              "headingColor": "#111827",
+              "contentFontSize": 13,
+              "contentColor": "#374151",
+              "textAlign": "left",
+              "padding": "40px 5%",
+              "backgroundImage":""
+            }
+          },
+          {
+            "id": "section-2-terms-list",
+            "type": "terms-array",
+            "props": {
+              "terms": [
+                {
+                  "heading": "PRODUCT AVAILABILITY",
+                  "content": "All of our jewelry is designed and manufactured on-site. We develop new designs by brand wise such as modern jewelleries, high fashion jewelleries occasional oriented jewellery, plain gold jewelleries at every months. These new designs will appear on our website also we present new products on gem and jewellery exhibitions at india and international sectors."
+                },
+                {
+                  "heading": "INFORMATION ON OUR SITE",
+                  "content": "We make every effort to ensure that our online catalog is as accurate and complete as possible. To allow you to view our pieces in full detail, some pieces may appear larger or smaller than their actual size and weight in our product images; and since every computer monitor is set differently, size may vary slightly."
+                },
+                {
+                  "heading": "RETURN POLICY",
+                  "content": "We committed to complete customer satisfaction. We take pride in the quality and workmanship of our merchandise manufactured in our state-of-the-art facility, and we are confident that you will be completely satisfied. The contents of the package must be in their original condition and secure within the box. For your security do not indicate the contents of the package on the exterior of the box."
+                },
+                {
+                  "heading": "SHIPPING POLICY",
+                  "content": "All of our shipments will be delivered using Indian Courier as well as international couriers. All custom orders will be shipped the following day when your order is completed."
+                },
+                {
+                  "heading": "LIMITED WARRANTY",
+                  "content": "Our guarantee is simple and straightforward. If something is wrong due to faulty workmanship, we take care of it. It's a fair way of doing business. That being said, precious metals erode and stones can become damaged over time. When normal wear occurs, repairs can be done in house by our expert staff at the normal repair fee. Any work performed by a jeweler other than Elvee automatically voids the warranty. It is the responsibility of the customer to maintain insurance against loss or damage not covered by the warranty."
+                }
+              ],
+              "headingFontSize": 14,
+              "headingColor": "#111827",
+              "contentFontSize": 12,
+              "contentColor": "#4b5563",
+              "spacing": "24px"
+            }
+          },
+          {
+            "id": "section-3-declaration",
+            "type": "footer-note",
+            "props": {
+              "text": "* The policy of terms and condition will be change after you cover the membership and above policy is consider as basic policy for non-membership customers.",
+              "fontSize": 12,
+              "color": "#6b7280",
+              "fontStyle": "italic",
+              "padding": "20px 5%"
+            }
+          }
+        ]
+      },
+      {
+        "templateId": "Terms2",
+        "preview": "Terms2.png",
+        "name": "Jewelry Legal Layout",
+        "category": "terms-condition",
+        "backgroundColor": "#ffffff",
+        "components": [
+          {
+            "id": "section-1-main-header",
+            "type": "content-block",
+            "props": {
+              "heading": "Terms and Conditions",
+              "content": "By using this website, you acknowledge that you have read, understood, and agreed to these terms and conditions. If you have any questions or concerns, please contact us.",
+              "headingFontSize": 24,
+              "headingColor": "#111827",
+              "contentFontSize": 14,
+              "contentColor": "#4b5563",
+              "textAlign": "left",
+              "padding": "40px 5%",
+              "backgroundImage": ""
+            }
+          },
+          {
+            "id": "section-2-terms-list",
+            "type": "terms-array",
+            "props": {
+              "terms": [
+                {
+                  "heading": " Acceptance of Terms",
+                  "content": "By accessing and using this website, you agree to be bound by these terms and conditions. If you do not agree with any part of these terms, please refrain from using our website."
+                },
+                {
+                  "heading": "Intellectual Property",
+                  "content": "All content on this website, including but not limited to text, images, logos, and designs is the intellectual property of Elior Jewel. You may not use, reproduce, or distribute any content without our explicit consent."
+                },
+                {
+                  "heading": "Product Descriptions",
+                  "content": "We strive to provide accurate product information; however, we do not warrant that the content on the website is accurate, complete, or error-free. We reserve the right to correct any errors or omissions and to update any product information at any time without any prior notice."
+                },
+                {
+                  "heading": " Order Acceptance",
+                  "content": "All orders are subject to our acceptance and availability. We reserve the right to refuse any order for any reason, including but not limited to availability, product pricing, or errors in product information."
+                },
+                {
+                  "heading": "Pricing and Payment",
+                  "content": "All prices are listed in Indian rupees. We reserve the right to change prices at any time without notice. We accept payments through debit cards, credit cards, net banking and secure third party payment gateway RazorPay, and we do not store your payment information."
+                },
+                {
+                  "heading": "Shipping and Returns",
+                  "content": "Please refer to our Shipping and Returns policy for information on delivery times, shipping costs, and our return/exchange process."
+                },
+                {
+                  "heading": "User Conduct",
+                  "content": "You agree not to engage in any activity that may disrupt or interfere with the functioning of the website. This includes but is not limited to hacking, unauthorized access, or distribution of harmful code."
+                },
+                {
+                  "heading": "Privacy Policy",
+                  "content": "Your privacy is important to us. Please review our Privacy Policy to understand how we collect, use, and protect your personal information."
+                },
+                {
+                  "heading": "Governing Law",
+                  "content": "These terms and conditions are governed by and construed in accordance with the laws of India. Any disputes arising from these terms will be subject to the exclusive jurisdiction of the courts in India."
+                },
+                {
+                  "heading": "Changes to Terms",
+                  "content": "We reserve the right to update or modify these terms and conditions at any time without prior notice. It is your responsibility to review this page periodically for changes."
+                }
+              ],
+              "headingFontSize": 14,
+              "headingColor": "#111827",
+              "contentFontSize": 12,
+              "contentColor": "#4b5563",
+              "spacing": "20px"
+            }
+          },
+          {
+            "id": "section-3-declaration",
+            "type": "footer-note",
+            "props": {
+              "text": "By using this website, you acknowledge that you have read, understood, and agreed to these terms and conditions. If you have any questions or concerns, please contact us at Ph: +91 8866937682",
+              "email": "ELIORJEWEL@GMAIL.COM",
+              "fontSize": 12,
+              "color": "#6b7280",
+              "fontStyle": "normal",
+              "padding": "30px 5%",
+              "showEmailButton": true
+            }
+          }
+        ]
+      },
+      {
+        "templateId": "Terms3",
+        "preview": "Terms3.png",
+        "category": "terms-condition",
+        "backgroundColor": "#ffffff",
+        "components": [
+          {
+            "id": "section-1-main-header",
+            "type": "content-block",
+            "props": {
+              "heading": "Terms & Conditions",
+              "content": "Welcome to Diamondzine!",
+              "headingFontSize": "32",
+              "headingColor": "#000000",
+              "contentFontSize": 14,
+              "contentColor": "#000000",
+              "textAlign": "center",
+              "padding": "20px 5%",
+              "backgroundImage": ""
+            }
+          },
+          {
+            "id": "section-2-terms-list",
+            "type": "terms-array",
+            "props": {
+              "terms": [
+                {
+                  "heading": "iFrames",
+                  "content": "Without prior approval and written permission, you may not create frames around our Webpages that alter in any way the visual presentation or appearance of our Website."
+                },
+                {
+                  "heading": "Content Liability",
+                  "content": "We shall not be hold responsible for any content that appears on your Website. You agree to protect and defend us against all claims that is rising on your Website. No link(s) should appear on any Website that may be interpreted as libelous, obscene or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights."
+                },
+                {
+                  "heading": "Your Privacy",
+                  "content": "Please read Privacy Policy"
+                },
+                {
+                  "heading": "Reservation of Rights",
+                  "content": "We reserve the right to request that you remove all links or any particular link to our Website. You approve to immediately remove all links to our Website upon request. We also reserve the right to amend these terms and conditions and it's linking policy at any time. By continuously linking to our Website, you agree to be bound to and follow these linking terms and conditions."
+                },
+                {
+                  "heading": "Removal of links from our website",
+                  "content": "If you find any link on our Website that is offensive for any reason, you are free to contact and inform us any moment. We will consider requests to remove links but we are not obligated to or so or to respond to you directly. We do not ensure that the information on this website is correct, we do not warrant its completeness or accuracy; nor do we promise to ensure that the website remains available or that the material on the website is kept up to date."
+                },
+                {
+                  "heading": "Disclaimer",
+                  "content": "To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our website and the use of this website. Nothing in this disclaimer will:\n\n• limit or exclude our or your liability for death or personal injury;\n• limit or exclude our or your liability for fraud or fraudulent misrepresentation;\n• limit any of our or your liabilities in any way that is not permitted under applicable law; or\n• exclude any of our or your liabilities that may not be excluded under applicable law.\n\nThe limitations and prohibitions of liability set in this Section and elsewhere in this disclaimer: (a) are subject to the preceding paragraph; and (b) govern all liabilities arising under the disclaimer, including liabilities arising in contract, in tort and for breach of statutory duty.\n\nAs long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature."
+                }
+              ],
+              "headingFontSize": "18",
+              "headingColor": "#111827",
+              "contentFontSize": 12,
+              "contentColor": "#374151",
+              "spacing": "25px",
+              "fontSize": 18,
+              "color": "#111827"
+            }
+          }
+        ]
+      }
+       
+    ]
+  },
+  {
+    "category": "social-media",
+    "templates": [
+      {
+        "templateId": "SocialMedia1",
+        "preview": "SocialMedia1.png",
+        "name": "Social Media Layout",
+        "backgroundColor": "#ffffff",
+
+        "components":[
+        {
+          "image": "elvee_butterfly_sketches_and_jewelry.jpg",
+          "socialmedianame": "Instagram",
+          "styling": {
+            "width": "100%",
+            "aspectRatio": "1/1",
+            "borderRadius": "12px",
+            "objectFit": "cover",
+            "labelFontSize": "14px",
+            "labelFontWeight": "bold",
+            "labelColor": "#E1306C"
+          }
+        },
+        {
+          "image": "elvee_gold_bangle_with_blue_box.jpg",
+          "socialmedianame": "Pinterest",
+          "styling": {
+            "width": "100%",
+            "aspectRatio": "1/1",
+            "borderRadius": "12px",
+            "objectFit": "cover",
+            "labelFontSize": "14px",
+            "labelFontWeight": "bold",
+            "labelColor": "#E60023"
+          }
+        },
+        {
+          "image": "elvee_gold_cufflinks_strength_text.jpg",
+          "socialmedianame": "Facebook",
+          "styling": {
+            "width": "100%",
+            "aspectRatio": "1/1",
+            "borderRadius": "12px",
+            "objectFit": "cover",
+            "labelFontSize": "14px",
+            "labelFontWeight": "bold",
+            "labelColor": "#1877F2"
+          }
+        },
+        {
+          "image": "elvee_consistency_quality_graphic.jpg",
+          "socialmedianame": "LinkedIn",
+          "styling": {
+            "width": "100%",
+            "aspectRatio": "1/1",
+            "borderRadius": "12px",
+            "objectFit": "cover",
+            "labelFontSize": "14px",
+            "labelFontWeight": "bold",
+            "labelColor": "#0A66C2"
+          }
+        }
+      ] 
+      },{
+        "templateId": "SocialMedia2",
+        "preview": "SocialMedia2.png",
+        "name": "Grid Social Feed",
+        "backgroundColor": "#ffffff",
+        "components": [
+          {
+            "id": "header-1774938100001",
+            "type": "social-header",
+            "props": {
+              "title": "Connect With Us Online",
+              "username": "@username",
+              "followers": "28k Followers",
+              "buttonText": "Join Now",
+              "borderRadius": 12,
+              "aspectRatio": "2/1"
+            }
+          },
+          {
+            "id": "post-1774938100002",
+            "type": "social-post",
+            "props": {
+              "image": "https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=2080&auto=format&fit=crop",
+              "socialmedianame": "instagram",
+              "borderRadius": 12,
+              "aspectRatio": "1/1",
+              "iconShape": "circle",
+              "iconColor": "#374151"
+            }
+          },
+          {
+            "id": "post-1774938100003",
+            "type": "social-post",
+            "props": {
+              "image": "https://images.unsplash.com/photo-1485875437236-a09e55191207?q=80&w=2070&auto=format&fit=crop",
+              "socialmedianame": "instagram",
+              "borderRadius": 12,
+              "aspectRatio": "1/1",
+              "isVideo": true,
+              "iconShape": "circle",
+              "iconColor": "#374151"
+            }
+          },
+          {
+            "id": "post-1774938100004",
+            "type": "social-post",
+            "props": {
+              "image": "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?q=80&w=1974&auto=format&fit=crop",
+              "socialmedianame": "instagram",
+              "borderRadius": 12,
+              "aspectRatio": "1/1",
+              "iconShape": "circle",
+              "iconColor": "#374151"
+            }
+          },
+          {
+            "id": "post-1774938100005",
+            "type": "social-post",
+            "props": {
+              "image": "https://images.unsplash.com/photo-1635767798638-3e25273a8236?q=80&w=1964&auto=format&fit=crop",
+              "socialmedianame": "instagram",
+              "borderRadius": 12,
+              "aspectRatio": "1/1",
+              "iconShape": "circle",
+              "iconColor": "#ffffff"
+            }
+          },
+          {
+            "id": "post-1774938100006",
+            "type": "social-post",
+            "props": {
+              "image": "https://images.unsplash.com/photo-1602751584412-700029df7e5c?q=80&w=1964&auto=format&fit=crop",
+              "socialmedianame": "instagram",
+              "borderRadius": 12,
+              "aspectRatio": "1/1",
+              "iconShape": "circle",
+              "iconColor": "#374151"
+            }
+          },
+          {
+            "id": "post-1774938100007",
+            "type": "social-post",
+            "props": {
+              "image": "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=1974&auto=format&fit=crop",
+              "socialmedianame": "instagram",
+              "borderRadius": 12,
+              "aspectRatio": "1/1",
+              "iconShape": "circle",
+              "iconColor": "#374151"
+            }
+          }
+        ],
+        "category": "social-media"
+      },
+      {
+        "templateId": "SocialMedia3",
+        "preview": "SocialMedia3.png",
+        "name": "Horizontal Instagram Feed",
+        "backgroundColor": "#f9f9f9",
+        "category": "social-media",
+        "components": [
+          {
+            "id": "header",
+            "type": "social-header",
+            "props": {
+              "title": "Follow Us!",
+              "username": "@Instagram",
+              "followers": "",
+              "buttonText": "",
+              "borderRadius": 0,
+              "aspectRatio": "auto",
+              "logo": "",
+              "themeColor": "#000000"
+            }
+          },
+          {
+            "id": "post-20260331002",
+            "type": "social-post",
+            "props": {
+              "image": "https://images.unsplash.com/photo-1529139513055-07f9f27e7cb5?q=80&w=1974&auto=format&fit=crop",
+              "username": "@ethansound",
+              "socialmedianame": "instagram",
+              "borderRadius": 8,
+              "aspectRatio": "3/4",
+              "iconShape": "circle",
+              "iconColor": "#E1306C"
+            }
+          },
+          {
+            "id": "post-20260331003",
+            "type": "social-post",
+            "props": {
+              "image": "https://images.unsplash.com/photo-1488161628813-04466f872be2?q=80&w=1974&auto=format&fit=crop",
+              "username": "@noahplays",
+              "socialmedianame": "instagram",
+              "borderRadius": 8,
+              "aspectRatio": "3/4",
+              "iconShape": "circle",
+              "iconColor": "#E1306C"
+            }
+          },
+          {
+            "id": "post-20260331004",
+            "type": "social-post",
+            "props": {
+              "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1974&auto=format&fit=crop",
+              "username": "@emmacollins",
+              "socialmedianame": "instagram",
+              "borderRadius": 8,
+              "aspectRatio": "3/4",
+              "iconShape": "circle",
+              "iconColor": "#E1306C"
+            }
+          },
+          {
+            "id": "post-20260331005",
+            "type": "social-post",
+            "props": {
+              "image": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1974&auto=format&fit=crop",
+              "username": "@oliviawears",
+              "socialmedianame": "instagram",
+              "borderRadius": 8,
+              "aspectRatio": "3/4",
+              "iconShape": "circle",
+              "iconColor": "#E1306C"
+            }
+          },
+          {
+            "id": "post-20260331006",
+            "type": "social-post",
+            "props": {
+              "image": "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=1974&auto=format&fit=crop",
+              "username": "@ethansound",
+              "socialmedianame": "instagram",
+              "borderRadius": 8,
+              "aspectRatio": "3/4",
+              "iconShape": "circle",
+              "iconColor": "#E1306C"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "category": "footer",
+    "templates": [
+      {
+        "templateId": "Footer1",
+        "preview": "Footer1.png",
+        "name": "Footer Layout",
+        "components": [
+          {
+            "id": "section-logo",
+            "type": "logo",
+            "props": {
+              "image": "elior_jewel_logo.png",
+              "alt": "Elior Jewel Logo",
+              "height": "80px",
+              "objectFit": "contain",
+              "padding": "20px",
+              "backgroundColor": "#000000"
+            }
+          },
+          {
+            "id": "section-links",
+            "type": "links",
+            "props": {
+              "links": [
+                { "label": "Terms & Conditions", "url": "#" },
+                { "label": "Privacy Policy", "url": "#" },
+                { "label": "About Us", "url": "#" },
+                { "label": "Contact Us", "url": "#" }
+              ],
+              "textColor": "#ffffff",
+              "fontSize": "14px",
+              "fontWeight": "medium",
+              "gap": "24px",
+              "backgroundColor": "#000000"
+            }
+          },
+          {
+            "id": "section-social-icons",
+            "type": "social-icons",
+            "props": {
+              "icons": [
+                { "platform": "Instagram", "color": "#E1306C" },
+                { "platform": "Facebook", "color": "#1877F2" },
+                { "platform": "X", "color": "#ffffff" },
+                { "platform": "YouTube", "color": "#FF0000" },
+                { "platform": "Pinterest", "color": "#E60023" },
+                { "platform": "LinkedIn", "color": "#0A66C2" }
+              ],
+              "iconSize": "24px",
+              "gap": "16px",
+              "backgroundColor": "#000000"
+            }
+          },
+          {
+            "id": "section-copyright",
+            "type": "copyright",
+            "props": {
+              "content": "© 2026, sparrowinfo",
+              "textColor": "#ffffff",
+              "fontSize": "12px",
+              "textAlign": "center",
+              "padding": "10px 0",
+              "backgroundColor": "#000000"
+            }
+          }
+        ]
+      },
+      {
+        "templateId": "Footer2",
+        "preview": "Footer2.png",
+        "name": "Multi-Column Footer Layout",
+        "components": [
+          {
+            "id": "section-company-details",
+            "type": "company-details",
+            "props": {
+              "heading": "ABOUT DIAMONDTIME",
+              "text": "We are a contemporary diamond and gold jewellery brand selling exquisite pieces for the woman of today.",
+              "link": {
+                "label": "Learn More",
+                "url": "#"
+              },
+              "textColor": "#6b6b6b",
+              "headingColor": "#000000",
+              "fontSize": "14px",
+              "backgroundColor": "#f5e6e6"
+            }
+          },
+          {
+            "id": "section-group-links",
+            "type": "group-links",
+            "props": {
+              "groups": [
+                {
+                  "heading": "QUICK LINKS",
+                  "links": [
+                    { "label": "FAQs", "url": "#" },
+                    { "label": "Impact", "url": "#" },
+                    { "label": "About us", "url": "#" },
+                    { "label": "Terms & Conditions", "url": "#" },
+                    { "label": "Privacy Policy", "url": "#" }
+                  ]
+                },
+                {
+                  "heading": "CUSTOMER SERVICE",
+                  "links": [
+                    { "label": "Shipping & Returns", "url": "#" },
+                    { "label": "Exchange & Buyback", "url": "#" },
+                    { "label": "Location", "url": "#" },
+                    { "label": "Contact us", "url": "#" }
+                  ]
+                }
+              ],
+              "textColor": "#6b6b6b",
+              "headingColor": "#000000",
+              "fontSize": "14px",
+              "gap": "40px",
+              "backgroundColor": "#f5e6e6"
+            }
+          },
+          {
+            "id": "section-account",
+            "type": "account",
+            "props": {
+              "heading": "MY ACCOUNT",
+              "links": [
+                { "label": "Sign In", "url": "#" }
+              ],
+              "textColor": "#6b6b6b",
+              "headingColor": "#000000",
+              "fontSize": "14px",
+              "backgroundColor": "#f5e6e6"
+            }
+          },
+          {
+            "id": "section-copyright",
+            "type": "copyright",
+            "props": {
+              "content": "Copyright © 2025 Sonasons. All Rights Reserved.",
+              "textColor": "#6b6b6b",
+              "fontSize": "12px",
+              "textAlign": "center",
+              "padding": "20px 0",
+              "borderTop": "1px solid #000000",
+              "backgroundColor": "#f5e6e6"
+            }
+          }
+        ]
+      },
+      {
+        "templateId": "Footer3",
+        "preview": "Footer3.png",
+        "name": "Luxury Jewelry Footer",
+        "components": [
+          {
+            "id": "section-logo",
+            "type": "logo",
+            "props": {
+              "image": "sonasons_luxury_logo.png",
+              "alt": "logo",
+              "height": "60px",
+              "backgroundColor": "#f8f7f5",
+              "padding": "40px"
+            }
+          },
+          {
+            "id": "section-links",
+            "type": "links",
+            "props": {
+              "groups": [
+                {
+                  "links": [
+                    { "label": "HOME", "url": "/" },
+                    { "label": "CONTACT US", "url": "/contact" },
+                    { "label": "TERMS & CONDITION", "url": "/terms" }
+                  ]
+                },
+                {
+                  "links": [
+                    { "label": "ABOUT US", "url": "/about" },
+                    { "label": "PRIVACY POLICY", "url": "/privacy" }
+                  ]
+                }
+              ],
+              "textColor": "#4a4a4a",
+              "fontSize": "14px",
+              "fontWeight": "medium",
+              "letterSpacing": "1px",
+              "backgroundColor": "#f8f7f5"
+            }
+          },
+          {
+            "id": "section-company-detail",
+            "type": "company-detail",
+            "props": {
+              "socialIcons": [
+                { "platform": "Instagram", "color": "#E1306C", "url": "#" },
+                { "platform": "Facebook", "color": "#1877F2", "url": "#" },
+                { "platform": "X", "color": "#000000", "url": "#" },
+                { "platform": "YouTube", "color": "#FF0000", "url": "#" },
+                { "platform": "Pinterest", "color": "#E60023", "url": "#" },
+                { "platform": "LinkedIn", "color": "#0A66C2", "url": "#" }
+              ],
+              "location": "Block No. M1 To M6, Gujarat Hira Bourse Gem & Jewellery Park, Pal-Hazira Road, Ichchhapore, Surat, Gujarat - 394510",
+              "phone": "9632587412",
+              "email": "email1@fakeeg.com",
+              "textColor": "#4a4a4a",
+              "fontSize": "13px",
+              "iconSize": "20px",
+              "backgroundColor": "#f8f7f5"
+            }
+          },
+          {
+            "id": "section-copyright",
+            "type": "copyright",
+            "props": {
+              "content": "©2025 Shree Diamond",
+              "textColor": "#666666",
+              "fontSize": "14px",
+              "textAlign": "center",
+              "padding": "30px 0",
+              "backgroundColor": "#f8f7f5"
+            }
+          }
+        ]
+      },
+      {
+        "templateId": "Footer4",
+        "preview": "Footer4.png",
+        "name": "Elvee Multi-Column Footer",
+        "components": [
+          {
+            "id": "section-1-logo-social",
+            "type": "logo-social-media",
+            "props": {
+              "logoUrl": "elvee-logo.png",
+              "logoHeight": "60px",
+              "socialLinks": [
+                { "platform": "Instagram", "url": "#" , "color":"#E1306C"},
+                { "platform": "Facebook", "url": "#" , "color":"#1877F2"},
+                { "platform": "X", "url": "#" , "color":"#000000"},
+                { "platform": "YouTube", "url": "#" , "color":"#FF0000"},
+                { "platform": "Pinterest", "url": "#" , "color":"#E60023"},
+                { "platform": "LinkedIn", "url": "#" , "color":"#0A66C2"}
+              ],
+              "backgroundColor": "#f9f9f9"
+            }
+          },
+          {
+            "id": "section-2-company-details",
+            "type": "company-details",
+            "props": {
+              "heading": "OFFICE",
+              "address": "Block No. M1 To M6, Gujarat Hira Bourse Gem & Jewellery Park, Pal-Hazira Road, Ichchhapore, Surat, Gujarat - 394510",
+              "phone": "9632587412",
+              "email": "email1@fakeeg.com",
+              "textColor": "#6b6b6b",
+              "textSize": "17px",
+              "headingColor": "#000000",
+              "headingSize": "20px"
+            }
+          },
+          {
+            "id": "section-3-group-links",
+            "type": "group-links",
+            "props": {
+              "groups": [
+                {
+                  "heading": "OUR COMPANY",
+                  "links": [
+                    { "label": "About Us", "url": "#" },
+                    { "label": "Careers", "url": "#" },
+                    { "label": "Contact Us", "url": "#" },
+                    { "label": "Terms and Conditions", "url": "#" }
+                  ]
+                },
+                {
+                  "heading": "CUSTOMER CARE",
+                  "links": [
+                    { "label": "Customer Services", "url": "#" },
+                    { "label": "Book an Appointment", "url": "#" },
+                    { "label": "Customize", "url": "#" },
+                    { "label": "FAQ", "url": "#" }
+                  ]
+                }
+              ],
+     
+              "headingColor": "#000000",       
+  "headingSize": "14px",
+  "linkColor": "#6b6b6b",
+  "linkSize": "13px"
+            }
+          },
+          {
+            "id": "section-4-signup",
+            "type": "newsletter-signup",
+            "props": {
+              "heading": "SIGN UP FOR OUR UPDATES",
+              "description": "Sign up for our updates Subscribe to our emails to get exclusive first access to new products, surveys, and events.",
+              "inputPlaceholder": "Enter Your Email",
+              "buttonLabel": "SIGN UP",
+              "headingColor": "#000000",
+              "headingSize": "18px",
+              "descriptionColor": "#6b6b6b",
+              "descriptionSize": "14px",
+              "buttonColor": "#000000",
+              "buttonTextColor": "#ffffff",
+              "buttonSize": "14px"
+            }
+          },
+          {
+            "id": "section-copyright",
+            "type": "copyright",
+            "props": {
+              "content": "Copyright © 2026 sparrowinfo. All Rights Reserved.",
+              "textColor": "#6b6b6b",
+              "textAlign": "left",
+              "fontSize": "12px"
+            }
+          }
+        ],
+        "backgroundColor": "#f9f9f9",
+        "category": "footer"
+      }
+    ]
+  },
+  {
+    "category": "privacy-policy",
+    "templates": [
+      {
+        "templateId": "Policy1",
+        "preview": "Policy1.png",
+        "name": "Privacy Policy Layout",
+        "backgroundColor": "#ffffff",
+        "components": [
+          {
+            "id": "section-1-main-header",
+            "type": "content-block",
+            "props": {
+              "heading": "Privacy Policy",
+              "content": "Eliorjewel.com is committed to maintaining the highest standards of secure transactions and customer information protection. This Privacy Policy explains how we collect, use, and safeguard your personal information when you interact with our website.",
+              "headingFontSize": 18,
+              "headingColor": "#111827",
+              "contentFontSize": 13,
+              "contentColor": "#374151",
+              "textAlign": "left",
+              "padding": "40px 5%",
+              "backgroundImage":""
+            }
+          },
+          {
+            "id": "section-2-terms-list",
+            "type": "terms-array",
+            "props": {
+              "terms": [
+                {
+                  "heading": "Collection of Information",
+                  "content": "All of our jewelry is designed and manufactured on-site. We develop new designs by brand wise such as modern jewelleries, high fashion jewelleries occasional oriented jewellery, plain gold jewelleries at every months. These new designs will appear on our website also we present new products on gem and jewellery exhibitions at india and international sectors."
+                },
+                {
+                  "heading": "INFORMATION ON OUR SITE",
+                  "content": "We make every effort to ensure that our online catalog is as accurate and complete as possible. To allow you to view our pieces in full detail, some pieces may appear larger or smaller than their actual size and weight in our product images; and since every computer monitor is set differently, size may vary slightly."
+                },
+                {
+                  "heading": "RETURN POLICY",
+                  "content": "We committed to complete customer satisfaction. We take pride in the quality and workmanship of our merchandise manufactured in our state-of-the-art facility, and we are confident that you will be completely satisfied. The contents of the package must be in their original condition and secure within the box. For your security do not indicate the contents of the package on the exterior of the box."
+                },
+                {
+                  "heading": "SHIPPING POLICY",
+                  "content": "All of our shipments will be delivered using Indian Courier as well as international couriers. All custom orders will be shipped the following day when your order is completed."
+                },
+                {
+                  "heading": "LIMITED WARRANTY",
+                  "content": "Our guarantee is simple and straightforward. If something is wrong due to faulty workmanship, we take care of it. It's a fair way of doing business. That being said, precious metals erode and stones can become damaged over time. When normal wear occurs, repairs can be done in house by our expert staff at the normal repair fee. Any work performed by a jeweler other than Elvee automatically voids the warranty. It is the responsibility of the customer to maintain insurance against loss or damage not covered by the warranty."
+                }
+              ],
+              "headingFontSize": 14,
+              "headingColor": "#111827",
+              "contentFontSize": 12,
+              "contentColor": "#4b5563",
+              "spacing": "24px"
+            }
+          },
+          {
+            "id": "section-3-declaration",
+            "type": "footer-note",
+            "props": {
+              "text": "* The policy of terms and condition will be change after you cover the membership and above policy is consider as basic policy for non-membership customers.",
+              "fontSize": 12,
+              "color": "#6b7280",
+              "fontStyle": "italic",
+              "padding": "20px 5%"
+            }
+          }
+        ]
+      }
+     
+       
+       
     ]
   }
 ]

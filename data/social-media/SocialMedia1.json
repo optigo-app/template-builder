@@ -1,0 +1,51 @@
+{
+  "templateId": "SocialMedia1",
+  "preview": "SocialMedia1.png",
+  "name": "Social Media Layout",
+  "backgroundColor": "#ffffff",
+  "components": [
+    {
+      "id": "post-1774937004552",
+      "type": "social-post",
+      "props": {
+        "image": "http://elvee.web/WebSiteStaticImage/Banner/socialmediabanner1.png",
+        "socialmedianame": "instagram",
+        "borderRadius": 13,
+        "aspectRatio": "4/5",
+        "iconShape": "rounded",
+        "iconColor": "#344255"
+      }
+    },
+    {
+      "id": "post-1774937018896",
+      "type": "social-post",
+      "props": {
+        "image": "http://elvee.web/WebSiteStaticImage/Banner/socialmediabanner2.png",
+        "socialmedianame": "facebook",
+        "borderRadius": 7,
+        "aspectRatio": "4/5"
+      }
+    },
+    {
+      "id": "post-1774937039480",
+      "type": "social-post",
+      "props": {
+        "image": "http://elvee.web/WebSiteStaticImage/Banner/socialmediabanner3.png",
+        "socialmedianame": "linkedin",
+        "borderRadius": 12,
+        "aspectRatio": "4/5"
+      }
+    },
+    {
+      "id": "post-1774937053016",
+      "type": "social-post",
+      "props": {
+        "image": "http://elvee.web/WebSiteStaticImage/Banner/socialmediabanner4.png",
+        "socialmedianame": "pinterest",
+        "borderRadius": 12,
+        "aspectRatio": "4/5"
+      }
+    }
+  ],
+  "category": "social-media"
+}

@@ -163,8 +163,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { Settings2, Plus, Trash2, X,MousePointer2 } from 'lucide-react';
-import DeviceMockup from '../layout/DeviceMockup';
+import DeviceMockup from '../../layout/DeviceMockup';
 import Swal from 'sweetalert2';
+import templatesData from '@/data/templates.json';
 
 const Contact2Dynamic = ({ data: initialData }) => {
     const [data, setData] = useState(initialData || { components: [] });
@@ -243,42 +244,58 @@ const Contact2Dynamic = ({ data: initialData }) => {
 
     const handleSave = async () => {
         try {
-            // 1. Subtle Loading State (No annoying popup)
+            // 1. Loading Toast
             Toast.fire({
                 icon: 'info',
                 title: 'Saving template...',
-                timer: 0, // Stay open until finished
+                showConfirmButton: false,
+                timer: 0, 
             });
-
+    
+            // 2. Logic to find folder name
+            let folderName = "general"; 
+            
+            // This loop now uses the 'templatesData' we imported in Step 1
+            templatesData.forEach(cat => {
+                const found = cat.templates.find(t => t.templateId === data.templateId);
+                if (found) {
+                    // Use 'category' because that is the key in your JSON
+                    folderName = cat.category; 
+                }
+            });
+    
+            const payload = {
+                ...data,
+                category: folderName 
+            };
+    
+            // 3. Send to API
             const response = await fetch('/api/save-template', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data),
+                body: JSON.stringify(payload),
             });
-
+    
             if (response.ok) {
-                // 2. Success Toast
                 Toast.fire({
                     icon: 'success',
                     title: 'Saved successfully',
-                    background: '#ffffff',
-                    iconColor: '#10b981', // Modern Emerald green
+                    timer: 2000,
                 });
             } else {
+                const errorText = await response.text();
+                console.error("Server Error:", errorText);
                 throw new Error();
             }
         } catch (error) {
-            // 3. Error Toast
+            console.error("Frontend Error:", error);
             Toast.fire({
                 icon: 'error',
                 title: 'Save failed',
-                background: '#fff1f2', // Light red tint
-                iconColor: '#f43f5e', // Modern Rose red
+                timer: 3000,
             });
         }
     };
-
-
     const Editable = ({ id, field, index = null, className, tag: Tag = "div", style = {} }) => {
         const comp = getComp(id);
         const val = index !== null ? comp.props.sections[index][field] : comp.props[field];

@@ -1,0 +1,62 @@
+{
+  "templateId": "Terms3",
+  "preview": "Terms3.png",
+  "category": "terms-condition",
+  "backgroundColor": "#ffffff",
+  "components": [
+    {
+      "id": "section-1-main-header",
+      "type": "content-block",
+      "props": {
+        "heading": "Terms & Conditions",
+        "content": "Welcome to Diamondzine!",
+        "headingFontSize": "32",
+        "headingColor": "#000000",
+        "contentFontSize": 14,
+        "contentColor": "#000000",
+        "textAlign": "center",
+        "padding": "20px 5%",
+        "backgroundImage": ""
+      }
+    },
+    {
+      "id": "section-2-terms-list",
+      "type": "terms-array",
+      "props": {
+        "terms": [
+          {
+            "heading": "iFrames cvb",
+            "content": "Without prior approval and written permission, you may not create frames around our Webpages that alter in any way the visual presentation or appearance of our Website."
+          },
+          {
+            "heading": "Content Liability",
+            "content": "We shall not be hold responsible for any content that appears on your Website. You agree to protect and defend us against all claims that is rising on your Website. No link(s) should appear on any Website that may be interpreted as libelous, obscene or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights."
+          },
+          {
+            "heading": "Your Privacy",
+            "content": "Please read Privacy Policy"
+          },
+          {
+            "heading": "Reservation of Rights",
+            "content": "We reserve the right to request that you remove all links or any particular link to our Website. You approve to immediately remove all links to our Website upon request. We also reserve the right to amend these terms and conditions and it's linking policy at any time. By continuously linking to our Website, you agree to be bound to and follow these linking terms and conditions."
+          },
+          {
+            "heading": "Removal of links from our website",
+            "content": "If you find any link on our Website that is offensive for any reason, you are free to contact and inform us any moment. We will consider requests to remove links but we are not obligated to or so or to respond to you directly. We do not ensure that the information on this website is correct, we do not warrant its completeness or accuracy; nor do we promise to ensure that the website remains available or that the material on the website is kept up to date."
+          },
+          {
+            "heading": "Disclaimer",
+            "content": "To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our website and the use of this website. Nothing in this disclaimer will:\n\n• limit or exclude our or your liability for death or personal injury;\n• limit or exclude our or your liability for fraud or fraudulent misrepresentation;\n• limit any of our or your liabilities in any way that is not permitted under applicable law; or\n• exclude any of our or your liabilities that may not be excluded under applicable law.\n\nThe limitations and prohibitions of liability set in this Section and elsewhere in this disclaimer: (a) are subject to the preceding paragraph; and (b) govern all liabilities arising under the disclaimer, including liabilities arising in contract, in tort and for breach of statutory duty.\n\nAs long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature."
+          }
+        ],
+        "headingFontSize": "18",
+        "headingColor": "#111827",
+        "contentFontSize": 12,
+        "contentColor": "#374151",
+        "spacing": "25px",
+        "fontSize": 18,
+        "color": "#111827"
+      }
+    }
+  ]
+}

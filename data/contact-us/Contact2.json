@@ -20,7 +20,7 @@
       "id": "main-heading-contact",
       "type": "heading",
       "props": {
-        "heading": "Contact Us",
+        "heading": "Contact Us fbgfgh",
         "content": "Have a comment, suggestion or question? Feel free to reach out to us and we’ll get back to you as soon as possible.",
         "headingFontSize": 32,
         "headingColor": "#5173bd",
@@ -119,5 +119,6 @@
         "margin": "50px 0 0 0"
       }
     }
-  ]
+  ],
+  "category": "contact-us"
 }

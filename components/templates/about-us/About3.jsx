@@ -643,10 +643,12 @@
 
 import React, { useState, useEffect } from 'react';
 import { Trash2, Image as ImageIcon, Type, Plus, Settings2, Layout, Sliders, Trash, Maximize } from 'lucide-react';
-import DeviceMockup from '../layout/DeviceMockup';
+import DeviceMockup from '../../layout/DeviceMockup';
 import { MousePointer2 } from "lucide-react";
 import { X } from "lucide-react";
 import Swal from 'sweetalert2';
+import templatesData from '@/data/templates.json';
+
 
 const About3 = ({ data: initialData }) => {
   const [data, setData] = useState(initialData || { components: [] });
@@ -713,40 +715,58 @@ const About3 = ({ data: initialData }) => {
 
   const handleSave = async () => {
     try {
-      // 1. Subtle Loading State (No annoying popup)
-      Toast.fire({
-        icon: 'info',
-        title: 'Saving template...',
-        timer: 0, // Stay open until finished
-      });
-
-      const response = await fetch('/api/save-template', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        // 2. Success Toast
+   
         Toast.fire({
-          icon: 'success',
-          title: 'Saved successfully',
-          background: '#ffffff',
-          iconColor: '#10b981', // Modern Emerald green
+            icon: 'info',
+            title: 'Saving template...',
+            showConfirmButton: false,
+            timer: 0, 
         });
-      } else {
-        throw new Error();
-      }
+
+     
+        let folderName = "general"; 
+        
+      
+        templatesData.forEach(cat => {
+            const found = cat.templates.find(t => t.templateId === data.templateId);
+            if (found) {
+ 
+                folderName = cat.category; 
+            }
+        });
+
+        const payload = {
+            ...data,
+            category: folderName 
+        };
+
+  
+        const response = await fetch('/api/save-template', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+        });
+
+        if (response.ok) {
+            Toast.fire({
+                icon: 'success',
+                title: 'Saved successfully',
+                timer: 2000,
+            });
+        } else {
+            const errorText = await response.text();
+            console.error("Server Error:", errorText);
+            throw new Error();
+        }
     } catch (error) {
-      // 3. Error Toast
-      Toast.fire({
-        icon: 'error',
-        title: 'Save failed',
-        background: '#fff1f2', // Light red tint
-        iconColor: '#f43f5e', // Modern Rose red
-      });
+        console.error("Frontend Error:", error);
+        Toast.fire({
+            icon: 'error',
+            title: 'Save failed',
+            timer: 3000,
+        });
     }
-  };
+};
 
 
   const activeComp = selectedId ? getComp(selectedId) : null;
@@ -844,7 +864,7 @@ const About3 = ({ data: initialData }) => {
               {!isModel && (
                   <button
                   onClick={(e) => { e.stopPropagation(); handleAddSection(); }}
-                  className="my-10 mx-auto flex items-center gap-2 px-6 py-3 border-2 border-dashed border-gray-300 rounded-xl text-gray-400 hover:border-indigo-400 hover:text-indigo-500 transition-all"
+                  className="my-10 cursor-pointer mx-auto flex items-center gap-2 px-6 py-3 border-2 border-dashed border-gray-300 rounded-xl text-gray-400 hover:border-indigo-400 hover:text-indigo-500 transition-all"
                 >
                   <Plus size={20} /> Add New Section
                 </button>

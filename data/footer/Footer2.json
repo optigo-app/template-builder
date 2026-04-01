@@ -1,0 +1,144 @@
+{
+  "templateId": "Footer2",
+  "preview": "Footer2.png",
+  "name": "Multi-Column Footer Layout",
+  "components": [
+    {
+      "id": "section-company-details",
+      "type": "company-details",
+      "props": {
+        "heading": "ABOUT DIAMONDTIME",
+        "text": "We are a contemporary diamond and gold jewellery brand selling exquisite pieces for the woman of today.",
+        "link": {
+          "label": " ",
+          "url": "#"
+        },
+        "textColor": "#6b6b6b",
+        "headingColor": "#000000",
+        "fontSize": "17px",
+        "backgroundColor": "#f5e6e6"
+      }
+    },
+    {
+      "id": "section-group-links",
+      "type": "group-links",
+      "props": {
+        "groups": [
+          {
+            "heading": "CUSTOMER SERVICE",
+            "links": [
+              {
+                "label": "Shipping & Returns",
+                "url": "#"
+              },
+              {
+                "label": "Exchange & Buyback",
+                "url": "#"
+              },
+              {
+                "label": "Location",
+                "url": "#"
+              },
+              {
+                "label": "Contact us",
+                "url": "#"
+              },
+              {
+                "label": "jhjhjh",
+                "url": ""
+              }
+            ],
+            "title": "gghghgjj"
+          },
+          {
+            "title": "ukukkk",
+            "links": [
+              {
+                "label": "Shoping & Return",
+                "url": "jkjk"
+              },
+              {
+                "label": "Exchange & Buyback",
+                "url": "kjk"
+              },
+              {
+                "label": "Location",
+                "url": "https://"
+              },
+              {
+                "label": "Contact us",
+                "url": "https://"
+              }
+            ],
+            "heading": "CUSTOMER SERVICE"
+          }
+        ],
+        "textColor": "#6b6b6b",
+        "headingColor": "#000000",
+        "fontSize": "16px",
+        "gap": "40px",
+        "backgroundColor": "#f5e6e6"
+      }
+    },
+    {
+      "id": "section-account",
+      "type": "account",
+      "props": {
+        "heading": "MY ACCOUNT",
+        "links": [
+          {
+            "label": "Sign Invv",
+            "url": "#"
+          }
+        ],
+        "textColor": "#6b6b6b",
+        "headingColor": "#000000",
+        "fontSize": "14px",
+        "backgroundColor": "#f5e6e6"
+      }
+    },
+    {
+      "id": "section-copyright",
+      "type": "copyright",
+      "props": {
+        "content": "Copyright © 2025 Sonasons. All Rights Reserved.",
+        "textColor": "#6b6b6b",
+        "fontSize": "12px",
+        "textAlign": "center",
+        "padding": "20px 0",
+        "borderTop": "1px solid #000000",
+        "backgroundColor": "#f5e6e6"
+      }
+    }
+  ],
+  "backgroundColor": "#fcfcfc",
+  "category": "footer",
+  "groups": [
+    {
+      "title": "Namish",
+      "links": [
+        {
+          "label": "fgh",
+          "url": "dfhgh"
+        },
+        {
+          "label": "",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "title": "jay",
+      "links": [
+        {
+          "label": "dcd",
+          "url": "dvdv"
+        },
+        {
+          "label": "dcfd",
+          "url": "dfdf"
+        }
+      ]
+    }
+  ]
+}

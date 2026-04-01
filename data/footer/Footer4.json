@@ -1,0 +1,144 @@
+{
+  "templateId": "Footer4",
+  "preview": "Footer4.png",
+  "name": "Elvee Multi-Column Footer",
+  "components": [
+    {
+      "id": "section-1-logo-social",
+      "type": "logo-social-media",
+      "props": {
+        "logoUrl": "http://elvee.web/WebSiteStaticImage/logoIcon/webLogo.png",
+        "logoHeight": "60px",
+        "socialLinks": [
+          {
+            "platform": "Instagram",
+            "url": "#",
+            "color": "#E1306C"
+          },
+          {
+            "platform": "Facebook",
+            "url": "#",
+            "color": "#1877F2"
+          },
+          {
+            "platform": "X",
+            "url": "#",
+            "color": "#000000"
+          },
+          {
+            "platform": "YouTube",
+            "url": "#",
+            "color": "#FF0000"
+          },
+          {
+            "platform": "Pinterest",
+            "url": "#",
+            "color": "#E60023"
+          },
+          {
+            "platform": "LinkedIn",
+            "url": "#",
+            "color": "#0A66C2"
+          }
+        ],
+        "backgroundColor": "#f9f9f9"
+      }
+    },
+    {
+      "id": "section-2-company-details",
+      "type": "company-details",
+      "props": {
+        "heading": "OFFICE",
+        "address": "Block No. M1 To M6, Gujarat Hira Bourse Gem & Jewellery Park, Pal-Hazira Road, Ichchhapore, Surat, Gujarat - 394510",
+        "phone": "9632587412",
+        "email": "email1@fakeeg.com",
+        "textColor": "#928b8b",
+        "textSize": "13px",
+        "headingColor": "#b3adad",
+        "headingSize": "20px"
+      }
+    },
+    {
+      "id": "section-3-group-links",
+      "type": "group-links",
+      "props": {
+        "groups": [
+          {
+            "heading": "OUR COMPANY",
+            "links": [
+              {
+                "label": "About Us",
+                "url": "#"
+              },
+              {
+                "label": "Careers",
+                "url": "#"
+              },
+              {
+                "label": "Contact Us",
+                "url": "#"
+              },
+              {
+                "label": "Terms and Conditions",
+                "url": "#"
+              }
+            ]
+          },
+          {
+            "heading": "CUSTOMER CARE",
+            "links": [
+              {
+                "label": "Customer Services",
+                "url": "#"
+              },
+              {
+                "label": "Book an Appointment",
+                "url": "#"
+              },
+              {
+                "label": "Customize",
+                "url": "#"
+              },
+              {
+                "label": "FAQ",
+                "url": "#"
+              }
+            ]
+          }
+        ],
+        "textColor": "#6b6b6b",
+        "headingColor": "#b9b1b1",
+        "linkColor": "#a2a0a0",
+        "linkSize": "15px"
+      }
+    },
+    {
+      "id": "section-4-signup",
+      "type": "newsletter-signup",
+      "props": {
+        "heading": "SIGN UP FOR OUR UPDATES",
+        "description": "\n",
+        "inputPlaceholder": "Enter Your Email",
+        "buttonLabel": "SIGN UP",
+        "buttonColor": "#000000",
+        "buttonTextColor": "#ffffff",
+        "buttonSize": "12px",
+        "descriptionSize": "15px",
+        "descriptionColor": "#bab5b5",
+        "headingColor": "#aea7a7"
+      }
+    },
+    {
+      "id": "section-copyright",
+      "type": "copyright",
+      "props": {
+        "content": "Copyright © 2026 sparrowinfo. All Rights Reserved.",
+        "textColor": "#6b6b6b",
+        "textAlign": "left",
+        "fontSize": "12px"
+      }
+    }
+  ],
+  "backgroundColor": "#f9f9f9",
+  "category": "footer"
+}
